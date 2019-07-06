@@ -72,11 +72,12 @@ function goHere(fromSearchBar, toSearch) {
 	if (toSearch.includes('#')) {
 		var lookup = document.URL.split('#')[1];
 	} else {
-		var lookup = toSearch
+		var lookup = toSearch.trim()
 	}
 	
 	try {
 		document.getElementById('displayedEntry').innerHTML = lookup + ' ' + obdict[lookup]['ipa']
+		window.location = document.URL.split('#')[0] + '#' + lookup;
 	} catch (error) {
 		document.getElementById('displayedEntry').innerHTML = 'entry not found'
 	}
