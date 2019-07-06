@@ -1,4 +1,5 @@
 <html>
+<meta charset='utf-8'>
 
 <script>
 
@@ -23,12 +24,133 @@ Dictionary = `
 `
 
 
-</script>
-<link href="style.css" rel="stylesheet">
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "xmlhttp_info.txt", true);
+  xhttp.send();
 
-<input id="search" ></input> <button onclick="goHere(true, document.getElementById('search').value)">Search</button>
+
+</script>
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext" rel="stylesheet">
+
+<style>
+
+ h1 {  font-family: 'Lato', sans-serif;
+
+ }
+ 
+ p {font-family: 'Noto Sans', sans-serif;
+ 
+ }
+ 
+ 
+ .textaoneline {
+	color: #000;
+	border: 1px solid #e4e2e0;
+	margin: 1px;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	padding: 8px 11px 8px 11px;
+	font-size: 20px;
+
+}
+
+.textaoneline:hover {
+	outline: none;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
+	-webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, .2);
+}
+
+.textaoneline:disabled {
+    border: 1px solid #e4e2e0;
+	background-color : #f4f3f2;
+	margin: 1px;
+}
+
+.textaoneline:focus { 
+	outline: none;
+	margin: 0px;
+	border: 2px solid #c1e6fe;
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, .4);
+	-moz-box-shadow: 0px 0px 0px rgba(0, 0, 0, .4);
+	-webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, .4);
+}
+
+button {background-color: #ffffff; }
+
+.button0 {
+	border: none;
+	color: white;
+	padding: 12px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	-webkit-transition-duration: 0.2s; /* Safari */
+	transition-duration: 0.2s;
+	cursor: pointer;
+	border-radius: 25px;
+	font-family: GT-Haptik;
+	-moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, .4);
+	-webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, .4);
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, .4);
+
+}
+
+.but {
+
+		padding: 4px 16px;
+		font-size: 13px;
+		border-radius: 5px;
+}
+
+.button0:focus {outline:0 !important;}
+
+.button10 {
+	background-color: white;
+	color: #e34c72;
+	border: 1px solid white;
+}
+
+.button10:hover {
+
+	-moz-box-shadow: 0px 1px 7px rgba(0, 0, 0, .4);
+	-webkit-box-shadow: 0px 1px 7px rgba(0, 0, 0, .4);
+	box-shadow: 0px 1px 7px rgba(0, 0, 0, .4);
+	background-color: white;
+	color: #e34c72;
+
+	
+}
+.button10:focus {outline:0 !important;}
+
+.header {
+  padding: 10px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+}
+</style>
+
+<div class="header">
+<h1>dlksfjd</h1>
+
+<input class="textaoneline" id="search" ></input> <button class="button0 button10" onclick="goHere(true, document.getElementById('search').value)">Search</button>
+</div>
 
 <h1>dlksfjd</h1>
+
+<p>b d f g h j k l m n ŋ p ɹ s t v w z ʃ ʒ ʧ ʤ θ ð - add all English vowels: ɑ æ ɛ i ɪ ɔ u ʌ ʊ - add all All consonants: b ɓ β ʙ c ç d ɖ ɗ ʣ ʥ ʤ f ɸ g ɠ ɢ ʛ ɰ h ɦ ħ ɧ ɥ ʜ j ʝ ɟ ʄ k l ɫ ɬ ɮ ɭ ʟ m ɱ n ɳ ɲ ŋ ɴ p q r ɹ ɾ ɽ ɻ ɺ ʁ ʀ s ʂ ɕ ʃ t ʈ ʦ ʨ ʧ v ⱱ ʋ w ʍ x ɣ χ ʎ z ʐ ʑ ʒ θ ð ʔ ʡ ʕ ʢ ʘ ǀ ǃ ǂ ǁ All vowels: a æ ɑ ɒ ɐ e ɛ ɜ ɞ ə i ɨ ɪ y ʏ ø ɘ ɵ œ ɶ ɤ o ɔ u ʉ ʊ ɯ ʌ
 
 <div id="displayedEntry"> </div>
 
