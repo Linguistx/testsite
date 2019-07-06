@@ -1,0 +1,6 @@
+
+
+
+ortho : IPA : POS
+> definition 1 :
+> definitnion 2 :
