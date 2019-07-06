@@ -1,16 +1,91 @@
 <html>
-  <link href="style.css" rel="stylesheet">
+
 <script>
 
-console.log(document.location.href);
+title = ''
+
+
+
+Dictionary = `
+
+# ortho1  :  IPA1   :  POS1
+> definition 1 : example setence -- translation of example sentence
+>> sub definition
+> definitnion 2 :
+
+# ortho2 : IPA2 : POS2
+> definition 1 : example setence -- translation of example sentence
+>> sub definition
+> definitnion 2 :
+
+#
+
+`
+
+
 </script>
+<link href="style.css" rel="stylesheet">
+
+<input id="search" ></input> <button onclick="goHere(true, document.getElementById('search').value)">Search</button>
 
 <h1>dlksfjd</h1>
 
-  <p>English consonants: b d f g h j k l m n ŋ p ɹ s t v w z ʃ ʒ ʧ ʤ θ ð - add all 
-English vowels: ɑ æ ɛ i ɪ ɔ u ʌ ʊ - add all
+<div id="displayedEntry"> </div>
 
-All consonants: b ɓ β ʙ c ç d ɖ ɗ ʣ ʥ ʤ f ɸ g ɠ ɢ ʛ ɰ h ɦ ħ ɧ ɥ ʜ j ʝ ɟ ʄ k l ɫ ɬ ɮ ɭ ʟ m ɱ n ɳ ɲ ŋ ɴ p q r ɹ ɾ ɽ ɻ ɺ ʁ ʀ s ʂ ɕ ʃ t ʈ ʦ ʨ ʧ v ⱱ ʋ w ʍ x ɣ χ ʎ z ʐ ʑ ʒ θ ð ʔ ʡ ʕ ʢ ʘ ǀ ǃ ǂ ǁ 
-All vowels: a æ ɑ ɒ ɐ e ɛ ɜ ɞ ə i ɨ ɪ y ʏ ø ɘ ɵ œ ɶ ɤ o ɔ u ʉ ʊ ɯ ʌ
+<script>
+
+
+Dictionary = Dictionary.split(/\s*#\s*/)
+
+Dictionary = Dictionary.filter(a => a.search(/\n[ \t]*>/) > -1 && a.includes(':'))
+
+let obdict = {}
+
+for (let entry of Dictionary) {
+	entry = entry.split('\n')
+	let firsLine = entry[0].split(':')
+	firsLine = firsLine.map(a => a.trim())
+	let word = firsLine[0]
+	let IPA = (firsLine[1]) ? firsLine[1] : ''
+	let POS = (firsLine[2]) ? firsLine[2] : ''
+	
+	for (i = 1; i < entry.length; i++) {
+	
+	}
+	
+	//entry = i.match(/^.*?:/);
+	//if (entry) entry = entry[0].replace(/\s*:/, '');
+	//console.log(word, IPA, POS)
+	obdict[word] = {'ipa': IPA, 'pos': POS}
+
+}
+
+console.log(obdict['ortho1']);
+
+function goHere(fromSearchBar, toSearch) {
+	if (!fromSearchBar && !toSearch.includes('#')) {
+		return;
+	} else if (fromSearchBar && toSearch.trim() == '') {
+		return;
+	}
+	
+	if (toSearch.includes('#')) {
+		var lookup = document.URL.split('#')[1];
+	} else {
+		var lookup = toSearch
+	}
+	
+	try {
+		document.getElementById('displayedEntry').innerHTML = lookup + ' ' + obdict[lookup]['ipa']
+	} catch (error) {
+		document.getElementById('displayedEntry').innerHTML = 'entry not found'
+	}
+
+}
+
+goHere(false, document.URL)
+
+
+</script>
 
 </html>
