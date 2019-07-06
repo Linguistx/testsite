@@ -207,6 +207,18 @@ function goHere(fromSearchBar, toSearch) {
 }
 
 goHere(false, document.URL)
+	
+	var url = document.URL + "/xmlhttp_info.txt";
+
+var jsonFile = new XMLHttpRequest();
+    jsonFile.open("GET",url,true);
+    jsonFile.send();
+
+    jsonFile.onreadystatechange = function() {
+        if (jsonFile.readyState== 4 && jsonFile.status == 200) {
+            document.getElementById("displayedEntry").innerHTML = jsonFile.responseText;
+        }
+     }
 
 
 </script>
