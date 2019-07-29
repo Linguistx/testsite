@@ -1,111 +1,64 @@
 <html>
-<head>
-<meta charset='utf-8'>
-<link href="style.css" rel="stylesheet">
-	
-<script>
 
-title = ''
+<meta charset="UTF-8">
 
-Dictionary = `
+<link href="styleVOD.css" rel="stylesheet">
+  <body>
+    <article>
+      <div class="header">
+        <span class="titled">Sfodaolajan - English Dictionary</span> <span class="searchbar"><span id="searchPart"><input id='searchbox' spellcheck="false"></input> <img id="mag" src="magnifying-glass.svg" height="25px"></img></span></span>
+      </div>
+	  <div class="navbar">
+        <a href="#">Dictionary</a>
+        <a href="#">Grammar</a>
+        <a href="#">About</a>
+      </div>
+	  
+      <div class="row">
 
-# ortho1  :  IPA1   :  POS1
-> definition 1 : example setence -- translation of example sentence
->> sub definition
-> definitnion 2 :
+        <div class="side">
+          <h2>See also ...</h2>
+          <h5>Photo of me:</h5>
+          <div class="fakeimg" style="height:200px;">Image</div>
+          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+          <h3>More Text</h3>
+          <p>Lorem ipsum dolor sit ame.</p>
+        </div>
+		
+        <div class="main">
+        <h1>styrʌʊ</h1>
+        <p>/styɾ/</p>
+        <h3>verb</h3>
+        <ol>
+        <li>say, tell</li>
+		<ul class='quotes'>
+			<li>I say he's an idiot - <span class="translation">ya satr qu el fimda</span></li>
+			<li>I say he's an idiot - <span class="translation">ya satr qu el fimda</span></li>
+		</ul>
+        <li>notify, inform</li>
+        <li>make</li>
+        </ol>
+        <h2>Etymology</h2>
+        <p>BLah blhablhb</p>
+        <h2>Derived terms</h2>
+        </div>
 
-# ortho2 : IPA2 : POS2
-> definition 1 : example setence -- translation of example sentence
->> sub definition
-> definitnion 2 :
-
-#
-
-`
-</script>
-</head>
-<body>
-
-<div class="header">
-<h1>dlksfjd</h1>
-
-<input class="textaoneline" id="search" ></input> <button class="button0 button10" onclick="goHere(true, document.getElementById('search').value)">Search</button>
-</div>
-
-<h1>dlksfjd</h1>
-
-<p>b d f g h j k l m n ŋ p ɹ s t v w z ʃ ʒ ʧ ʤ θ ð - add all English vowels: ɑ æ ɛ i ɪ ɔ u ʌ ʊ - add all All consonants: b ɓ β ʙ c ç d ɖ ɗ ʣ ʥ ʤ f ɸ g ɠ ɢ ʛ ɰ h ɦ ħ ɧ ɥ ʜ j ʝ ɟ ʄ k l ɫ ɬ ɮ ɭ ʟ m ɱ n ɳ ɲ ŋ ɴ p q r ɹ ɾ ɽ ɻ ɺ ʁ ʀ s ʂ ɕ ʃ t ʈ ʦ ʨ ʧ v ⱱ ʋ w ʍ x ɣ χ ʎ z ʐ ʑ ʒ θ ð ʔ ʡ ʕ ʢ ʘ ǀ ǃ ǂ ǁ All vowels: a æ ɑ ɒ ɐ e ɛ ɜ ɞ ə i ɨ ɪ y ʏ ø ɘ ɵ œ ɶ ɤ o ɔ u ʉ ʊ ɯ ʌ
-
-<div id="displayedEntry"> </div>
-
-<script>
-
-
-Dictionary = Dictionary.split(/\s*#\s*/)
-
-Dictionary = Dictionary.filter(a => a.search(/\n[ \t]*>/) > -1 && a.includes(':'))
-
-let obdict = {}
-
-for (let entry of Dictionary) {
-	entry = entry.split('\n')
-	let firsLine = entry[0].split(':')
-	firsLine = firsLine.map(a => a.trim())
-	let word = firsLine[0]
-	let IPA = (firsLine[1]) ? firsLine[1] : ''
-	let POS = (firsLine[2]) ? firsLine[2] : ''
-	
-	for (i = 1; i < entry.length; i++) {
-	
-	}
-	
-	//entry = i.match(/^.*?:/);
-	//if (entry) entry = entry[0].replace(/\s*:/, '');
-	//console.log(word, IPA, POS)
-	obdict[word] = {'ipa': IPA, 'pos': POS}
-
-}
-
-console.log(obdict['ortho1']);
-
-function goHere(fromSearchBar, toSearch) {
-	if (!fromSearchBar && !toSearch.includes('#')) {
-		return;
-	} else if (fromSearchBar && toSearch.trim() == '') {
-		return;
-	}
-	
-	if (toSearch.includes('#')) {
-		var lookup = document.URL.split('#')[1];
-	} else {
-		var lookup = toSearch.trim()
-	}
-	
-	try {
-		document.getElementById('displayedEntry').innerHTML = lookup + ' ' + obdict[lookup]['ipa']
-		window.location = document.URL.split('#')[0] + '#' + lookup;
-	} catch (error) {
-		document.getElementById('displayedEntry').innerHTML = 'entry not found'
-	}
-
-}
-
-goHere(false, document.URL)
-	
+	  </div>
+      <div class="footer">Powered by Vulgarlang.com
+      </div>
+    </article>
+  </body>
+  <script>
 	var url = document.URL + "/xmlhttp_info.txt";
-
 var jsonFile = new XMLHttpRequest();
     jsonFile.open("GET",url,true);
     jsonFile.send();
-
     jsonFile.onreadystatechange = function() {
         if (jsonFile.readyState== 4 && jsonFile.status == 200) {
-            document.getElementById("displayedEntry").innerHTML = jsonFile.responseText;
+            console.log(jsonFile.responseText);
         }
      }
-
-
-</script>
-</body>
-
+  
+  </script>
+  
 </html>
