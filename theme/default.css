@@ -1,5 +1,5 @@
-@font-face { font-family: Noto; src: url(NotoSerif-Regular.ttf); }
 @font-face { font-family: NotoSans; src: url('NotoSans-Regular_unhinted.ttf'); }
+
 * {
   box-sizing: border-box;
 }
