@@ -16,7 +16,6 @@ font-size: 15px;
 /* Header/logo Title */
 .header {
 	display: flex;
-	flex-direction: row;
 
 
   background: #4682b4;
