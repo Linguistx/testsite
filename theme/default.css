@@ -1,0 +1,206 @@
+@font-face { font-family: Noto; src: url(NotoSerif-Regular.ttf); }
+@font-face { font-family: NotoSans; src: url('NotoSans-Regular_unhinted.ttf'); }
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial;
+  margin: 0;
+font-family: NotoSans;
+color: #333;
+font-size: 15px;
+}
+
+/* Header/logo Title */
+.header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+
+
+  background: #4682b4;
+  color: white;
+}
+
+.titled {
+display: flex;
+	float: left;
+	flex-basis: auto;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 30px;
+	padding: 20px 20px 20px 20px;
+	font-weight: bolder;
+	height: 100%;
+	max-width: 70%;
+
+}
+
+.searchbar {
+	display: flex;
+	flex-grow: 2;
+
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 30px;
+align-items: center;
+	justify-content: flex-end;
+
+	font-weight: bolder;
+
+
+}
+
+/* Style the top navigation bar */
+.navbar {
+  display: flex;
+  background-color: #333;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Column container */
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 15%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Main column */
+.main {
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  padding: 10px;
+  text-align: center;
+  background: #ecf2f7;
+  align-content: flex-end;
+  font-size: 14px;
+  font-family: 'Ubuntu';
+  color: #a2c0d9;
+}
+
+.footer a {
+
+  color: #fff;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .header, .row, .navbar {   
+    flex-direction: column;
+	
+  }
+  
+	  .searchbar {
+		display: flex;
+		padding: 0px 20px 20px 20px;
+		font-family: 'Ubuntu', sans-serif;
+		font-size: 30px;
+	justify-content: center;
+		font-weight: bolder;
+
+
+	}
+
+  .side {
+  display: none;
+  }
+  
+}
+h1, h2, h3 {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+h1 {
+	font-size: 30px;
+}
+
+
+.quotes {
+ padding: 3px 0px 10px 18px;
+ color: #7e7e7e;
+}
+
+.translation {
+	font-style: italic;
+ color: #4682b4;
+}
+
+
+article {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.row {
+    flex-grow: 1;
+}
+
+.flati {
+    font-size: 10px;
+}
+
+.header, .row, .navbar, .footer {
+    flex-shrink: 0;
+}
+
+#searchPart {
+	max-height: 45px;
+	display: inline-block;
+white-space: nowrap;
+margin: 0px 15px 0px 0px;
+	background: white;
+	padding: 3px;
+	border-radius: 4px;
+}
+
+#searchbox {
+	
+	height: 30px;
+	border: none;
+	outline: none;
+	width: 300px;
+	font-size:25px;
+	font-family: NotoSans;
+	margin: 0px 0px 5px 0px;
+
+}
+
+#mag {
+	
+	padding: 3px 3px 0px 0px;
+}
