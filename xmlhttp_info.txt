@@ -2,5 +2,5 @@
 
 
 ortho : IPA : POS
-> definition 1 :
-> definitnion 2 :
+> definccccition 1 :
+> defixxxxnitnion 2 :
