@@ -179,23 +179,22 @@ article {
 
 #searchPart {
 	max-height: 45px;
-	display: inline-block;
-white-space: nowrap;
-margin: 0px 15px 0px 0px;
+	display: flex;
+	white-space: nowrap;
+	margin: 0px 15px 0px 0px;
 	background: white;
-	padding: 3px;
+	padding: 6px;
 	border-radius: 4px;
+	justify-content: center;
 }
 
 #searchbox {
 	
-	height: 30px;
 	border: none;
 	outline: none;
 	width: 300px;
-	font-size:25px;
+	font-size:20px;
 	font-family: NotoSans;
-	margin: 0px 0px 5px 0px;
 
 }
 
