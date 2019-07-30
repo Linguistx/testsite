@@ -91,9 +91,9 @@ jsonFile.onreadystatechange = function() {
     console.log(8, dictionary);
 
     
-function sendEntry(term, info) {
+function sendEntry(term, associatedInfo) {
     let entries = [];
-    for (let entry of info) {
+    for (let entry of associatedInfo) {
         entry = entry.split(':');
         let pronunciation = entry[0].trim();
         for (let i = 1; i < entry.length; i++) {
@@ -106,18 +106,28 @@ function sendEntry(term, info) {
             } else {
                 let senses = subheading.split("=");
                 var pos = senses[0].trim();
-                console.log(pos);
+                var translation = "";
                 for (let j = 1; j < senses.length; j++) {
-                    console.log(senses[j]);
+                    let sense = senses[j];
+                    sense = sense.split("*");
+                    var translation = "<li>" + sense[0].trim() + "</li>";
+                    let quotes = "";
+                    for (let k = 1; k < sense.length; k++) {
+                        quotes = quotes + "<li>" + sense[k].trim() + "</li>";
+                    }
+                    if (quotes != "") quotes = "<ul>" + quotes + "</ul>";
+                    translation = translation + quotes;
                 }
+                
+                if (translation != "") translation = "<ol>" + translation + "</ol>";
             }
-            
             
         }
         let final =
             "<h1>" + term + "</h1>"
             + "<p>" + pronunciation + "</p>"
-            //+ 
+            + "<h2>" + pos + "</h2>"
+            + translation;
     
         entries.push(final)
     }
