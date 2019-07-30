@@ -55,7 +55,7 @@
   <script>
   let url = document.URL + "/dictionary.txt";
   let jsonFile = new XMLHttpRequest();
-
+  let dict = {}
   jsonFile.open("GET",url,true);
   jsonFile.send();
   jsonFile.onreadystatechange = function() {
@@ -63,11 +63,18 @@
       let dictionaryBlob = jsonFile.responseText;
       dictionaryBlob = dictionaryBlob.split('@');
       for (let i of dictionaryBlob) {
-        let entry = i.slice(0, i.indexOf('/'));
-        console.log(entry);
+        let entry = i.slice(0, i.indexOf('/')).trim();
+	let entryData = i.slice(i.indexOf('/')).trim();
+	if (!dict[entry]) {
+	    dict[entry] = [entryData]
+	} else {
+	    dict[entry].push(entryData)
+	}
+
       }	    
     }
   }
+  console.log(dict)
   </script>
   
 </html>
