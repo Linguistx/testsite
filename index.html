@@ -56,7 +56,6 @@
   </body>
   <script>
   let url = document.location.href;
-	  console.log(url);
   let dictionayFile = document.URL + "/dictionary.txt";
   let jsonFile = new XMLHttpRequest();
   let dict = {}
@@ -78,7 +77,13 @@
       }	    
     }
   }
-  console.log(dict)
+  if (url.includes('?')) {
+    var queryTerm = url.slice(url.indexOf('?') + 1);
+    console.log(queryTerm);
+  } else {
+	  
+  }
+  console.log(dict[queryTerm])
   </script>
   
 </html>
