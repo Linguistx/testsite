@@ -90,7 +90,6 @@ jsonFile.onreadystatechange = function() {
 }
     console.log(8, dictionary);
 
-    
 function sendEntry(term, associatedInfo) {
     let allEntries = [];
     for (let entry of associatedInfo) {
@@ -98,9 +97,13 @@ function sendEntry(term, associatedInfo) {
         entry = entry.split(':');
         let pronunciation = entry[0].trim();
         for (let i = 1; i < entry.length; i++) {
+			let translations = [];
             let subheading = entry[i].trim();
             
             if (subheading.startsWith("ET")) {
+			
+			    subheading = "<h2>Etymology</h2><p>" + subheading.slice(subheading.indexOf("ET") + 2).trim();
+				subheadings.push(subheading);
                 
             } else if (subheading.startsWith("DT")) {
                 
@@ -108,31 +111,33 @@ function sendEntry(term, associatedInfo) {
                 let senses = subheading.split("=");
                 var pos = senses[0].trim();
                 var translation = "";
+				console.log(translation);
                 for (let j = 1; j < senses.length; j++) {
                     let sense = senses[j];
                     sense = sense.split("*");
                     var translation = "<li>" + sense[0].trim() + "</li>";
+					console.log(1, translation);
                     let quotes = "";
                     for (let k = 1; k < sense.length; k++) {
                         quotes = quotes + "<li>" + sense[k].trim() + "</li>";
                     }
                     if (quotes != "") quotes = "<ul>" + quotes + "</ul>";
+					console.log(quotes)
                     translation = translation + quotes;
+					translations.push(translation);
                 }
                 
-                if (translation != "") translation = "<ol>" + translation + "</ol>";
+                if (translation != []) translation = "<ol>" + translations.join("") + "</ol>";
+                subheading = "<h3>" + pos + "</h3>" + translation;
+                subheadings.push(subheading);
             }
-            
-           subheading = "<h2>" + pos + "</h2>" + translation;
-            subheadings.push(subheading)
         }
-            var final = "<h1>" + term + "</h1>"
-            + "<p>" + pronunciation + "</p>"
-            + subheadings.join();
+        var final = "<h1>" + term + "</h1>"
+        + "<p>" + pronunciation + "</p>"
+        + subheadings.join("");
         allEntries.push(final)
     }
-
-    document.getElementById('entry').innerHTML = allEntries.join();
+    document.getElementById('entry').innerHTML = allEntries.join("");
 }
 </script>
     
