@@ -65,13 +65,17 @@ jsonFile.onreadystatechange = function() {
     if (jsonFile.readyState == 4 && jsonFile.status == 200) {
         let dictionaryBlob = jsonFile.responseText;
         dictionaryBlob = dictionaryBlob.split("@");
-        for (let i of dictionaryBlob) {
-            let entry = i.slice(0, i.indexOf("/")).trim();
-            let entryData = i.slice(i.indexOf("/")).trim();
-            if (!dictionary[entry]) {
-                dictionary[entry] = [entryData]
+        for (let entry of dictionaryBlob) {
+            let forwardSlash = entry.indexOf("/");
+            let colon = entry.indexOf(":");
+            let marker = Math.min(forwardSlash, colon);
+            marker = marker > 0 ? marker : Math.max(forwardSlash, colon);
+            let word = entry.slice(0, marker).trim();
+            let wordData = entry.slice(marker).trim();
+            if (!dictionary[word]) {
+                dictionary[word] = [wordData]
             } else {
-                dictionary[entry].push(entryData)
+                dictionary[word].push(wordData)
             }
         }
         console.log(9, dictionary);
@@ -82,33 +86,40 @@ jsonFile.onreadystatechange = function() {
         } else {
 
         }
-        
     }
 }
     console.log(8, dictionary);
 
     
 function sendEntry(term, info) {
-    console.log(778, term, info)
     let entries = [];
-    for (let i of info) {
-        i = i.split(':');
-        let pronunciation = i[0].trim();
-        for (let pos of i) {
-            pos = pos.split("==");
-            for (let sense of pos) {
-                sense = sense.split("=");
-                for (let definition of sense) {
-                    console.log(definition);
+    for (let entry of info) {
+        entry = entry.split(':');
+        let pronunciation = entry[0].trim();
+        for (let i = 1; i < entry.length; i++) {
+            let subheading = entry[i].trim();
+            
+            if (subheading.startsWith("ET")) {
+                
+            } else if (subheading.startsWith("DT")) {
+                
+            } else {
+                let senses = subheading.split("=");
+                var pos = senses[0].trim();
+                console.log(pos);
+                for (let j = 1; j < senses.length; j++) {
+                    console.log(senses[j]);
                 }
             }
+            
+            
         }
-        let entry =
+        let final =
             "<h1>" + term + "</h1>"
             + "<p>" + pronunciation + "</p>"
             //+ 
     
-        entries.push(entry)
+        entries.push(final)
     }
 
     document.getElementById('entry').innerHTML = entries.join();
