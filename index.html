@@ -55,11 +55,11 @@
     </article>
   </body>
   <script>
-  let url = document.location.href;
- 	let dictionayFile = document.URL + "/dictionary.txt";
+  let urlLoc = document.location.href;
+ 	let url = document.URL + "/dictionary.txt";
  	let jsonFile = new XMLHttpRequest();
  	
- 	jsonFile.open("GET",dictionayFile,true);
+ 	jsonFile.open("GET",url,true);
  	jsonFile.send();
  	jsonFile.onreadystatechange = function() {
   	if (jsonFile.readyState== 4 && jsonFile.status == 200) {
@@ -81,8 +81,8 @@
 
 		}
 	  console.log(2, dict)
-	  		if (url.includes('?')) {
-    				var queryTerm = url.slice(url.indexOf('?') + 1);
+	  		if (urlLoc.includes('?')) {
+    				var queryTerm = urlLoc.slice(urlLoc.indexOf('?') + 1);
     				console.log(1, queryTerm);
   			} else {
 	  
