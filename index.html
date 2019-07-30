@@ -64,10 +64,10 @@ jsonFile.onreadystatechange = function() {
     console.log('readyState', jsonFile.readyState);
     if (jsonFile.readyState == 4 && jsonFile.status == 200) {
         let dictionaryBlob = jsonFile.responseText;
-        dictionaryBlob = dictionaryBlob.split('@');
+        dictionaryBlob = dictionaryBlob.split("@");
         for (let i of dictionaryBlob) {
-            let entry = i.slice(0, i.indexOf('/')).trim();
-            let entryData = i.slice(i.indexOf('/')).trim();
+            let entry = i.slice(0, i.indexOf("/")).trim();
+            let entryData = i.slice(i.indexOf("/")).trim();
             if (!dictionary[entry]) {
                 dictionary[entry] = [entryData]
             } else {
@@ -77,21 +77,36 @@ jsonFile.onreadystatechange = function() {
     }
 }
     
-if (url.includes('?')) {
-    var queryTerm = url.slice(url.indexOf('?') + 1);
+if (url.includes("?")) {
+    var queryTerm = url.slice(url.indexOf("?") + 1);
     sendEntry(queryTerm, dictionary[queryTerm]);
 } else {
     
 }
     
 function sendEntry(term, info) {
-    info = info.split(':');
-    let pronunciation = info[0].trim();
+    let entries = [];
+    for (let i of info) {
+        i = i.split(':');
+        let pronunciation = i[0].trim();
+        for (let pos of i) {
+            pos = pos.split("==");
+            for (let sense of pos) {
+                sense = sense.split("=");
+                for (let definition of sense) {
+                    console.log(definition);
+                }
+            }
+        }
+        let entry =
+            "<h1>" + term + "</h1>"
+            + "<p>" + pronunciation + "</p>"
+            //+ 
+    
+        entries.push(entry)
+    }
+
     document.getElementById('entry').innerHTML =
-`<h1>${term}</h1>
-<p>${pronunciation}</p>
-`;
- 
 }
 </script>
     
