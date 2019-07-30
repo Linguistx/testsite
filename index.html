@@ -64,6 +64,7 @@
  	//jsonFile.onreadystatechange = function() {
   	//if (jsonFile.readyState== 4 && jsonFile.status == 200) {
 		let dict = {}
+		console.log(3, dict)
 		let dictionaryBlob = jsonFile.responseText;
       		dictionaryBlob = dictionaryBlob.split('@');
       		for (let i of dictionaryBlob) {
@@ -74,15 +75,17 @@
 			} else {
 	    			dict[entry].push(entryData)
 			}
-			if (url.includes('?')) {
+	
+
+		}
+	  console.log(2, dict)
+	  		if (url.includes('?')) {
     				var queryTerm = url.slice(url.indexOf('?') + 1);
-    				console.log(queryTerm);
+    				console.log(1, queryTerm);
   			} else {
 	  
   			}
   			console.log(dict[queryTerm])
-
-		}	   
 	//end status 200    
 	    //}
 	//}
