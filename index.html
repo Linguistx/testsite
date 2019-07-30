@@ -61,7 +61,7 @@ let jsonFile = new XMLHttpRequest();
 jsonFile.open("GET",dictionaryFile,true);
 jsonFile.send();
 jsonFile.onreadystatechange = function() {
-    console.log('readyState', readyState);
+    console.log('readyState', jsonFile.readyState);
     if (jsonFile.readyState == 4 && jsonFile.status == 200) {
         let dictionaryBlob = jsonFile.responseText;
         dictionaryBlob = dictionaryBlob.split('@');
@@ -84,8 +84,14 @@ if (url.includes('?')) {
     
 }
     
-function sendEntry(a, b) {
-    document.getElementById('entry').innerHTML = a;
+function sendEntry(term, info) {
+    info = info.split(':');
+    let pronunciation = info[0].trim();
+    document.getElementById('entry').innerHTML =
+`<h1>${term}</h1>
+<p>${pronunciation}</p>
+`;
+ 
 }
 </script>
     
