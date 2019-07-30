@@ -53,7 +53,7 @@
 </body>
 
 <script>
-let location = document.location.href;
+let url = document.location.href;
 let dictionaryFile = document.location.origin + "/dictionary.txt";
 let jsonFile = new XMLHttpRequest();
  
@@ -74,7 +74,7 @@ jsonFile.onreadystatechange = function() {
             }
         }
         if (location.includes('?')) {
-            var queryTerm = location.slice(urlLoc.indexOf('?') + 1);
+            var queryTerm = url.slice(url.indexOf('?') + 1);
             console.log(dict[queryTerm]);
         } else {
     
