@@ -92,8 +92,9 @@ jsonFile.onreadystatechange = function() {
 
     
 function sendEntry(term, associatedInfo) {
-    let entries = [];
+    let allEntries = [];
     for (let entry of associatedInfo) {
+        let subheadings = [];
         entry = entry.split(':');
         let pronunciation = entry[0].trim();
         for (let i = 1; i < entry.length; i++) {
@@ -122,17 +123,16 @@ function sendEntry(term, associatedInfo) {
                 if (translation != "") translation = "<ol>" + translation + "</ol>";
             }
             
+           subheading = "<h2>" + pos + "</h2>" + translation;
+            subheadings.push(subheading)
         }
-        let final =
-            "<h1>" + term + "</h1>"
+            var final = "<h1>" + term + "</h1>"
             + "<p>" + pronunciation + "</p>"
-            + "<h2>" + pos + "</h2>"
-            + translation;
-    
-        entries.push(final)
+            + subheadings.join();
+        allEntries.push(final)
     }
 
-    document.getElementById('entry').innerHTML = entries.join();
+    document.getElementById('entry').innerHTML = allEntries.join();
 }
 </script>
     
