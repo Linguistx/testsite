@@ -76,7 +76,7 @@ jsonFile.onreadystatechange = function() {
         }
         console.log(9, dictionary);
         if (url.includes("?")) {
-            var queryTerm = url.slice(url.indexOf("?") + 1);
+            var queryTerm = decodeURI(url.slice(url.indexOf("?") + 1));
             console.log(22, dictionary[queryTerm]);
             sendEntry(queryTerm, dictionary[queryTerm]);
         } else {
