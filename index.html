@@ -55,12 +55,13 @@
   <script>
   let url = document.URL + "/dictionary.txt";
   let jsonFile = new XMLHttpRequest();
+  let dictionaryBlob;
   jsonFile.open("GET",url,true);
   jsonFile.send();
   jsonFile.onreadystatechange = function() {
-    //if (jsonFile.readyState== 4 && jsonFile.status == 200) {
-      var dictionaryBlob = jsonFile.responseText;
-    //}
+    if (jsonFile.readyState== 4 && jsonFile.status == 200) {
+      dictionaryBlob = jsonFile.responseText;
+    }
   }
   dictionaryBlob = dictionaryBlob.split('@');
   for (let i of dictionaryBlob) {
