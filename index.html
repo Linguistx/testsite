@@ -1,97 +1,86 @@
 <html>
 
 <meta charset="UTF-8">
-
 <link href="/theme/default.css" rel="stylesheet">
-  <body>
-    <article>
-      <div class="header">
-        <span class="titled">Sfodaolajan - English Dictionary</span>
-        <span class="searchbar">
-          <span id="searchPart">
-            <input id='searchbox' autocorrect="off" autocapitalize="off" spellcheck="false"></input>
-            <img id="mag" src="/theme/magnifying-glass.svg" height="25px"></img>
-          </span>
-        </span>
-      </div>
-      <div class="navbar">
-        <a href="#">Dictionary</a>
-        <a href="#">Grammar</a>
-        <a href="#">About</a>
-      </div>
-      <div class="row">
-        <div class="side">
-          <h2>See also ...</h2>
-          <h5>Photo of me:</h5>
-          <div class="fakeimg" style="height:200px;">Image</div>
-          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-          <h3>More Text</h3>
-          <p>Lorem ipsum dolor sit ame.</p>
-        </div>
-		
-        <div class="main">
-	  <div id="entry">
-	  </div>
-        <h1>styrʌʊ</h1>
-        <p>/styɾ/</p>
-        <h3>verb</h3>
-        <ol>
-        <li>say, tell</li>
-          <ul class='quotes'>
-            <li>I say he's an idiot - <span class="translation">ya satr qu el fimda</span></li>
-            <li>I say he's an idiot - <span class="translation">ya satr qu el fimda</span></li>
-          </ul>
-        <li>notify, inform</li>
-        <li>make</li>
-        </ol>
-        <h2>Etymology</h2>
-        <p>BLah blhablhb</p>
-        <h2>Derived terms</h2>
-        </div>
 
-	 </div>
-      <div class="footer">Powered by Vulgarlang.com
-      </div>
-    </article>
-  </body>
-  <script>
-  let urlLoc = document.location.href;
- 	let url = document.URL.replace(/\?.*/, '') + "/dictionary.txt";
- 	let jsonFile = new XMLHttpRequest();
- 	
- 	jsonFile.open("GET",url,true);
- 	jsonFile.send();
- 	jsonFile.onreadystatechange = function() {
-  	if (jsonFile.readyState== 4 && jsonFile.status == 200) {
-		let dict = {}
-		console.log(3, dict)
+<body>
+	<article>
+		<div class="header">
+			<span class="titled">Sfodaolajan - English Dictionary</span>
+			<span class="searchbar">
+				<span id="searchPart">
+					<input id='searchbox' autocorrect="off" autocapitalize="off" spellcheck="false"></input>
+					<img id="mag" src="/theme/magnifying-glass.svg" height="25px"></img>
+				</span>
+			</span>
+		</div>
+		<div class="navbar">
+			<a href="#">Dictionary</a>
+			<a href="#">Grammar</a>
+			<a href="#">About</a>
+		</div>
+		<div class="row">
+			<div class="side">
+				<h2>See also ...</h2>
+				<h5>Photo of me:</h5>
+				<div class="fakeimg" style="height:200px;">Image</div>
+					<p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+					<h3>More Text</h3>
+					<p>Lorem ipsum dolor sit ame.</p>
+				</div>
+		
+				<div class="main">
+					<div id="entry"></div>
+				<h1>styrʌʊ</h1>
+				<p>/styɾ/</p>
+				<h3>verb</h3>
+				<ol>
+				<li>say, tell</li>
+					<ul class='quotes'>
+						<li>I say he's an idiot - <span class="translation">ya satr qu el fimda</span></li>
+						<li>I say he's an idiot - <span class="translation">ya satr qu el fimda</span></li>
+					</ul>
+				<li>notify, inform</li>
+				<li>make</li>
+				</ol>
+				<h2>Etymology</h2>
+				<p>BLah blhablhb</p>
+				<h2>Derived terms</h2>
+				</div>
+			</div>
+		<div class="footer">Powered by Vulgarlang.com</div>
+	</article>
+</body>
+
+<script>
+let urlLoc = document.location.href;
+let url = document.URL.replace(/\?.*/, '') + "/dictionary.txt";
+let jsonFile = new XMLHttpRequest();
+ 
+jsonFile.open("GET",url,true);
+jsonFile.send();
+jsonFile.onreadystatechange = function() {
+	if (jsonFile.readyState == 4 && jsonFile.status == 200) {
+		let dict = {};
 		let dictionaryBlob = jsonFile.responseText;
-		console.log(5, dictionaryBlob)
-      		dictionaryBlob = dictionaryBlob.split('@');
-		console.log(4, dictionaryBlob)
-      		for (let i of dictionaryBlob) {
-        		let entry = i.slice(0, i.indexOf('/')).trim();
+		dictionaryBlob = dictionaryBlob.split('@');
+		for (let i of dictionaryBlob) {
+			let entry = i.slice(0, i.indexOf('/')).trim();
 			let entryData = i.slice(i.indexOf('/')).trim();
 			if (!dict[entry]) {
-	    			dict[entry] = [entryData]
+				dict[entry] = [entryData]
 			} else {
-	    			dict[entry].push(entryData)
+				dict[entry].push(entryData)
 			}
-	
-
 		}
-	  console.log(2, dict)
-	  		if (urlLoc.includes('?')) {
-    				var queryTerm = urlLoc.slice(urlLoc.indexOf('?') + 1);
-    				console.log(1, queryTerm);
-  			} else {
-	  
-  			}
-  			console.log(dict[queryTerm])
-	//end status 200    
-	    }
-	}
+		if (urlLoc.includes('?')) {
+			var queryTerm = urlLoc.slice(urlLoc.indexOf('?') + 1);
 
-  </script>
-  
+		} else {
+	
+		}
+	} //end status 200
+}
+</script>
+	
 </html>
