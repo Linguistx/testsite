@@ -73,7 +73,7 @@ jsonFile.onreadystatechange = function() {
                 dict[entry].push(entryData)
             }
         }
-        if (location.includes('?')) {
+        if (url.includes('?')) {
             var queryTerm = url.slice(url.indexOf('?') + 1);
             console.log(dict[queryTerm]);
         } else {
