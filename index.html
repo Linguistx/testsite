@@ -56,7 +56,7 @@
   </body>
   <script>
   let urlLoc = document.location.href;
- 	let url = document.URL + "/dictionary.txt";
+ 	let url = document.URL.replace(/\?.*/, '') + "/dictionary.txt";
  	let jsonFile = new XMLHttpRequest();
  	
  	jsonFile.open("GET",url,true);
