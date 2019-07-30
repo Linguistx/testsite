@@ -53,11 +53,11 @@
 </body>
 
 <script>
-let urlLoc = document.location.href;
-let url = location.origin + "/dictionary.txt";
+let location = document.location.href;
+let dictionaryFile = document.location.origin + "/dictionary.txt";
 let jsonFile = new XMLHttpRequest();
  
-jsonFile.open("GET",url,true);
+jsonFile.open("GET",dictionaryFile,true);
 jsonFile.send();
 jsonFile.onreadystatechange = function() {
     if (jsonFile.readyState == 4 && jsonFile.status == 200) {
@@ -73,9 +73,9 @@ jsonFile.onreadystatechange = function() {
                 dict[entry].push(entryData)
             }
         }
-        if (urlLoc.includes('?')) {
-            var queryTerm = urlLoc.slice(urlLoc.indexOf('?') + 1);
-
+        if (location.includes('?')) {
+            var queryTerm = location.slice(urlLoc.indexOf('?') + 1);
+            console.log(dict[queryTerm]);
         } else {
     
         }
