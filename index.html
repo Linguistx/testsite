@@ -89,6 +89,7 @@ jsonFile.onreadystatechange = function() {
 
     
 function sendEntry(term, info) {
+    console.log(info)
     let entries = [];
     for (let i of info) {
         i = i.split(':');
