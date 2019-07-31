@@ -202,3 +202,7 @@ article {
 	
 	padding: 3px 3px 0px 0px;
 }
+
+#mag:hover {
+	cursor: pointer;
+}
