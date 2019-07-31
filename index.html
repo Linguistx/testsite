@@ -63,17 +63,14 @@ jsonFile.onreadystatechange = function() {
                 dictionary[word].push(wordData)
             }
         }
-        console.log(9, dictionary);
         if (url.includes("?")) {
             var queryTerm = decodeURI(url.slice(url.indexOf("?") + 1));
-            console.log(22, dictionary[queryTerm]);
             sendEntry(queryTerm, dictionary[queryTerm]);
         } else {
 
         }
     }
 }
-    console.log(8, dictionary);
 
 function sendEntry(term, associatedInfo) {
     let allEntries = [];
@@ -96,20 +93,17 @@ function sendEntry(term, associatedInfo) {
                 let senses = subheading.split("=");
                 var pos = senses[0].trim();
                 var translation = "";
-				console.log(translation);
                 for (let j = 1; j < senses.length; j++) {
                     let sense = senses[j];
                     sense = sense.split("*");
                     var translation = "<li>" + sense[0].trim() + "</li>";
-					console.log(1, translation);
                     let quotes = "";
                     for (let k = 1; k < sense.length; k++) {
                         quotes = quotes + "<li>" + sense[k].trim() + "</li>";
                     }
                     if (quotes != "") quotes = "<ul>" + quotes + "</ul>";
-					console.log(quotes)
                     translation = translation + quotes;
-					translations.push(translation);
+	                translations.push(translation);
                 }
                 
                 if (translation != []) translation = "<ol>" + translations.join("") + "</ol>";
@@ -120,7 +114,7 @@ function sendEntry(term, associatedInfo) {
         var final = "<h1>" + term + "</h1>"
         + "<p>" + pronunciation + "</p>"
         + subheadings.join("");
-        allEntries.push(final)
+        allEntries.push(final);
     }
     document.getElementById('entry').innerHTML = allEntries.join("");
 
@@ -134,15 +128,11 @@ function searchWord() {
 }
 
 let input = document.getElementById("searchbox");
-// Execute a function when the user releases a key on the keyboard
 input.addEventListener("keyup", function(event) {
-  // Number 13 is the "Enter" key on the keyboard
-  if (event.keyCode === 13) {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    // Trigger the button element with a click
-    document.getElementById("mag").click();
-  }
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("mag").click();
+    }
 });
 </script>
     
