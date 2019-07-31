@@ -123,13 +123,14 @@ function sendEntry(term, associatedInfo) {
         allEntries.push(final)
     }
     document.getElementById('entry').innerHTML = allEntries.join("");
-var stateObj = { foo: "bar" };
-history.pushState(stateObj, "page 2", "?somecrap");
+
 }
 
 function searchWord() {
     let queryTerm = document.getElementById("searchbox").value.trim();
 	sendEntry(queryTerm, dictionary[queryTerm]);
+    var stateObj = { foo: "bar" };
+    history.pushState(stateObj, queryTerm, "?" + queryTerm);
 }
 </script>
     
