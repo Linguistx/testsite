@@ -132,7 +132,8 @@ function searchWord() {
     var stateObj = { foo: "bar" };
     history.pushState(stateObj, queryTerm, "?" + queryTerm);
 }
-	
+
+let input = document.getElementById("searchbox");
 // Execute a function when the user releases a key on the keyboard
 input.addEventListener("keyup", function(event) {
   // Number 13 is the "Enter" key on the keyboard
