@@ -9,8 +9,8 @@
             <span class="titled">Sfodaolajan - English Dictionary</span>
             <span class="searchbar">
                 <span id="searchPart">
-                    <input id='searchbox' autocorrect="off" autocapitalize="off" spellcheck="false"></input>
-                    <img id="mag" src="/theme/magnifying-glass.svg" height="25px"></img>
+                    <input id="searchbox" autocorrect="off" autocapitalize="off" spellcheck="false"></input>
+                    <img onclick="javascript:searchWord()" id="mag" src="/theme/magnifying-glass.svg" height="25px"></img>
                 </span>
             </span>
         </div>
@@ -125,6 +125,11 @@ function sendEntry(term, associatedInfo) {
     document.getElementById('entry').innerHTML = allEntries.join("");
 var stateObj = { foo: "bar" };
 history.pushState(stateObj, "page 2", "?somecrap");
+}
+
+function searchWord() {
+    let queryTerm = document.getElementById("searchbox").value.trim();
+	sendEntry(queryTerm, dictionary[queryTerm]);
 }
 </script>
     
