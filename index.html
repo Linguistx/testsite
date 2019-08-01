@@ -58,10 +58,10 @@ jsonFile.onreadystatechange = function() {
         let dictionaryBlob = jsonFile.responseText;
         dictionaryBlob = dictionaryBlob.split(/--(SETTINGS|PARTS OF SPEECH|A TO B DICTIONARY|B TO A DICTIONARY)--/g);
         console.log(dictionaryBlob);
-        let settingsText = dictionaryBlob.indexOf('SETTINGS') + 1;
-        let partsOfSpeechText = dictionaryBlob.indexOf('PARTS OF SPEECH') + 1;
-        let dictionaryA = dictionaryBlob.indexOf('A TO B DICTIONARY') + 1;
-        let dictionaryB = dictionaryBlob.indexOf('B TO A DICTIONARY') + 1;
+        let settingsText = dictionaryBlob[dictionaryBlob.indexOf('SETTINGS') + 1];
+        let partsOfSpeechText = dictionaryBlob[dictionaryBlob.indexOf('PARTS OF SPEECH') + 1];
+        let dictionaryA = dictionaryBlob[dictionaryBlob.indexOf('A TO B DICTIONARY') + 1];
+        let dictionaryB = dictionaryBlob[dictionaryBlob.indexOf('B TO A DICTIONARY') + 1];
         settingsText = settingsText.split(/\n/g);
         for (let setting of settingsText) {
             setting = setting.trim();
