@@ -23,7 +23,7 @@ body {
     color: white;
 }
 
-.title {
+#title {
 	 
     display: flex;
 	float: left;
