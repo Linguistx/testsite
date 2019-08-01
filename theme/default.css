@@ -191,7 +191,7 @@ article {
 	justify-content: center;
 }
 
-#searchbox {
+#search-box-input {
 	
 	border: none;
 	outline: none;
@@ -201,11 +201,11 @@ article {
 
 }
 
-#mag {
+#magnifying-glass {
 	
 	padding: 3px 3px 0px 0px;
 }
 
-#mag:hover {
+#magnifying-glass:hover {
 	cursor: pointer;
 }
