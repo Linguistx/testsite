@@ -11,7 +11,7 @@ body {
     font-family: NotoSans;
     color: #333;
     font-size: 15px;
-	height: 100%;
+    height: 100%;
 }
 
 .header {
@@ -31,7 +31,7 @@ body {
 	max-width: 70%;
 }
 
-.searchbar {
+.search-inner {
 	display: flex;
 	flex-grow: 2;
 	font-family: Ubuntu, sans-serif;
@@ -97,7 +97,7 @@ body {
         flex-direction: column;
     }
   
-    .searchbar {
+    .search-outer {
 	    display: flex;
 	    padding: 0px 20px 20px 20px;
 	    font-family: 'Ubuntu', sans-serif;
@@ -150,7 +150,7 @@ article {
     flex-shrink: 0;
 }
 
-#searchPart {
+#search-outer {
 	max-height: 45px;
 	display: flex;
 	white-space: nowrap;
@@ -161,7 +161,7 @@ article {
 	justify-content: center;
 }
 
-#searchbox {
+#search-input {
 	border: none;
 	outline: none;
 	width: 300px;
