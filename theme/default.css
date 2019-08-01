@@ -31,7 +31,7 @@ body {
 	max-width: 70%;
 }
 
-.search-inner {
+.search-outer {
 	display: flex;
 	flex-grow: 2;
 	font-family: Ubuntu, sans-serif;
@@ -150,7 +150,7 @@ article {
     flex-shrink: 0;
 }
 
-#search-outer {
+#search-inner {
 	max-height: 45px;
 	display: flex;
 	white-space: nowrap;
