@@ -74,7 +74,19 @@ getTextFile.onreadystatechange = function() {
                 case 'Exonym B': settings.exonymB = valueSide; break
             }            
         }
-	document.getElementById('title').innerHTML = settings.title;
+	    document.getElementById('title').innerHTML = settings.title
+        document.title = settings.title
+        
+        partsOfSpeechText = partsOfSpeechText.split('\n')
+        for (let line of partsOfSpeechText) {
+            line = line.trim()
+            if (line == '' || !line.includes('=')) continue
+            line = line.split('=')
+            let keySide = setting[0].trim()
+            let valueSide = setting[1].trim()
+            partsOfSpeech[keySide] = valueSide
+        }   
+        
         dictionaryA = dictionaryA.split('@')
         for (let entry of dictionaryA) {
             let forwardSlash = entry.indexOf('/')
@@ -119,6 +131,7 @@ function sendEntry(term, associatedInfo) {
             } else {
                 let senses = subheading.split('=')
                 var pos = senses[0].trim()
+                pos = partsOfSpeech[pos] : pos
                 var translation = ''
                 for (let j = 1; j < senses.length; j++) {
                     let sense = senses[j]
