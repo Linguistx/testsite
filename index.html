@@ -6,11 +6,11 @@
 <body>
     <article>
         <div class="header">
-            <span class="title">Sfodaolajan - English Dictionary</span>
+            <span class="title"></span>
             <span class="searchbar">
                 <span id="searchPart">
-                    <input id="searchbox" autocorrect="off" autocapitalize="off" spellcheck="false"></input>
-                    <img onclick="javascript:searchWord()" id="mag" src="/theme/magnifying-glass.svg" height="25px"></img>
+                    <input id="search-box-input" autocorrect="off" autocapitalize="off" spellcheck="false"></input>
+                    <img onclick="javascript:searchWord()" id="magnifying-glass" src="/theme/magnifying-glass.svg" height="25px"></img>
                 </span>
             </span>
         </div>
@@ -31,29 +31,34 @@
 
 <script>
 let url = document.location.href
-let dictionaryFile = document.location.origin + '/dictionary.txt'
-let settings = {title : '',
-                languageA : '',
-                languageB : '',
-                exonymA : '',
-                exonymb : ''
-                }
+let textFileLocation = document.location.origin + '/dictionary.txt'
+
+let settings = {
+    title : '',
+    languageA : '',
+    languageB : '',
+    exonymA : '',
+    exonymb : ''
+ }
 let partsOfSpeech = {} 
 let dictionary = {}
-let jsonFile = new XMLHttpRequest()
 
-jsonFile.open('GET', dictionaryFile, true)
-jsonFile.send()
-jsonFile.onreadystatechange = function() {
-    console.log('readyState', jsonFile.readyState)
-    if (jsonFile.readyState == 4 && jsonFile.status == 200) {
-        let dictionaryBlob = jsonFile.responseText
+let getTextFile = new XMLHttpRequest()
+getTextFile.open('GET', textFileLocation, true)
+getTextFile.send()
+    
+getTextFile.onreadystatechange = function() {
+    console.log('readyState', getTextFile.readyState)
+    if (getTextFile.readyState == 4 && getTextFile.status == 200) {
+        
+        let dictionaryBlob = getTextFile.responseText
         dictionaryBlob = dictionaryBlob.split(/--(SETTINGS|PARTS OF SPEECH|A TO B DICTIONARY|B TO A DICTIONARY)--/g)
-        console.log(dictionaryBlob)
+
         let settingsText = dictionaryBlob[dictionaryBlob.indexOf('SETTINGS') + 1]
         let partsOfSpeechText = dictionaryBlob[dictionaryBlob.indexOf('PARTS OF SPEECH') + 1]
         let dictionaryA = dictionaryBlob[dictionaryBlob.indexOf('A TO B DICTIONARY') + 1]
         let dictionaryB = dictionaryBlob[dictionaryBlob.indexOf('B TO A DICTIONARY') + 1]
+        
         settingsText = settingsText.split(/\n/g)
         for (let setting of settingsText) {
             setting = setting.trim()
@@ -84,6 +89,7 @@ jsonFile.onreadystatechange = function() {
                 dictionary[word].push(wordData)
             }
         }
+        
         if (url.includes('?')) {
             var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1))
             sendEntry(queryTerm, dictionary[queryTerm])
@@ -91,7 +97,6 @@ jsonFile.onreadystatechange = function() {
 
         }
     }
-	
 }
 
 function sendEntry(term, associatedInfo) {
@@ -141,17 +146,17 @@ function sendEntry(term, associatedInfo) {
 }
 
 function searchWord() {
-    let queryTerm = document.getElementById('searchbox').value.trim()
+    let queryTerm = document.getElementById('search-box-input').value.trim()
 	sendEntry(queryTerm, dictionary[queryTerm])
     var stateObj = { foo: 'bar' }
     history.pushState(stateObj, queryTerm, '?' + queryTerm)
 }
 
-let input = document.getElementById('searchbox')
+let input = document.getElementById('search-box-input')
 input.addEventListener('keyup', function(event) {
     if (event.keyCode === 13) {
         event.preventDefault()
-        document.getElementById('mag').click()
+        document.getElementById('magnifying-glass').click()
     }
 })
    
