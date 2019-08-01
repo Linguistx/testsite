@@ -40,17 +40,44 @@
 <script>
 let url = document.location.href;
 let dictionaryFile = document.location.origin + "/dictionary.txt";
+let settings = {title : '',
+                languageA : '',
+                languageB : '',
+                exonymA : '',
+                exonymb : ''
+                };
+let partsOfSpeech = {} 
 let dictionary = {};
 let jsonFile = new XMLHttpRequest();
- 
+
 jsonFile.open("GET", dictionaryFile, true);
 jsonFile.send();
 jsonFile.onreadystatechange = function() {
     console.log('readyState', jsonFile.readyState);
     if (jsonFile.readyState == 4 && jsonFile.status == 200) {
         let dictionaryBlob = jsonFile.responseText;
+	    dictionaryBlob = dictionaryBlob.split(/--(SETTINGS|PARTS OF SPEECH|A TO B DICTIONARY|B TO A DICTIONARY)--/g);
+        let settingsText = dictionaryBlob[0];
+        let partsOfSpeechText = dictionaryBlob[1];
+        let dictionaryA = dictionaryBlob[2];
+        let dictionaryB = dictionaryBlob[3];
+        settingsText = settingsText.split(/\n/g);
+        for (let setting of settingsText) {
+            setting = setting.trim();
+            if (setting == '') continue;
+            setting = setting.split('=');
+            let keySide = setting[0].trim();
+            let valueSide = setting[1].trim();
+            switch (keySide) {
+                case 'Website title': settings.title = valueSide; break;
+                case 'Language A': settings.languageA = valueSide; break;
+                case 'Language B': settings.languageB = valueSide; break;
+                case 'Exonym A': settings.exonymA = valueSide; break;
+                case 'Exonym B': settings.exonymB = valueSide; break;
+            }            
+        }
         dictionaryBlob = dictionaryBlob.split("@");
-        for (let entry of dictionaryBlob) {
+        for (let entry of dictionaryA) {
             let forwardSlash = entry.indexOf("/");
             let colon = entry.indexOf(":");
             let marker = Math.min(forwardSlash, colon);
@@ -134,6 +161,8 @@ input.addEventListener("keyup", function(event) {
         document.getElementById("mag").click();
     }
 });
+    
+    console.log(settings);
 </script>
     
 </html>
