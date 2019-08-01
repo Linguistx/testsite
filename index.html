@@ -20,81 +20,73 @@
             <a href="#">About</a>
         </div>
         <div class="row">
-            <div class="side">
-                <h2>See also ...</h2>
-                <h5>Photo of me:</h5>
-                <div class="fakeimg" style="height:200px;">Image</div>
-                    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-                    <h3>More Text</h3>
-                    <p>Lorem ipsum dolor sit ame.</p>
-                </div>
-        
-                <div class="main">
-                    <div id="entry"></div>
-                </div>
+            <div class="side"></div>
+            <div class="main">
+                <div id="entry"></div>
             </div>
+        </div>
         <div class="footer">Powered by Vulgarlang.com</div>
     </article>
 </body>
 
 <script>
-let url = document.location.href;
-let dictionaryFile = document.location.origin + "/dictionary.txt";
+let url = document.location.href
+let dictionaryFile = document.location.origin + '/dictionary.txt'
 let settings = {title : '',
                 languageA : '',
                 languageB : '',
                 exonymA : '',
                 exonymb : ''
-                };
+                }
 let partsOfSpeech = {} 
-let dictionary = {};
-let jsonFile = new XMLHttpRequest();
+let dictionary = {}
+let jsonFile = new XMLHttpRequest()
 
-jsonFile.open("GET", dictionaryFile, true);
-jsonFile.send();
+jsonFile.open('GET', dictionaryFile, true)
+jsonFile.send()
 jsonFile.onreadystatechange = function() {
-    console.log('readyState', jsonFile.readyState);
+    console.log('readyState', jsonFile.readyState)
     if (jsonFile.readyState == 4 && jsonFile.status == 200) {
-        let dictionaryBlob = jsonFile.responseText;
-        dictionaryBlob = dictionaryBlob.split(/--(SETTINGS|PARTS OF SPEECH|A TO B DICTIONARY|B TO A DICTIONARY)--/g);
-        console.log(dictionaryBlob);
-        let settingsText = dictionaryBlob[dictionaryBlob.indexOf('SETTINGS') + 1];
-        let partsOfSpeechText = dictionaryBlob[dictionaryBlob.indexOf('PARTS OF SPEECH') + 1];
-        let dictionaryA = dictionaryBlob[dictionaryBlob.indexOf('A TO B DICTIONARY') + 1];
-        let dictionaryB = dictionaryBlob[dictionaryBlob.indexOf('B TO A DICTIONARY') + 1];
-        settingsText = settingsText.split(/\n/g);
+        let dictionaryBlob = jsonFile.responseText
+        dictionaryBlob = dictionaryBlob.split(/--(SETTINGS|PARTS OF SPEECH|A TO B DICTIONARY|B TO A DICTIONARY)--/g)
+        console.log(dictionaryBlob)
+        let settingsText = dictionaryBlob[dictionaryBlob.indexOf('SETTINGS') + 1]
+        let partsOfSpeechText = dictionaryBlob[dictionaryBlob.indexOf('PARTS OF SPEECH') + 1]
+        let dictionaryA = dictionaryBlob[dictionaryBlob.indexOf('A TO B DICTIONARY') + 1]
+        let dictionaryB = dictionaryBlob[dictionaryBlob.indexOf('B TO A DICTIONARY') + 1]
+        settingsText = settingsText.split(/\n/g)
         for (let setting of settingsText) {
-            setting = setting.trim();
-            if (setting == '') continue;
-            setting = setting.split('=');
-            let keySide = setting[0].trim();
-            let valueSide = setting[1].trim();
+            setting = setting.trim()
+            if (setting == '') continue
+            setting = setting.split('=')
+            let keySide = setting[0].trim()
+            let valueSide = setting[1].trim()
             switch (keySide) {
-                case 'Website title': settings.title = valueSide; break;
-                case 'Language A': settings.languageA = valueSide; break;
-                case 'Language B': settings.languageB = valueSide; break;
-                case 'Exonym A': settings.exonymA = valueSide; break;
-                case 'Exonym B': settings.exonymB = valueSide; break;
+                case 'Website title': settings.title = valueSide; break
+                case 'Language A': settings.languageA = valueSide; break
+                case 'Language B': settings.languageB = valueSide; break
+                case 'Exonym A': settings.exonymA = valueSide; break
+                case 'Exonym B': settings.exonymB = valueSide; break
             }            
         }
-	    console.log(settings);
-        dictionaryA = dictionaryA.split("@");
+
+        dictionaryA = dictionaryA.split('@')
         for (let entry of dictionaryA) {
-            let forwardSlash = entry.indexOf("/");
-            let colon = entry.indexOf(":");
-            let marker = Math.min(forwardSlash, colon);
-            marker = marker > 0 ? marker : Math.max(forwardSlash, colon);
-            let word = entry.slice(0, marker).trim();
-            let wordData = entry.slice(marker).trim();
+            let forwardSlash = entry.indexOf('/')
+            let colon = entry.indexOf(':')
+            let delineator = Math.min(forwardSlash, colon)
+            delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon)
+            let word = entry.slice(0, delineator).trim()
+            let wordData = entry.slice(delineator).trim()
             if (!dictionary[word]) {
                 dictionary[word] = [wordData]
             } else {
                 dictionary[word].push(wordData)
             }
         }
-        if (url.includes("?")) {
-            var queryTerm = decodeURI(url.slice(url.indexOf("?") + 1));
-            sendEntry(queryTerm, dictionary[queryTerm]);
+        if (url.includes('?')) {
+            var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1))
+            sendEntry(queryTerm, dictionary[queryTerm])
         } else {
 
         }
@@ -103,68 +95,65 @@ jsonFile.onreadystatechange = function() {
 }
 
 function sendEntry(term, associatedInfo) {
-    let allEntries = [];
+    let allEntries = []
     for (let entry of associatedInfo) {
-        let subheadings = [];
-        entry = entry.split(':');
-        let pronunciation = entry[0].trim();
+        let subheadings = []
+        entry = entry.split(':')
+        let pronunciation = entry[0].trim()
         for (let i = 1; i < entry.length; i++) {
-			let translations = [];
-            let subheading = entry[i].trim();
+			let translations = []
+            let subheading = entry[i].trim()
             
             if (subheading.startsWith("ET")) {
 			
-			    subheading = "<h2>Etymology</h2><p>" + subheading.slice(subheading.indexOf("ET") + 2).trim();
-				subheadings.push(subheading);
+                subheading = '<h2>Etymology</h2><p>' + subheading.slice(subheading.indexOf('ET') + 2).trim()
+                subheadings.push(subheading)
                 
-            } else if (subheading.startsWith("DT")) {
+            } else if (subheading.startsWith('DT')) {
                 
             } else {
-                let senses = subheading.split("=");
-                var pos = senses[0].trim();
-                var translation = "";
+                let senses = subheading.split('=')
+                var pos = senses[0].trim()
+                var translation = ''
                 for (let j = 1; j < senses.length; j++) {
-                    let sense = senses[j];
-                    sense = sense.split("*");
-                    var translation = "<li>" + sense[0].trim() + "</li>";
-                    let quotes = "";
+                    let sense = senses[j]
+                    sense = sense.split('*')
+                    var translation = '<li>' + sense[0].trim() + '</li>'
+                    let quotes = ''
                     for (let k = 1; k < sense.length; k++) {
-                        quotes = quotes + "<li>" + sense[k].trim() + "</li>";
+                        quotes = quotes + "<li>" + sense[k].trim() + '</li>'
                     }
-                    if (quotes != "") quotes = "<ul>" + quotes + "</ul>";
-                    translation = translation + quotes;
-	                translations.push(translation);
+                    if (quotes != "") quotes = '<ul>' + quotes + '</ul>'
+                    translation = translation + quotes
+	                translations.push(translation)
                 }
                 
-                if (translation != []) translation = "<ol>" + translations.join("") + "</ol>";
-                subheading = "<h3>" + pos + "</h3>" + translation;
-                subheadings.push(subheading);
+                if (translation != []) translation = '<ol>' + translations.join("") + '</ol>'
+                subheading = '<h3>' + pos + '</h3>' + translation
+                subheadings.push(subheading)
             }
         }
-        var final = "<h1>" + term + "</h1>"
-        + "<p>" + pronunciation + "</p>"
-        + subheadings.join("");
-        allEntries.push(final);
+        var final = '<h1>' + term + '</h1>' + '<p>' + pronunciation + '</p>' + subheadings.join('')
+        allEntries.push(final)
     }
-    document.getElementById('entry').innerHTML = allEntries.join("");
+    document.getElementById('entry').innerHTML = allEntries.join('')
 
 }
 
 function searchWord() {
-    let queryTerm = document.getElementById("searchbox").value.trim();
-	sendEntry(queryTerm, dictionary[queryTerm]);
-    var stateObj = { foo: "bar" };
-    history.pushState(stateObj, queryTerm, "?" + queryTerm);
+    let queryTerm = document.getElementById('searchbox').value.trim()
+	sendEntry(queryTerm, dictionary[queryTerm])
+    var stateObj = { foo: 'bar' }
+    history.pushState(stateObj, queryTerm, '?' + queryTerm)
 }
 
-let input = document.getElementById("searchbox");
-input.addEventListener("keyup", function(event) {
+let input = document.getElementById('searchbox')
+input.addEventListener('keyup', function(event) {
     if (event.keyCode === 13) {
-        event.preventDefault();
-        document.getElementById("mag").click();
+        event.preventDefault()
+        document.getElementById('mag').click()
     }
-});
-    
+})
    
 </script>
     
