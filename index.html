@@ -139,10 +139,15 @@ function sendEntry(term, associatedInfo) {
                     var translation = '<li>' + sense[0].trim() + '</li>'
                     let quotes = ''
                     for (let k = 1; k < sense.length; k++) {
-                        quotes = quotes + "<li>" + sense[k].trim() + '</li>'
+                        let quote = '<li>' + sense[k].trim() + '</li>'
+                        if (quote.includes(' - ')) {
+                            quote = quote.replace(' - ', ' — <span class="trans-quote">')
+                            quote = quote.replace('</li>', '</span></li>')
+                        }
+                        quotes += quote
                     }
                     if (quotes != "") quotes = '<ul>' + quotes + '</ul>'
-                    translation = translation + quotes
+                    translation += quotes
 	                translations.push(translation)
                 }
                 
