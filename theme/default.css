@@ -2,34 +2,30 @@
 @font-face { font-family: Ubuntu; src: url('Ubuntu-Regular.ttf'); }
 
 * {
-  box-sizing: border-box;
-  min-height: 0;
-min-width: 0;
+    box-sizing: border-box;
+    min-height: 0;
+    min-width: 0;
 }
 
 /* Style the body */
 body {
-  font-family: Arial;
-  margin: 0;
-font-family: NotoSans;
-color: #333;
-font-size: 15px;
-height: 100%;
+    margin: 0;
+    font-family: NotoSans;
+    color: #333;
+    font-size: 15px;
+    height: 100%;
 }
 
 /* Header/logo Title */
 .header {
-	 
-	display: flex;
-
-
-  background: #4682b4;
-  color: white;
+    display: flex;
+    background: #4682b4;
+    color: white;
 }
 
 .titled {
 	 
-display: flex;
+    display: flex;
 	float: left;
 	flex-basis: auto;
 	font-family: Ubuntu, sans-serif;
