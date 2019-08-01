@@ -82,8 +82,8 @@ getTextFile.onreadystatechange = function() {
             line = line.trim()
             if (line == '' || !line.includes('=')) continue
             line = line.split('=')
-            let keySide = setting[0].trim()
-            let valueSide = setting[1].trim()
+            let keySide = line[0].trim()
+            let valueSide = line[1].trim()
             partsOfSpeech[keySide] = valueSide
         }   
         
