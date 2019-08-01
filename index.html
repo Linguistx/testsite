@@ -76,6 +76,7 @@ jsonFile.onreadystatechange = function() {
                 case 'Exonym B': settings.exonymB = valueSide; break;
             }            
         }
+	    console.log(settings);
         dictionaryA = dictionaryA.split("@");
         for (let entry of dictionaryA) {
             let forwardSlash = entry.indexOf("/");
@@ -97,6 +98,7 @@ jsonFile.onreadystatechange = function() {
 
         }
     }
+	
 }
 
 function sendEntry(term, associatedInfo) {
@@ -162,7 +164,7 @@ input.addEventListener("keyup", function(event) {
     }
 });
     
-    console.log(settings);
+   
 </script>
     
 </html>
