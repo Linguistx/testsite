@@ -34,7 +34,7 @@ let url = document.location.href
 let textFileLocation = document.location.origin + '/dictionary.txt'
 
 let settings = {
-    title : '',
+    title : 'A Vulgar Online Dictionry',
     languageA : '',
     languageB : '',
     exonymA : '',
@@ -74,7 +74,7 @@ getTextFile.onreadystatechange = function() {
                 case 'Exonym B': settings.exonymB = valueSide; break
             }            
         }
-
+	document.getElementById('title').innerHTML = settings.title;
         dictionaryA = dictionaryA.split('@')
         for (let entry of dictionaryA) {
             let forwardSlash = entry.indexOf('/')
