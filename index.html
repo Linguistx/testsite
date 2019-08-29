@@ -160,7 +160,7 @@ function sendEntry(term, associatedInfo) {
         allEntries.push(final)
     }
     document.getElementById('entry').innerHTML = allEntries.join('')
-	
+	console.log(entriesOnly)
 	let startIndex = entriesOnly.indexOf(term)
 	if (startIndex < 3) startIndex = 3
 	var sidebar = entriesOnly.slice(startIndex - 3 , startIndex + 10);
