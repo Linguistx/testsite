@@ -123,6 +123,7 @@ function sendEntry(term, associatedInfo) {
             
             if (subheading.search(/^[A-Z]/)) {
                 let body = subheading.slice(subheading.search(/\s/) + 1).trim()
+		console.log(subheading)
 		subheading = subheading.match(/^[A-Z]\w*/)[0]
                 subheadings.push('<h2>' + subheading + '</h2><p>' + body)
             } else {
