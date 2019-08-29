@@ -121,7 +121,7 @@ function sendEntry(term, associatedInfo) {
             let translations = []
             let subheading = entry[i].trim()
             
-            if (subheading.search(/^[A-Z]/)) {
+            if (subheading.search(/[A-Z]/) == 0) {
                 let body = subheading.slice(subheading.search(/\s/) + 1).trim()
 		console.log(subheading)
 		subheading = subheading.match(/^[A-Z]\w*/)[0]
