@@ -31,8 +31,8 @@ v = verb
 = notify, inform
 : n
 = speech
-:ET
-:DT
+:Etymology This is etmonkj
+:Derived_terms here are some
 
 @ a /a/ : v = see
 
