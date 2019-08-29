@@ -123,8 +123,8 @@ function sendEntry(term, associatedInfo) {
             
             if (subheading.search(/[A-Z]/) == 0) {
                 let body = subheading.slice(subheading.search(/[ \n]/) + 1).trim()
-		console.log(subheading)
 		subheading = subheading.match(/^[A-Z]\w*/)[0]
+                subheading = subheading.replace(/_/g, ' ')
                 subheadings.push('<h2>' + subheading + '</h2><p>' + body)
             } else {
                 let senses = subheading.split('=')
