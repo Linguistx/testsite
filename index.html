@@ -165,7 +165,7 @@ function sendEntry(term, associatedInfo) {
 	if (startIndex < 3) startIndex = 3
 	var sidebar = entriesOnly.slice(startIndex - 3 , startIndex + 10);
 	sidebar = sidebar.map(i => '<li>' + i + '</li>')
-	document.getElementById('side').innerHTML = '<ul>' + sidebar.join() + </ul>
+	document.getElementById('side').innerHTML = '<ul>' + sidebar.join() + '</ul>'
 }
 
 function searchWord() {
