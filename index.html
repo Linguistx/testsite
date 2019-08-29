@@ -118,16 +118,13 @@ function sendEntry(term, associatedInfo) {
         entry = entry.split(':')
         let pronunciation = entry[0].trim()
         for (let i = 1; i < entry.length; i++) {
-			let translations = []
+            let translations = []
             let subheading = entry[i].trim()
             
-            if (subheading.startsWith("ET")) {
-			
-                subheading = '<h2>Etymology</h2><p>' + subheading.slice(subheading.indexOf('ET') + 2).trim()
-                subheadings.push(subheading)
-                
-            } else if (subheading.startsWith('DT')) {
-                
+            if (subheading.search(/^[A-Z]/)) {
+                let body = subheading.slice(subheading.search(/\s/) + 1).trim()
+		subheading = subheading.match(/^[A-Z]\w*/)[0]
+                subheadings.push('<h2>' + subheading + '</h2><p>' + body)
             } else {
                 let senses = subheading.split('=')
                 var pos = senses[0].trim()
