@@ -42,6 +42,7 @@ let settings = {
  }
 let partsOfSpeech = {} 
 let dictionary = {}
+let entriesOnly = []
 
 let getTextFile = new XMLHttpRequest()
 getTextFile.open('GET', textFileLocation, true)
@@ -74,7 +75,7 @@ getTextFile.onreadystatechange = function() {
                 case 'Exonym B': settings.exonymB = valueSide; break
             }            
         }
-	    document.getElementById('title').innerHTML = settings.title
+        document.getElementById('title').innerHTML = settings.title
         document.title = settings.title
         
         partsOfSpeechText = partsOfSpeechText.split('\n')
@@ -97,6 +98,7 @@ getTextFile.onreadystatechange = function() {
             let wordData = entry.slice(delineator).trim()
             if (!dictionary[word]) {
                 dictionary[word] = [wordData]
+                entriesOnly.push(word)
             } else {
                 dictionary[word].push(wordData)
             }
@@ -109,9 +111,6 @@ getTextFile.onreadystatechange = function() {
 
         }
     }
-	for (let i in dictionary) {
-	console.log(i)	
-	}
 }
 
 function sendEntry(term, associatedInfo) {
@@ -161,7 +160,8 @@ function sendEntry(term, associatedInfo) {
         allEntries.push(final)
     }
     document.getElementById('entry').innerHTML = allEntries.join('')
-
+	
+	console.log(entriesOnly.indexOf(term))
 }
 
 function searchWord() {
