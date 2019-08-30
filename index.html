@@ -49,7 +49,6 @@ getTextFile.open('GET', textFileLocation, true)
 getTextFile.send()
     
 getTextFile.onreadystatechange = function() {
-    console.log('readyState', getTextFile.readyState)
     if (getTextFile.readyState == 4 && getTextFile.status == 200) {
         
         let dictionaryBlob = getTextFile.responseText
@@ -114,7 +113,6 @@ getTextFile.onreadystatechange = function() {
 }
 
 function sendEntry(term, associatedInfo) {
-	console.log(term, '----', associatedInfo)
     let allEntries = []
     for (let entry of associatedInfo) {
         let subheadings = []
