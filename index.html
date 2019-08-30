@@ -165,7 +165,7 @@ function sendEntry(term, associatedInfo) {
     let startIndex = entriesOnly.indexOf(term)
     if (startIndex < 3) startIndex = 3
     var sidebar = entriesOnly.slice(startIndex - 3 , startIndex + 20);
-    sidebar = sidebar.map(i => `<li><a onclick="javascript:sendEntry('` + i + `', dictionary[` + i + `]);">` + i + '</a></li>')
+    sidebar = sidebar.map(i => `<li><a onclick="javascript:sendEntry('` + i + `', dictionary['` + i + `']);">` + i + '</a></li>')
     document.getElementById('sidebar').innerHTML = '<h3>More ...</h3><ul>' + sidebar.join('') + '</ul>'
 }
 
