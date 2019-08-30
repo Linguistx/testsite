@@ -69,14 +69,14 @@ body {
 }
 
 .side {
-    flex: 15%;
+    flex: 10%;
     background-color: #f1f1f1;
     padding: 20px;
 }
 
 #sidebar ul {
   list-style-type: none;
-	font-size: 12px;
+	font-size: 14px;
  }
 
 /* Main column */
