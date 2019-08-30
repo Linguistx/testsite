@@ -80,6 +80,15 @@ body {
 	padding-left: 0px;
  }
 
+#sidebar a {
+  color: #4682b4;
+ }
+
+#sidebar a:hover {
+  color: red;
+cursor: pointer;
+ }
+
 /* Main column */
 .main {
     flex: 70%;
