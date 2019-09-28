@@ -141,10 +141,11 @@ function sendEntry(term, associatedInfo) {
 		}
 		let body = section.slice(del + 1, section.length).trim();
 		console.log('b', body)
+		let offset = body.includes('#') ? 1 : 0; 
 		body = body.split('#');
 		console.log('c', body)
                 var translation = '';
-                for (let j = 1; j < body.length; j++) {
+                for (let j = offset; j < body.length; j++) {
                     let sense = body[j];
 			console.log('s', sense)
                     sense = sense.split('*');
