@@ -128,7 +128,7 @@ function sendEntry(term, associatedInfo) {
 	    console.log(locationsOfNewHeading);
 	    
         for (let i = 0; i < locationsOfNewHeading.length; i++) {
-var translations = [];
+            var translations = [];
 	        let end = locationsOfNewHeading[i + 1];
 	        if (!end) {
 		        end = entry.length;
@@ -143,7 +143,9 @@ var translations = [];
 			head = 	'<h2>' + head + '</h2>'   ;    
 		}
 		let body = section.slice(del, section.length);
+		console.log('b', body)
 		body = body.split('#');
+		console.log('c', body)
                 var translation = '';
                 for (let j = 1; j < body.length; j++) {
                     let sense = body[j];
