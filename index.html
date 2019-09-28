@@ -131,6 +131,7 @@ function sendEntry(term, associatedInfo) {
                 subheadings.push('<h2>' + subheading + '</h2><p>' + body);
             } else {
                 let senses = entry[i + 1].split('#');
+		    console.log(senses)
                 var pos = subheading.replace(/ *: */, '').trim();
                 pos = partsOfSpeech[pos] || pos;
                 var translation = '';
