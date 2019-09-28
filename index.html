@@ -117,7 +117,7 @@ function sendEntry(term, associatedInfo) {
     let allEntries = []
     for (let entry of associatedInfo) {
         let subheadings = []
-        entry = entry.split(/\n(?=\w+ *:)/)
+        entry = entry.split(/(?=\w+ *:)/)
         let pronunciation = entry[0].trim()
         for (let i = 1; i < entry.length; i++) {
             let translations = []
