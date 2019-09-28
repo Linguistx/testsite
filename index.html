@@ -126,9 +126,9 @@ function sendEntry(term, associatedInfo) {
             locationsOfNewHeading.push(match.index)
         }
 	    console.log(locationsOfNewHeading);
-	    var translations = [];
+	    
         for (let i = 0; i < locationsOfNewHeading.length; i++) {
-
+var translations = [];
 	        let end = locationsOfNewHeading[i + 1];
 	        if (!end) {
 		        end = entry.length;
