@@ -90,7 +90,7 @@ getTextFile.onreadystatechange = function() {
         dictionaryA = dictionaryA.split('@')
         for (let entry of dictionaryA) {
             let forwardSlash = entry.indexOf('/')
-            let colon = search(/\w+ *:/)
+            let colon = entry.search(/\w+ *:/)
             let delineator = Math.min(forwardSlash, colon)
             delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon)
             let word = entry.slice(0, delineator).trim()
