@@ -142,7 +142,7 @@ function sendEntry(term, associatedInfo) {
 		} else {
 			head = 	'<h2>' + head + '</h2>'   ;    
 		}
-		let body = section.slice(del, section.length);
+		let body = section.slice(del + 1, section.length).trim();
 		console.log('b', body)
 		body = body.split('#');
 		console.log('c', body)
