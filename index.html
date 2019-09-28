@@ -115,7 +115,6 @@ getTextFile.onreadystatechange = function() {
 }
 
 function sendEntry(term, associatedInfo) {
-	console.log(dictionary)
     let allEntries = [];
     for (let entry of associatedInfo) {
         let subheadings = [];
@@ -124,9 +123,7 @@ function sendEntry(term, associatedInfo) {
         let match;
         while (match = headingPattern.exec(entry)) {
             locationsOfNewHeading.push(match.index)
-        }
-	    console.log(locationsOfNewHeading);
-	    
+        }	    
         for (let i = 0; i < locationsOfNewHeading.length; i++) {
             var translations = [];
 	        let end = locationsOfNewHeading[i + 1];
@@ -149,6 +146,7 @@ function sendEntry(term, associatedInfo) {
                 var translation = '';
                 for (let j = 1; j < body.length; j++) {
                     let sense = body[j];
+			console.log('s', sense)
                     sense = sense.split('*');
                     var translation = '<li>' + body[0].trim() + '</li>';
                     let quotes = '';
