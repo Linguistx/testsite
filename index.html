@@ -117,19 +117,19 @@ function sendEntry(term, associatedInfo) {
     let allEntries = []
     for (let entry of associatedInfo) {
         let subheadings = []
-        entry = entry.split(/(?=\w+ *:)/)
+        entry = entry.split(/(\w+ *:)/)
         let pronunciation = entry[0].trim()
-        for (let i = 1; i < entry.length; i++) {
+        for (let i = 1; i < entry.length; i = i + 2) {
             let translations = []
             let subheading = entry[i].trim()
             
             if (subheading.search(/[A-Z]/) == 0) {
-                let body = subheading.slice(subheading.search(/:/) + 1).trim()
+                let body = entry[i + 1]
 		subheading = subheading.match(/^[A-Z]\w*/)[0]
                 subheading = subheading.replace(/_/g, ' ')
                 subheadings.push('<h2>' + subheading + '</h2><p>' + body)
             } else {
-                let senses = subheading.split('#')
+                let senses = entry[i + 1].split('#')
                 var pos = senses[0].replace(/ *: */, '').trim()
                 pos = partsOfSpeech[pos] || pos
                 var translation = ''
@@ -147,7 +147,7 @@ function sendEntry(term, associatedInfo) {
                         quotes += quote
                     }
                     if (quotes != "") quotes = '<ul>' + quotes + '</ul>'
-                    translation += quotes
+                        translation += quotes
 	                translations.push(translation)
                 }
                 
