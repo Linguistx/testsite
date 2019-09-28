@@ -131,7 +131,7 @@ function sendEntry(term, associatedInfo) {
                 subheadings.push('<h2>' + subheading + '</h2><p>' + body)
             } else {
                 let senses = subheading.split('#')
-                var pos = senses[0].replace(/ *: *, '').trim()
+                var pos = senses[0].replace(/ *: */, '').trim()
                 pos = partsOfSpeech[pos] || pos
                 var translation = ''
                 for (let j = 1; j < senses.length; j++) {
