@@ -80,8 +80,8 @@ getTextFile.onreadystatechange = function() {
         partsOfSpeechText = partsOfSpeechText.split('\n')
         for (let line of partsOfSpeechText) {
             line = line.trim()
-            if (line == '' || !line.includes('#')) continue
-            line = line.split('#')
+            if (line == '' || !line.includes('=')) continue
+            line = line.split('=')
             let keySide = line[0].trim()
             let valueSide = line[1].trim()
             partsOfSpeech[keySide] = valueSide
