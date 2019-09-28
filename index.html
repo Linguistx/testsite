@@ -52,7 +52,7 @@ getTextFile.onreadystatechange = function() {
     if (getTextFile.readyState == 4 && getTextFile.status == 200) {
         
         let dictionaryBlob = getTextFile.responseText
-        dictionaryBlob = dictionaryBlob.split(/--(SETTINGS|PARTS OF SPEECH|A TO B DICTIONARY|B TO A DICTIONARY)--/g)
+        dictionaryBlob = dictionaryBlob.split(/--- *(SETTINGS|PARTS OF SPEECH|A TO B DICTIONARY|B TO A DICTIONARY)--/g)
 
         let settingsText = dictionaryBlob[dictionaryBlob.indexOf('SETTINGS') + 1]
         let partsOfSpeechText = dictionaryBlob[dictionaryBlob.indexOf('PARTS OF SPEECH') + 1]
@@ -90,7 +90,7 @@ getTextFile.onreadystatechange = function() {
         dictionaryA = dictionaryA.split('@')
         for (let entry of dictionaryA) {
             let forwardSlash = entry.indexOf('/')
-            let colon = entry.indexOf(':')
+            let colon = search(/\w+ *:/)
             let delineator = Math.min(forwardSlash, colon)
             delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon)
             let word = entry.slice(0, delineator).trim()
@@ -116,7 +116,7 @@ function sendEntry(term, associatedInfo) {
     let allEntries = []
     for (let entry of associatedInfo) {
         let subheadings = []
-        entry = entry.split(':')
+        entry = entry.split(/\n(?=\w+ *:)/)
         let pronunciation = entry[0].trim()
         for (let i = 1; i < entry.length; i++) {
             let translations = []
@@ -128,7 +128,7 @@ function sendEntry(term, associatedInfo) {
                 subheading = subheading.replace(/_/g, ' ')
                 subheadings.push('<h2>' + subheading + '</h2><p>' + body)
             } else {
-                let senses = subheading.split('=')
+                let senses = subheading.split('#')
                 var pos = senses[0].trim()
                 pos = partsOfSpeech[pos] || pos
                 var translation = ''
