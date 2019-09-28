@@ -115,6 +115,7 @@ getTextFile.onreadystatechange = function() {
 function sendEntry(term, associatedInfo) {
 	console.log(dictionary)
     let allEntries = []
+    console.log(typeof associatedInfo, associatedInfo)
     for (let entry of associatedInfo) {
         let subheadings = []
         entry = entry.split(/(\w+ *:)/)
