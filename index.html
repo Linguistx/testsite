@@ -178,6 +178,7 @@ function sendEntry(term, associatedInfo) {
     var sidebar = entriesOnly.slice(startIndex - 10 , startIndex + 11);
     sidebar = sidebar.map(i => `<li><a onclick="javascript:sendEntry('` + i + `', dictionary['` + i + `']);">` + i + '</a></li>');
     document.getElementById('sidebar').innerHTML = '<h3>More ...</h3><ul>' + sidebar.join('') + '</ul>';
+	var stateObj = { foo: 'bar' };
     history.pushState(stateObj, queryTerm, '?' + queryTerm);
 }
 
