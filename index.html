@@ -115,7 +115,6 @@ getTextFile.onreadystatechange = function() {
 function sendEntry(term, associatedInfo) {
 	console.log(dictionary)
     let allEntries = []
-    console.log(typeof associatedInfo, associatedInfo)
     for (let entry of associatedInfo) {
         let subheadings = []
         entry = entry.split(/(\w+ *:)/)
@@ -131,7 +130,7 @@ function sendEntry(term, associatedInfo) {
                 subheadings.push('<h2>' + subheading + '</h2><p>' + body)
             } else {
                 let senses = entry[i + 1].split('#')
-                var pos = senses[0].replace(/ *: */, '').trim()
+                var pos = subheading.replace(/ *: */, '').trim()
                 pos = partsOfSpeech[pos] || pos
                 var translation = ''
                 for (let j = 1; j < senses.length; j++) {
