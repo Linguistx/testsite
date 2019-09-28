@@ -44,6 +44,7 @@ let settings = {
 let partsOfSpeech = {};
 let dictionary = {};
 let entriesOnly = [];
+let headingPattern = /(\w+ *:)/g;
 
 let getTextFile = new XMLHttpRequest();
 getTextFile.open('GET', textFileLocation, true);
@@ -118,27 +119,35 @@ function sendEntry(term, associatedInfo) {
     let allEntries = [];
     for (let entry of associatedInfo) {
         let subheadings = [];
-        entry = entry.split(/(\w+ *:)/);
-        let pronunciation = entry[0].trim();
-        for (let i = 1; i < entry.length; i = i + 2) {
-            let translations = [];
-            let subheading = entry[i].trim();
-            console.log(4, subheading)
-            if (subheading.search(/[A-Z]/) == 0) {
-                let body = entry[i + 1];
-		subheading = subheading.match(/^[A-Z]\w*/)[0];
-                subheading = subheading.replace(/_/g, ' ');
-                subheadings.push('<h2>' + subheading + '</h2><p>' + body);
-            } else {
-                let senses = entry[i + 1].split('#');
-		    console.log('zzz', senses)
-                var pos = subheading.replace(/ *: */, '').trim();
-                pos = partsOfSpeech[pos] || pos;
+        let locationsOfNewHeading = [];
+	let pronunciation = entry.trim().match(/\/.*?\//);
+        let match;
+        while (match = headingPattern.exec(entry)) {
+            locationsOfNewHeading.push(match.index)
+        }
+	    
+        for (let i = 0; i < locationsOfNewHeading.length; i++) {
+
+	        let end = locationsOfNewHeading[i + 1];
+	        if (!end) {
+		        end = entry.length;
+	        }
+		
+		let section = entry.slice(locationsOfNewHeading[i], end);
+		let del = section.search(/:/);
+		let head = section.slice(0, del);
+		if (partsOfSpeech[head]( {
+			head = 	'<h3>' + partsOfSpeech[head] + '</h3>   ;
+		} else {
+			head = 	'<h2>' + head + '</h2>   ;    
+		}
+		let body = section.slice(del, section.length);
+		body = body.split('#');
                 var translation = '';
-                for (let j = 1; j < senses.length; j++) {
-                    let sense = senses[j];
+                for (let j = 1; j < body.length; j++) {
+                    let sense = body[j];
                     sense = sense.split('*');
-                    var translation = '<li>' + sense[0].trim() + '</li>';
+                    var translation = '<li>' + body[0].trim() + '</li>';
                     let quotes = '';
                     for (let k = 1; k < sense.length; k++) {
                         let quote = '<li>' + sense[k].trim() + '</li>';
@@ -154,10 +163,11 @@ function sendEntry(term, associatedInfo) {
                 }
                 
                 if (translation != []) translation = '<ol>' + translations.join("") + '</ol>';
-                subheading = '<h3>' + pos + '</h3>' + translation;
-                subheadings.push(subheading);
-            }
-        }
+                section = '<h3>' + head + '</h3>' + translation;
+		
+	        subheadings.push(section)//?
+        }    
+
         var final = '<h1>' + term + '</h1>' + '<p>' + pronunciation + '</p>' + subheadings.join('');
         allEntries.push(final);
     }
