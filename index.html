@@ -113,6 +113,7 @@ getTextFile.onreadystatechange = function() {
 }
 
 function sendEntry(term, associatedInfo) {
+	console.log(dictionary)
     let allEntries = []
     for (let entry of associatedInfo) {
         let subheadings = []
@@ -123,13 +124,11 @@ function sendEntry(term, associatedInfo) {
             let subheading = entry[i].trim()
             
             if (subheading.search(/[A-Z]/) == 0) {
-		    console.log(1, subheading)
                 let body = subheading.slice(subheading.search(/:/) + 1).trim()
 		subheading = subheading.match(/^[A-Z]\w*/)[0]
                 subheading = subheading.replace(/_/g, ' ')
                 subheadings.push('<h2>' + subheading + '</h2><p>' + body)
             } else {
-		    console.log(2, partsOfSpeech)
                 let senses = subheading.split('#')
                 var pos = senses[0].replace(/ *: */, '').trim()
                 pos = partsOfSpeech[pos] || pos
