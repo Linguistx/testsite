@@ -52,7 +52,7 @@ getTextFile.onreadystatechange = function() {
     if (getTextFile.readyState == 4 && getTextFile.status == 200) {
         
         let dictionaryBlob = getTextFile.responseText
-        dictionaryBlob = dictionaryBlob.split(/--- *(SETTINGS|PARTS OF SPEECH|A TO B DICTIONARY|B TO A DICTIONARY)--/g)
+        dictionaryBlob = dictionaryBlob.split(/--- *(SETTINGS|PARTS OF SPEECH|A TO B DICTIONARY|B TO A DICTIONARY)/g)
 
         let settingsText = dictionaryBlob[dictionaryBlob.indexOf('SETTINGS') + 1]
         let partsOfSpeechText = dictionaryBlob[dictionaryBlob.indexOf('PARTS OF SPEECH') + 1]
