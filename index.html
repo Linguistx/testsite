@@ -113,10 +113,12 @@ getTextFile.onreadystatechange = function() {
 }
 
 function sendEntry(term, associatedInfo) {
+	conosle.log(term, associatedInfo)
     let allEntries = []
     for (let entry of associatedInfo) {
         let subheadings = []
         entry = entry.split(/\n(?=\w+ *:)/)
+	    console.log(entry)
         let pronunciation = entry[0].trim()
         for (let i = 1; i < entry.length; i++) {
             let translations = []
@@ -129,7 +131,7 @@ function sendEntry(term, associatedInfo) {
                 subheadings.push('<h2>' + subheading + '</h2><p>' + body)
             } else {
                 let senses = subheading.split('#')
-                var pos = senses[0].trim()
+                var pos = senses[0].replace(/ *: *, '').trim()
                 pos = partsOfSpeech[pos] || pos
                 var translation = ''
                 for (let j = 1; j < senses.length; j++) {
