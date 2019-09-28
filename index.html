@@ -123,14 +123,14 @@ function sendEntry(term, associatedInfo) {
         for (let i = 1; i < entry.length; i = i + 2) {
             let translations = []
             let subheading = entry[i].trim()
-            
+            console.log(4, subheading)
             if (subheading.search(/[A-Z]/) == 0) {
                 let body = entry[i + 1]
 		subheading = subheading.match(/^[A-Z]\w*/)[0]
                 subheading = subheading.replace(/_/g, ' ')
                 subheadings.push('<h2>' + subheading + '</h2><p>' + body)
             } else {
-                let senses = entry[i].split('#')
+                let senses = entry[i + 1].split('#')
                 var pos = senses[0].replace(/ *: */, '').trim()
                 pos = partsOfSpeech[pos] || pos
                 var translation = ''
