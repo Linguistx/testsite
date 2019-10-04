@@ -25,13 +25,17 @@ body {
 
 #title {
     display: flex;
-	float: left;
-	flex-basis: auto;
-	font-family: Ubuntu, sans-serif;
-	font-size: 30px;
-	padding: 20px 20px 20px 20px;
-	font-weight: bolder;
-	max-width: 70%;
+    float: left;
+    flex-basis: auto;
+    font-family: Ubuntu, sans-serif;
+    font-size: 30px;
+    padding: 20px 20px 20px 20px;
+    font-weight: bolder;
+    max-width: 70%;
+}
+
+a .title-home-link {
+    text-decoration: none;
 }
 
 .searchbar {
@@ -76,18 +80,18 @@ body {
 
 #sidebar ul {
   list-style-type: none;
-	font-size: 14px;
-	padding-left: 0px;
+    font-size: 14px;
+    padding-left: 0px;
  }
 
 #sidebar a {
-  color: #4682b4;
- }
+    color: #4682b4;
+}
 
 #sidebar a:hover {
-  color: red;
-cursor: pointer;
- }
+    color: red;
+    cursor: pointer;
+}
 
 /* Main column */
 .main {
@@ -132,11 +136,11 @@ cursor: pointer;
 }
 
 h1, h2, h3 {
-	font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 h1 {
-	font-size: 30px;
+    font-size: 30px;
 }
 
 
@@ -170,28 +174,28 @@ article {
 }
 
 #searchPart {
-	max-height: 45px;
-	display: flex;
-	white-space: nowrap;
-	margin: 0px 15px 0px 0px;
-	background: white;
-	padding: 6px;
-	border-radius: 4px;
-	justify-content: center;
+    max-height: 45px;
+    display: flex;
+    white-space: nowrap;
+    margin: 0px 15px 0px 0px;
+    background: white;
+    padding: 6px;
+    border-radius: 4px;
+    justify-content: center;
 }
 
 #search-box-input {
-	border: none;
-	outline: none;
-	width: 300px;
-	font-size:20px;
-	font-family: NotoSans;
+    border: none;
+    outline: none;
+    width: 300px;
+    font-size:20px;
+    font-family: NotoSans;
 }
 
 #magnifying-glass {
-	padding: 3px 3px 0px 0px;
+    padding: 3px 3px 0px 0px;
 }
 
 #magnifying-glass:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
