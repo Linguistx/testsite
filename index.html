@@ -76,7 +76,7 @@ getTextFile.onreadystatechange = function() {
                 case 'Exonym B': settings.exonymB = valueSide; break;
             }            
         }
-        document.getElementById('title').innerHTML = settings.title;
+        document.getElementById('title').innerHTML = '<a href="./">' + settings.title + </a>;
         document.title = settings.title;
         
         partsOfSpeechText = partsOfSpeechText.split('\n')
