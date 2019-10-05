@@ -148,7 +148,12 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
 		       var chosenLang = associatedInfoB;
 	       }
 	       
-	 }
+    } else if (associatedInfoA) {
+	  var chosenLang = associatedInfoA;  
+	    
+    } else if (associatedInfoB) {
+	    var chosenLang = associatedInfoB;   
+    }
 	
     let allEntries = [];
     for (let entry of chosenLang) {
