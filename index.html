@@ -227,7 +227,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
 
 function searchWord() {
     let queryTerm = document.getElementById('search-box-input').value.trim();
-    sendEntry(queryTerm, dictionaryA[queryTerm]);
+    sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
     var stateObj = { foo: 'bar' };
     history.pushState(stateObj, queryTerm, '?' + queryTerm);
 }
