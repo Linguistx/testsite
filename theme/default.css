@@ -192,10 +192,6 @@ article {
     justify-content: center;
 }
 
-#searchPart:focus {
-border-radius: 40px;
-    border-style: solid;
-}
 
 #search-box-input {
     border: none;
@@ -203,6 +199,11 @@ border-radius: 40px;
     width: 300px;
     font-size:20px;
     font-family: NotoSans;
+}
+
+#search-box-input:focus {
+border-radius: 40px;
+    border-style: solid;
 }
 
 #magnifying-glass {
