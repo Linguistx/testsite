@@ -25,7 +25,7 @@
                 <div id="entry"></div>
             </div>
         </div>
-        <div class="footer"><a class="title-home-link" href="https://www.vulgarlang.com">Powered by Vulgarlang.com</a></div>
+        <div class="footer"><a class="powered title-home-link" href="https://www.vulgarlang.com">Powered by Vulgarlang.com</a></div>
     </article>
 </body>
 
@@ -79,7 +79,7 @@ getTextFile.onreadystatechange = function() {
             }            
         }
         document.getElementById('title-box').innerHTML = '<a class="title-home-link" href="./">' + settings.title.toUpperCase() + '</a>'
-	+ '<p id="powered"><a class="title-home-link" href="https://www.vulgarlang.com">Powered by Vulgarlang.com</a></p>';
+	+ '<p class="powered"><a class="title-home-link" href="https://www.vulgarlang.com">Powered by Vulgarlang.com</a></p>';
         document.title = settings.title;
         
         partsOfSpeechText = partsOfSpeechText.split('\n')
