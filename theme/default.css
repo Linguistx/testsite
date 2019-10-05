@@ -187,7 +187,7 @@ article {
     white-space: nowrap;
     margin: 0px 15px 0px 0px;
     background: white;
-    padding: 8px;
+    padding: 8px 8px 8px 11px;
     border-radius: 4px;
     justify-content: center;
 }
