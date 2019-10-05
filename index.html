@@ -47,6 +47,7 @@ let dictionaryB = {};
 let AentriesOnly = [];
 let BentriesOnly = [];
 let headingPattern = /(\w+ *:)/g;
+let tryLang = 'A';
 
 let getTextFile = new XMLHttpRequest();
 getTextFile.open('GET', textFileLocation, true);
@@ -136,9 +137,14 @@ getTextFile.onreadystatechange = function() {
 function sendEntry(term, associatedInfoA, associatedInfoB) {
 	
 	console.log(term, associatedInfoA, associatedInfoB);
+    if (!associatedInfoA && !associatedInfoB) {
+        document.getElementById('entry').innerHTML = 'No entry found';
+	return;
+    }
+    let chosenLang = associatedInfoA;
 	
     let allEntries = [];
-    for (let entry of associatedInfoA) {
+    for (let entry of chosenLang) {
         let subheadings = [];
         let locationsOfNewHeading = [];
 	let pronunciation = entry.trim().match(/\/.*?\//);
