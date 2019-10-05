@@ -79,7 +79,7 @@ getTextFile.onreadystatechange = function() {
             }            
         }
         document.getElementById('title').innerHTML = '<a class="title-home-link" href="./">' + settings.title.toUpperCase() + '</a>'
-	+ '<p>Powered by Vulgarlang.com</p>';
+	+ '<p id="powered">Powered by Vulgarlang.com</p>';
         document.title = settings.title;
         
         partsOfSpeechText = partsOfSpeechText.split('\n')
