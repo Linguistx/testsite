@@ -9,7 +9,7 @@
             <span id="title-box"></span>
             <span class="searchbar">
                 <span id="searchPart">
-                    <input id="search-box-input" autocorrect="off" autocapitalize="off" spellcheck="false" onfocus="myFunction()"></input>
+                    <input id="search-box-input" autocorrect="off" autocapitalize="off" spellcheck="false" onfocus="border('on')" onblur="border('off')"></input>
                     <img onclick="javascript:searchWord()" id="magnifying-glass" src="/theme/magnifying-glass.svg" height="25px"></img>
                 </span>
             </span>
@@ -219,11 +219,12 @@ input.addEventListener('keyup', function(event) {
     }
 })
 	
-function myFunction() {
-	
-	var element = document.getElementById("searchPart").style.cssText = "border: 2px solid black; padding: 6px; border-color: #315b7d"; 
-
-
+function border(x) {
+    if (x == 'on') {
+    document.getElementById("searchPart").style.cssText = "border: 2px solid black; padding: 6px; border-color: #7da7ca";
+    } else {
+	 document.getElementById("searchPart").style.cssText = "border: none; padding: 8px; border-color: #7da7ca";   
+    }
 }
    
 </script>
