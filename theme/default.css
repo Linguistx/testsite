@@ -23,7 +23,7 @@ body {
     color: white;
 }
 
-#title {
+#title-box {
     display: flex;
     float: left;
     flex-basis: auto;
