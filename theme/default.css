@@ -200,12 +200,6 @@ article {
     font-size:20px;
     font-family: NotoSans;
 }
-
-#search-box-input:focus {
-border-radius: 40px;
-    border-style: solid;
-}
-
 #magnifying-glass {
     padding: 3px 3px 0px 0px;
 }
