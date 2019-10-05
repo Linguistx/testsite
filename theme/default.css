@@ -34,6 +34,12 @@ body {
     max-width: 70%;
 }
 
+#powered {
+    color: black;
+    font-weight: bold;
+    font-size: 16px;   
+}
+
 .title-home-link {
     text-decoration: none;
     color: inherit;
