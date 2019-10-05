@@ -23,8 +23,8 @@ v = verb
 
 --- A TO B DICTIONARY
 
+@ man /man/ n: bird
 @ stal /stal/ n: man
-
 @ strul /stryl/
 v:
 # say, tell
@@ -41,3 +41,5 @@ Derived_terms: Optional
 
 
 --- B TO A DICTIONARY
+
+@ man n: stal
