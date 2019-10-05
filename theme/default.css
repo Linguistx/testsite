@@ -193,7 +193,7 @@ article {
 }
 
 #searchPart:focus {
-
+border-radius: 40px;
     border-style: solid;
 }
 
