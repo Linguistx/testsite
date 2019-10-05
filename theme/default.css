@@ -24,7 +24,7 @@ body {
 }
 
 #title-box {
-    display: flex;
+    display: block;
     float: left;
     flex-basis: auto;
     font-family: Ubuntu, sans-serif;
@@ -35,14 +35,12 @@ body {
 }
 
 #powered {
-    display: block;
     color: black;
     font-weight: bold;
     font-size: 16px;   
 }
 
 .title-home-link {
-    display: block;
     text-decoration: none;
     color: inherit;
 }
