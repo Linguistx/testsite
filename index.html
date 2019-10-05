@@ -9,7 +9,7 @@
             <span id="title-box"></span>
             <span class="searchbar">
                 <span id="searchPart">
-                    <input id="search-box-input" autocorrect="off" autocapitalize="off" spellcheck="false"></input>
+                    <input id="search-box-input" autocorrect="off" autocapitalize="off" spellcheck="false" onfocus="myFunction()"></input>
                     <img onclick="javascript:searchWord()" id="magnifying-glass" src="/theme/magnifying-glass.svg" height="25px"></img>
                 </span>
             </span>
@@ -218,6 +218,13 @@ input.addEventListener('keyup', function(event) {
         document.getElementById('magnifying-glass').click();
     }
 })
+	
+function myFunction() {
+	
+	var element = document.getElementById("searchPart").style.cssText = "border: 1px solid black"; 
+
+
+}
    
 </script>
     
