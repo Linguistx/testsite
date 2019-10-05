@@ -126,16 +126,19 @@ getTextFile.onreadystatechange = function() {
         
         if (url.includes('?')) {
             var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1));
-            sendEntry(queryTerm, dictionaryA[queryTerm]);
+            sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
         } else {
 
         }
     }
 }
 
-function sendEntry(term, associatedInfo) {
+function sendEntry(term, associatedInfoA, associatedInfoB) {
+	
+	console.log(term, associatedInfoA, associatedInfoB);
+	
     let allEntries = [];
-    for (let entry of associatedInfo) {
+    for (let entry of associatedInfoA) {
         let subheadings = [];
         let locationsOfNewHeading = [];
 	let pronunciation = entry.trim().match(/\/.*?\//);
@@ -200,7 +203,7 @@ function sendEntry(term, associatedInfo) {
     var sidebar = AentriesOnly.slice(startIndex - 10 , startIndex + 11);
     sidebar = sidebar.map(i => `<li><a onclick="javascript:sendEntry('` + i + `', dictionaryA['` + i + `']);">` + i + '</a></li>');
     document.getElementById('sidebar').innerHTML = '<h3>More ...</h3><ul>' + sidebar.join('') + '</ul>';
-	var stateObj = { foo: 'bar' };
+    var stateObj = { foo: 'bar' };
     history.pushState(stateObj, term, '?' + term);
 }
 
@@ -221,7 +224,7 @@ input.addEventListener('keyup', function(event) {
 	
 function border(x) {
     if (x == 'on') {
-    document.getElementById("searchPart").style.cssText = "border: 2px solid #1c3448; padding: 6px 6px 6px 9px;";
+        document.getElementById("searchPart").style.cssText = "border: 2px solid #1c3448; padding: 6px 6px 6px 9px;";
     } else {
 	 document.getElementById("searchPart").style.cssText = "border: none; padding: 8px 8px 8px 11px;";   
     }
