@@ -43,3 +43,4 @@ Derived_terms: Optional
 --- B TO A DICTIONARY
 
 @ man n: stal
+@ woman n: lik
