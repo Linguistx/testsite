@@ -1,6 +1,5 @@
 @font-face { font-family: NotoSans; src: url('NotoSans-Regular_unhinted.ttf'); }
 @font-face { font-family: Ubuntu; src: url('Ubuntu-Regular.ttf'); }
-@import url('https://fonts.googleapis.com/css?family=Cinzel&display=swap');
 
 * {
     box-sizing: border-box;
