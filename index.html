@@ -54,6 +54,8 @@ getTextFile.open('GET', textFileLocation, true);
 getTextFile.send();
     
 getTextFile.onreadystatechange = function() {
+	console.log('999')
+	console.log(333, tryLang)
     if (getTextFile.readyState == 4 && getTextFile.status == 200) {
         
         let dictionaryBlob = getTextFile.responseText;
