@@ -42,8 +42,10 @@ let settings = {
 }
 
 let partsOfSpeech = {};
-let dictionary = {};
-let entriesOnly = [];
+let dictionaryA = {};
+let dictionaryB = {};
+let AentriesOnly = [];
+let BentriesOnly = [];
 let headingPattern = /(\w+ *:)/g;
 
 let getTextFile = new XMLHttpRequest();
@@ -58,8 +60,8 @@ getTextFile.onreadystatechange = function() {
 
         let settingsText = dictionaryBlob[dictionaryBlob.indexOf('SETTINGS') + 1];
         let partsOfSpeechText = dictionaryBlob[dictionaryBlob.indexOf('PARTS OF SPEECH') + 1];
-        let dictionaryA = dictionaryBlob[dictionaryBlob.indexOf('A TO B DICTIONARY') + 1];
-        let dictionaryB = dictionaryBlob[dictionaryBlob.indexOf('B TO A DICTIONARY') + 1];
+        let dictionaryAtext = dictionaryBlob[dictionaryBlob.indexOf('A TO B DICTIONARY') + 1];
+        let dictionaryBtext = dictionaryBlob[dictionaryBlob.indexOf('B TO A DICTIONARY') + 1];
         
         settingsText = settingsText.split(/\n/g)
         for (let setting of settingsText) {
@@ -89,25 +91,41 @@ getTextFile.onreadystatechange = function() {
             partsOfSpeech[keySide] = valueSide;
         }   
         
-        dictionaryA = dictionaryA.split('@');
-        for (let entry of dictionaryA) {
+        dictionaryAtext = dictionaryAtext.split('@');
+        for (let entry of dictionaryAtext) {
             let forwardSlash = entry.indexOf('/');
             let colon = entry.search(/\w+ *:/);
             let delineator = Math.min(forwardSlash, colon);
             delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon);
             let word = entry.slice(0, delineator).trim();
             let wordData = entry.slice(delineator).trim();
-            if (!dictionary[word]) {
-                dictionary[word] = [wordData];
-                entriesOnly.push(word);
+            if (!dictionaryA[word]) {
+                dictionaryA[word] = [wordData];
+                AentriesOnly.push(word);
             } else {
-                dictionary[word].push(wordData);
+                dictionaryA[word].push(wordData);
+            }
+        }
+		
+        dictionaryBtext = dictionaryBtext.split('@');
+        for (let entry of dictionaryBtext) {
+            let forwardSlash = entry.indexOf('/');
+            let colon = entry.search(/\w+ *:/);
+            let delineator = Math.min(forwardSlash, colon);
+            delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon);
+            let word = entry.slice(0, delineator).trim();
+            let wordData = entry.slice(delineator).trim();
+            if (!dictionaryB[word]) {
+                dictionaryB[word] = [wordData];
+                BentriesOnly.push(word);
+            } else {
+                dictionaryB[word].push(wordData);
             }
         }
         
         if (url.includes('?')) {
             var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1));
-            sendEntry(queryTerm, dictionary[queryTerm]);
+            sendEntry(queryTerm, dictionaryA[queryTerm]);
         } else {
 
         }
@@ -176,10 +194,10 @@ function sendEntry(term, associatedInfo) {
     }
     document.getElementById('entry').innerHTML = allEntries.join('')
 
-    let startIndex = entriesOnly.indexOf(term);
+    let startIndex = AentriesOnly.indexOf(term);
     if (startIndex < 10) startIndex = 10;
-    var sidebar = entriesOnly.slice(startIndex - 10 , startIndex + 11);
-    sidebar = sidebar.map(i => `<li><a onclick="javascript:sendEntry('` + i + `', dictionary['` + i + `']);">` + i + '</a></li>');
+    var sidebar = AentriesOnly.slice(startIndex - 10 , startIndex + 11);
+    sidebar = sidebar.map(i => `<li><a onclick="javascript:sendEntry('` + i + `', dictionaryA['` + i + `']);">` + i + '</a></li>');
     document.getElementById('sidebar').innerHTML = '<h3>More ...</h3><ul>' + sidebar.join('') + '</ul>';
 	var stateObj = { foo: 'bar' };
     history.pushState(stateObj, term, '?' + term);
@@ -187,7 +205,7 @@ function sendEntry(term, associatedInfo) {
 
 function searchWord() {
     let queryTerm = document.getElementById('search-box-input').value.trim();
-    sendEntry(queryTerm, dictionary[queryTerm]);
+    sendEntry(queryTerm, dictionaryA[queryTerm]);
     var stateObj = { foo: 'bar' };
     history.pushState(stateObj, queryTerm, '?' + queryTerm);
 }
