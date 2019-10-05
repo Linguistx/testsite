@@ -34,7 +34,7 @@ body {
     max-width: 70%;
 }
 
-#powered {
+.powered {
     color: black;
   font-family: 'Cinzel', serif;
     font-size: 15px;
