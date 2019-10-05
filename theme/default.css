@@ -192,6 +192,11 @@ article {
     justify-content: center;
 }
 
+#searchPart:focus {
+
+    border-style: solid;
+}
+
 #search-box-input {
     border: none;
     outline: none;
