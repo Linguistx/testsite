@@ -135,13 +135,20 @@ getTextFile.onreadystatechange = function() {
 }
 
 function sendEntry(term, associatedInfoA, associatedInfoB) {
-	
+	let bothLanguage = '';
 	console.log(term, associatedInfoA, associatedInfoB);
     if (!associatedInfoA && !associatedInfoB) {
         document.getElementById('entry').innerHTML = 'No entry found';
 	return;
-    }
-    let chosenLang = associatedInfoA;
+    } else if (associatedInfoA && associatedInfoB) {
+	    bothLanguage = '<p>' + settings.languageB + ' to ' + settings.languageA + '</p>';
+	       if (tryLang == 'A') {
+		      var let chosenLang = associatedInfoA; 
+	       } else {
+		       var let chosenLang = associatedInfoB;
+	       }
+	       
+	 }
 	
     let allEntries = [];
     for (let entry of chosenLang) {
@@ -202,7 +209,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
         var final = '<h1>' + term + '</h1>' + '<p>' + pronunciation + '</p>' + subheadings.join('');
         allEntries.push(final);
     }
-    document.getElementById('entry').innerHTML = allEntries.join('')
+    document.getElementById('entry').innerHTML = bothLanguage + allEntries.join('')
 
     let startIndex = AentriesOnly.indexOf(term);
     if (startIndex < 10) startIndex = 10;
