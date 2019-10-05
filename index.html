@@ -136,12 +136,11 @@ getTextFile.onreadystatechange = function() {
 
 function sendEntry(term, associatedInfoA, associatedInfoB) {
 	let bothLanguage = '';
-	console.log(term, associatedInfoA, associatedInfoB);
+	console.log('ff', trylang, term, associatedInfoA, associatedInfoB);
     if (!associatedInfoA && !associatedInfoB) {
         document.getElementById('entry').innerHTML = 'No entry found';
 	return;
     } else if (associatedInfoA && associatedInfoB) {
-	    console.log(9, trylang);
 	    bothLanguage = '<p>' + settings.languageB + ' to ' + settings.languageA + '</p>';
 	       if (tryLang == 'A') {
 		      var chosenLang = associatedInfoA; 
@@ -156,7 +155,6 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
     } else if (associatedInfoB) {
 	    var chosenLang = associatedInfoB;   
 	    trylang = 'B';
-	    console.log(8, trylang);
     }
 	
     let allEntries = [];
