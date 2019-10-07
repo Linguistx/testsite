@@ -25,6 +25,7 @@ body {
 
 #logo-title {
     display: flex;
+    flex-grow: 1;
 }
 
 .logo {
