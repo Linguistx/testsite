@@ -32,6 +32,7 @@
 <script>
 let url = document.location.href;
 let textFileLocation = document.location.origin + '/dictionary.txt';
+let grammarFileLocation = document.location.origin + '/grammar.txt';
 
 let settings = {
     title : 'A Vulgar Online Dictionry',
@@ -137,8 +138,8 @@ getTextFile.onreadystatechange = function() {
 }
 
 function sendEntry(term, associatedInfoA, associatedInfoB) {
-	let bothLanguage = '';
-	console.log('ff', tryLang, term, associatedInfoA, associatedInfoB);
+    let bothLanguage = '';
+    console.log('ff', tryLang, term, associatedInfoA, associatedInfoB);
     if (!associatedInfoA && !associatedInfoB) {
         document.getElementById('entry').innerHTML = 'No entry found';
 	return;
@@ -253,7 +254,7 @@ function border(x) {
 }
 	
 var converter = new showdown.Converter();
-let texte      = '# hello, markdown! <b>dfd</b>';
+let texte = '# hello, markdown! <b>dfd</b>';
 console.log(converter.makeHtml(texte));
    
 </script>
