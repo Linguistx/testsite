@@ -54,8 +54,6 @@ getTextFile.open('GET', textFileLocation, true);
 getTextFile.send();
     
 getTextFile.onreadystatechange = function() {
-	console.log('999')
-	console.log(333, tryLang)
     if (getTextFile.readyState == 4 && getTextFile.status == 200) {
         
         let dictionaryBlob = getTextFile.responseText;
@@ -130,8 +128,8 @@ getTextFile.onreadystatechange = function() {
         if (url.includes('?')) {
             var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1));
             sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
-        } else {
-console.log(url)
+        } else if (url.endsWith('/grammar')) {
+sendEntry('grammar-doc')
         }
     }
 }
