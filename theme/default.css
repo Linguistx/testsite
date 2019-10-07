@@ -63,7 +63,7 @@ body {
 .searchbar {
     background-color: yellow;
     display: flex;
-    flex-grow: 3;
+    flex-grow: 2;
     font-family: Ubuntu, sans-serif;
     font-size: 30px;
     align-items: center;
