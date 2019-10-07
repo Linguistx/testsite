@@ -23,24 +23,24 @@ v = verb
 
 --- A TO B DICTIONARY
 
-@ man /man/ n: bird
-@ stal /stal/ n: man
-@ strul /stryl/
+# man /man/ n: bird
+# stal /stal/ n: man
+# strul /stryl/
 v:
-# say, tell
+1. say, tell
 * I say he's an idiot - chu strul qu ik gak
 * he says things - ik strul wa
-# notify, inform
+2. notify, inform
 n:
-# speech
+1. speech
 * I corrected his speech - chu colik iks strul
 Etymology: Optional 
 Derived_terms: Optional
 
-@ stuh /stux/ n: something
+# stuh /stux/ n: something
 
 
 --- B TO A DICTIONARY
 
-@ man n: stal
-@ woman n: lik
+# man n: stal
+# woman n: lik
