@@ -131,7 +131,7 @@ getTextFile.onreadystatechange = function() {
             var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1));
             sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
         } else {
-
+console.log(url)
         }
     }
 }
