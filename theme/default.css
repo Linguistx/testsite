@@ -32,6 +32,7 @@ body {
 }
 
 #title-box {
+    background: red;
     display: block;
     float: left;
     flex-basis: auto;
