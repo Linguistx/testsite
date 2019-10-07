@@ -229,6 +229,5 @@ padding: 6px 12px 6px 12px;
 .tab-holder {
    border-bottom: 1px solid;
     background-color: #ddd;
-    margin: auto;
-    height: auto;
+ display:inline-block;
 }
