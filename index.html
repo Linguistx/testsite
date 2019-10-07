@@ -137,7 +137,7 @@ getTextFile.onreadystatechange = function() {
 }
 
 function sendEntry(term, associatedInfoA, associatedInfoB) {
-    if (term == 'grammar-doc) {
+    if (term == 'grammar-doc') {
         let grammarFileLocation = document.location.origin + '/grammar.txt';
         let getTextFile = new XMLHttpRequest();
         getTextFile.open('GET', textFileLocation, true);
