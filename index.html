@@ -138,20 +138,20 @@ getTextFile.onreadystatechange = function() {
 
 function sendEntry(term, associatedInfoA, associatedInfoB) {
     if (term == 'grammar-doc') {
+        var stateObj = { foo: 'bar' };
+        history.pushState(stateObj, term, 'grammar');
         var converter = new showdown.Converter();
         let grammarFileLocation = document.location.origin + '/grammar.txt';
         let getGrammarFile = new XMLHttpRequest();
         getGrammarFile.open('GET', grammarFileLocation, true);
         getGrammarFile.send();
-    converter.setOption('tables', 'true');
+    converter.setOption('tables', true);
         getGrammarFile.onreadystatechange = function() {
 
             if (getGrammarFile.readyState == 4 && getGrammarFile.status == 200) {
 		let grammarBlob = getGrammarFile.responseText;
 		document.getElementById('entry').innerHTML = converter.makeHtml(grammarBlob);
-		    console.log(converter.getOptions());
-		       var stateObj = { foo: 'bar' };
-    history.pushState(stateObj, term, 'grammar');
+                console.log(converter.makeHtml(grammarBlob));
 		return;
             }
 	}
