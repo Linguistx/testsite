@@ -17,7 +17,7 @@
         </div>
         <div class="navbar">
             <a href="./">Home</a>
-            <a href="#grammar">Grammar</a>
+            <a onclick="sendEntry('grammar-doc')">Grammar</a>
         </div>
         <div class="row">
             <div class="side" id="sidebar"></div>
@@ -32,7 +32,6 @@
 <script>
 let url = document.location.href;
 let textFileLocation = document.location.origin + '/dictionary.txt';
-let grammarFileLocation = document.location.origin + '/grammar.txt';
 
 let settings = {
     title : 'A Vulgar Online Dictionry',
@@ -138,6 +137,20 @@ getTextFile.onreadystatechange = function() {
 }
 
 function sendEntry(term, associatedInfoA, associatedInfoB) {
+    if (term == 'grammar-doc) {
+        let grammarFileLocation = document.location.origin + '/grammar.txt';
+        let getTextFile = new XMLHttpRequest();
+        getTextFile.open('GET', textFileLocation, true);
+        getTextFile.send();
+    
+        getTextFile.onreadystatechange = function() {
+
+        if (getTextFile.readyState == 4 && getTextFile.status == 200) {
+		let grammarBlob = getTextFile.responseText;
+		document.getElementById('entry').innerHTML = grammarBlob;
+		return;
+        }
+    }
     let bothLanguage = '';
     console.log('ff', tryLang, term, associatedInfoA, associatedInfoB);
     if (!associatedInfoA && !associatedInfoB) {
