@@ -38,7 +38,7 @@ body {
 
 #title-box {
     background: red;
-    display: block;
+    display: flex;
     float: left;
     flex-basis: auto;
     font-family: Ubuntu, sans-serif;
