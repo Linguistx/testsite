@@ -23,6 +23,10 @@ body {
     color: white;
 }
 
+.logo {
+    margin: 5px;
+}
+
 #title-box {
     display: block;
     float: left;
