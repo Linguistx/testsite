@@ -151,7 +151,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
 		document.getElementById('entry').innerHTML = converter.makeHtml(grammarBlob);
 		    console.log(converter.getOptions());
 		       var stateObj = { foo: 'bar' };
-    history.pushState(stateObj, term, 'grammar);
+    history.pushState(stateObj, term, 'grammar');
 		return;
             }
 	}
