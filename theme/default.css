@@ -25,6 +25,8 @@ body {
 
 .logo {
     margin: 5px;
+    display: flex;
+    align-items: center;
 }
 
 #title-box {
