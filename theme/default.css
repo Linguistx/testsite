@@ -56,6 +56,7 @@ body {
 }
 
 .searchbar {
+    background-color: yellow;
     display: flex;
     flex-grow: 2;
     font-family: Ubuntu, sans-serif;
@@ -194,6 +195,7 @@ article {
 }
 
 #searchPart {
+     background-color: green;
     max-height: 45px;
     display: flex;
     white-space: nowrap;
