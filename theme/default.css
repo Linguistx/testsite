@@ -27,6 +27,7 @@ body {
     margin: 5px;
     display: flex;
     align-items: center;
+    background-color: white;
 }
 
 #title-box {
