@@ -23,6 +23,10 @@ body {
     color: white;
 }
 
+#logo-title {
+    display: flex;
+}
+
 .logo {
     margin: 5px;
     display: flex;
@@ -195,7 +199,6 @@ article {
 }
 
 #searchPart {
-     background-color: green;
     max-height: 45px;
     display: flex;
     white-space: nowrap;
