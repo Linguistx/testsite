@@ -96,7 +96,7 @@ getTextFile.onreadystatechange = function() {
             partsOfSpeech[keySide] = valueSide;
         }   
         
-        dictionaryAtext = dictionaryAtext.split('@');
+        dictionaryAtext = dictionaryAtext.split('#');
         for (let entry of dictionaryAtext) {
             let forwardSlash = entry.indexOf('/');
             let colon = entry.search(/\w+ *:/);
@@ -112,7 +112,7 @@ getTextFile.onreadystatechange = function() {
             }
         }
 		
-        dictionaryBtext = dictionaryBtext.split('@');
+        dictionaryBtext = dictionaryBtext.split('#');
         for (let entry of dictionaryBtext) {
             let forwardSlash = entry.indexOf('/');
             let colon = entry.search(/\w+ *:/);
@@ -182,8 +182,8 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
 		let body = section.slice(del + 1, section.length).trim();
 		if (partsOfSpeech[head]) {
                     head = '<h3>' + partsOfSpeech[head] + '</h3>';
-		    let offset = body.includes('#') ? 1 : 0; 
-		    body = body.split('#');
+		    let offset = body.search(/\d+\./) > -1 ? 1 : 0; 
+		    body = body.split(/\d+\./);
                     var translation = '';
                     for (let j = offset; j < body.length; j++) {
                         let sense = body[j];
