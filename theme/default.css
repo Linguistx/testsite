@@ -108,7 +108,7 @@ body {
 }
 
 #tab-space {
-    background-color: red;
+    background-color: #f1f1f1;
 }
 
 #entry {
@@ -224,9 +224,9 @@ padding: 6px 12px 6px 12px;
 }
 
 .tab {
-   border-left: 1px solid;
-    border-top: 1px solid;
-    border-right: 1px solid;
+   border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
     border-radius: 4px 4px 0px 0px;
     padding: 8px;
     margin: 4px;
@@ -234,8 +234,7 @@ padding: 6px 12px 6px 12px;
 }
 
 .tab-holder {
-   border-bottom: 1px solid;
-padding: 0px 0px 7px 0px;
+    border-bottom: 1px solid #ddd;
+    padding: 0px 0px 7px 0px;
     background-color: #ddd;
-
 }
