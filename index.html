@@ -234,7 +234,8 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
         var final = '<h1>' + term + '</h1>' + '<p>' + pronunciation + '</p>' + subheadings.join('');
         allEntries.push(final);
     }
-    document.getElementById('entry').innerHTML = bothLanguage + allEntries.join('')
+    document.getElementById('tab-space').innerHTML = bothLanguage;
+    document.getElementById('entry').innerHTML = allEntries.join('');
 
     let startIndex = chosenLangEntries.indexOf(term);
     if (startIndex < 10) startIndex = 10;
