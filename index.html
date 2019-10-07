@@ -144,8 +144,8 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
         getGrammarFile.open('GET', grammarFileLocation, true);
         getGrammarFile.send();
         converter.setOption('tables', true);
-        getGrammarFile.onreadystatechange = function() {
 
+        getGrammarFile.onreadystatechange = function() {
             if (getGrammarFile.readyState == 4 && getGrammarFile.status == 200) {
 		let grammarBlob = getGrammarFile.responseText;
 		document.getElementById('entry').innerHTML = converter.makeHtml(grammarBlob);
@@ -158,11 +158,12 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
         document.getElementById('entry').innerHTML = 'No entry found';
 	return;
     } else if (associatedInfoA && associatedInfoB) {
-        bothLanguage = '<p>' + settings.languageB + ' to ' + settings.languageA + '</p>';
         if (tryLang == 'A') {
+            bothLanguage = '<p>' + settings.languageB + ' to ' + settings.languageA + '</p>';
             var chosenLang = associatedInfoA;
             var chosenLangEntries = AentriesOnly;
         } else {
+            bothLanguage = '<p>' + settings.languageA + ' to ' + settings.languageB + '</p>';
             var chosenLang = associatedInfoB;
             var chosenLangEntries = BentriesOnly;
         }
