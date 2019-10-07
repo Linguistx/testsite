@@ -203,3 +203,11 @@ article {
 #magnifying-glass:hover {
     cursor: pointer;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid black;
+}
