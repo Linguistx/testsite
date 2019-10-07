@@ -127,7 +127,7 @@ getTextFile.onreadystatechange = function() {
         
         if (url.endsWith('/?grammar-doc')) {
             sendEntry('grammar-doc');
-        } else if (url.includes('?') {
+        } else if (url.includes('?')) {
             var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1));
             sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
         }
