@@ -42,5 +42,9 @@ Derived_terms: Optional
 
 --- B TO A DICTIONARY
 
+# bird n: man
 # man n: stal
+# say v: strul
+# something n: stuh
+# tell v: strul
 # woman n: lik
