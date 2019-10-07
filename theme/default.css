@@ -105,7 +105,14 @@ body {
 .main {
     flex: 70%;
     background-color: white;
-    padding: 20px;
+}
+
+#tab-space {
+    background-color: red;
+}
+
+#entry {
+    margin: 20px;
 }
 
 .footer {
