@@ -149,6 +149,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
             if (getGrammarFile.readyState == 4 && getGrammarFile.status == 200) {
 		let grammarBlob = getGrammarFile.responseText;
 		document.getElementById('entry').innerHTML = converter.makeHtml(grammarBlob);
+		    console.log(converter.getOptions());
 		return;
             }
 	}
