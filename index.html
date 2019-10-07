@@ -162,16 +162,20 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
     } else if (associatedInfoA && associatedInfoB) {
         bothLanguage = '<p>' + settings.languageB + ' to ' + settings.languageA + '</p>';
         if (tryLang == 'A') {
-            var chosenLang = associatedInfoA; 
+            var chosenLang = associatedInfoA;
+            var chosenLangEntries = AentriesOnly;
         } else {
             var chosenLang = associatedInfoB;
+            var chosenLangEntries = BentriesOnly;
         }
 	       
     } else if (associatedInfoA) {
         var chosenLang = associatedInfoA;
+        var chosenLangEntries = AentriesOnly
         tryLang = 'A';
     } else if (associatedInfoB) {
-        var chosenLang = associatedInfoB;   
+        var chosenLang = associatedInfoB;
+        var chosenLangEntries = BentriesOnly;
         tryLang = 'B';
     }
 	
@@ -236,9 +240,9 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
     }
     document.getElementById('entry').innerHTML = bothLanguage + allEntries.join('')
 
-    let startIndex = AentriesOnly.indexOf(term);
+    let startIndex = chosenLangEntries.indexOf(term);
     if (startIndex < 10) startIndex = 10;
-    var sidebar = AentriesOnly.slice(startIndex - 10 , startIndex + 11);
+    var sidebar = chosenLangEntries.slice(startIndex - 10 , startIndex + 11);
     sidebar = sidebar.map(i => `<li><a onclick="javascript:sendEntry('` + i + `', dictionaryA['` + i + `'], dictionaryB['` + i + `']);">` + i + '</a></li>');
     document.getElementById('sidebar').innerHTML = '<h3>More ...</h3><ul>' + sidebar.join('') + '</ul>';
     var stateObj = { foo: 'bar' };
