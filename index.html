@@ -150,6 +150,8 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
 		let grammarBlob = getGrammarFile.responseText;
 		document.getElementById('entry').innerHTML = converter.makeHtml(grammarBlob);
 		    console.log(converter.getOptions());
+		       var stateObj = { foo: 'bar' };
+    history.pushState(stateObj, term, 'grammar);
 		return;
             }
 	}
