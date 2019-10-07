@@ -140,14 +140,14 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
     if (term == 'grammar-doc') {
         var converter = new showdown.Converter();
         let grammarFileLocation = document.location.origin + '/grammar.txt';
-        let getTextFile = new XMLHttpRequest();
-        getTextFile.open('GET', textFileLocation, true);
-        getTextFile.send();
+        let getGrammarFile = new XMLHttpRequest();
+        getGrammarFile.open('GET', grammarFileLocation, true);
+        getGrammarFile.send();
     
-        getTextFile.onreadystatechange = function() {
+        getGrammarFile.onreadystatechange = function() {
 
-            if (getTextFile.readyState == 4 && getTextFile.status == 200) {
-		let grammarBlob = getTextFile.responseText;
+            if (getGrammarFile.readyState == 4 && getGrammarFile.status == 200) {
+		let grammarBlob = getGrammarFile.responseText;
 		document.getElementById('entry').innerHTML = converter.makeHtml(grammarBlob);
 		return;
             }
