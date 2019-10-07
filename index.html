@@ -137,7 +137,7 @@ getTextFile.onreadystatechange = function() {
 function sendEntry(term, associatedInfoA, associatedInfoB) {
     if (term == 'grammar-doc') {
         var stateObj = { foo: 'bar' };
-        history.pushState(stateObj, term, '?grammar');
+        history.pushState(stateObj, term, '?grammar-doc');
         var converter = new showdown.Converter();
         let grammarFileLocation = document.location.origin + '/grammar.txt';
         let getGrammarFile = new XMLHttpRequest();
