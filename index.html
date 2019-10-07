@@ -159,8 +159,8 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
 	return;
     } else if (associatedInfoA && associatedInfoB) {
         if (tryLang == 'A') {
-            bothLanguage = '<p><span class="tab">' + settings.languageB + ' to ' + settings.languageA + '</span> '
-		+ '<span>' + settings.languageA + ' to ' + settings.languageB + '</span>';
+            bothLanguage = '<p><span>' + settings.languageB + ' to ' + settings.languageA + '</span> '
+		+ '<span class="tab">' + settings.languageA + ' to ' + settings.languageB + '</span>';
             var chosenLang = associatedInfoA;
             var chosenLangEntries = AentriesOnly;
         } else {
