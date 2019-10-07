@@ -138,6 +138,7 @@ getTextFile.onreadystatechange = function() {
 
 function sendEntry(term, associatedInfoA, associatedInfoB) {
     if (term == 'grammar-doc') {
+        var converter = new showdown.Converter();
         let grammarFileLocation = document.location.origin + '/grammar.txt';
         let getTextFile = new XMLHttpRequest();
         getTextFile.open('GET', textFileLocation, true);
@@ -147,7 +148,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
 
             if (getTextFile.readyState == 4 && getTextFile.status == 200) {
 		let grammarBlob = getTextFile.responseText;
-		document.getElementById('entry').innerHTML = grammarBlob;
+		document.getElementById('entry').innerHTML = converter.makeHtml(grammarBlob);
 		return;
             }
 	}
@@ -266,10 +267,6 @@ function border(x) {
 	 document.getElementById("searchPart").style.cssText = "border: none; padding: 8px 8px 8px 11px;";   
     }
 }
-	
-var converter = new showdown.Converter();
-let texte = '# hello, markdown! <b>dfd</b>';
-console.log(converter.makeHtml(texte));
    
 </script>
     
