@@ -37,8 +37,8 @@ body {
 }
 
 #title-box {
-    background: red;
     display: block;
+    float: left;
     flex-basis: auto;
     font-family: Ubuntu, sans-serif;
     font-size: 30px;
@@ -60,7 +60,6 @@ body {
 }
 
 .searchbar {
-    background-color: yellow;
     display: flex;
     flex-grow: 2;
     font-family: Ubuntu, sans-serif;
@@ -69,6 +68,7 @@ body {
     justify-content: flex-end;
     font-weight: bolder;
 }
+
 
 .navbar {
     display: flex;
