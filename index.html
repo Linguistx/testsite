@@ -145,11 +145,12 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
     
         getTextFile.onreadystatechange = function() {
 
-        if (getTextFile.readyState == 4 && getTextFile.status == 200) {
+            if (getTextFile.readyState == 4 && getTextFile.status == 200) {
 		let grammarBlob = getTextFile.responseText;
 		document.getElementById('entry').innerHTML = grammarBlob;
 		return;
-        }
+            }
+	}
     }
     let bothLanguage = '';
     console.log('ff', tryLang, term, associatedInfoA, associatedInfoB);
