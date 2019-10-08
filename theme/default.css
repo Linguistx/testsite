@@ -26,9 +26,9 @@ body {
 #logo-title {
     display: inline-block;
     float: left;
-    flex-basis: auto;
+   /*  flex-basis: auto;*/
     /*    max-width: 75%;*/
-    white-space: nowrap;
+    /* white-space: nowrap;*/
 }
 
 .logo {
