@@ -111,7 +111,7 @@ getTextFile.onreadystatechange = function() {
             partsOfSpeech[keySide] = valueSide;
         }   
         
-        dictionaryAtext = dictionaryAtext.split('#');
+        dictionaryAtext = dictionaryAtext.split(/#(?!#)/);
         for (let entry of dictionaryAtext) {
             let forwardSlash = entry.indexOf('/');
             let colon = entry.search(/\w+ *:/);
@@ -127,7 +127,7 @@ getTextFile.onreadystatechange = function() {
             }
         }
 		
-        dictionaryBtext = dictionaryBtext.split('#');
+        dictionaryBtext = dictionaryBtext.split(/#(?!#)/);
         for (let entry of dictionaryBtext) {
             let forwardSlash = entry.indexOf('/');
             let colon = entry.search(/\w+ *:/);
