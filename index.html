@@ -1,5 +1,4 @@
 <html>
-
 <meta charset="UTF-8">
 <link href="/theme/default.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
@@ -7,6 +6,7 @@
 <link rel="icon" 
       type="svg" 
       href="/theme/logo.png">
+	
 <body>
     <article>
         <div class="header">
@@ -16,8 +16,17 @@
             </span>
             <span class="searchbar">
                 <span id="searchPart">
-                    <input id="search-box-input" autocorrect="off" autocapitalize="off" spellcheck="false" onfocus="border('on')" onblur="border('off')"></input>
-                    <img onclick="javascript:searchWord()" id="magnifying-glass" class="pointer" src="/theme/magnifying-glass.svg" height="25px"></img>
+                    <input id="search-box-input"
+                        autocorrect="off"
+                        autocapitalize="off"
+                        spellcheck="false"
+                        onfocus="border('on')"
+                        onblur="border('off')"></input>
+                    <img onclick="javascript:searchWord()"
+                        id="magnifying-glass"
+                        class="pointer"
+                        src="/theme/magnifying-glass.svg"
+                        height="25px"></img>
                 </span>
             </span>
         </div>
@@ -59,8 +68,8 @@ let AentriesOnly = [];
 let BentriesOnly = [];
 let headingPattern = /(\w+ *:)/g;
 tryLang = 'A';
-        var converter = new showdown.Converter();
-        converter.setOption('tables', true);
+var converter = new showdown.Converter();
+converter.setOption('tables', true);
 
 let getTextFile = new XMLHttpRequest();
 getTextFile.open('GET', textFileLocation, true);
@@ -201,6 +210,11 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
         let subheadings = [];
         let locationsOfNewHeading = [];
 	let pronunciation = entry.trim().match(/\/.*?\//);
+        if (pronunciation) {
+            pronunciation = '<p>' + pronunciation + '</p>';
+        } else {
+            pronunciation = '';
+        }
         let match;
         while (match = headingPattern.exec(entry)) {
             locationsOfNewHeading.push(match.index)
@@ -247,7 +261,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
             subheadings.push(section);
         }    
 
-        var final = '<h1>' + term + '</h1>' + '<p>' + pronunciation + '</p>' + subheadings.join('');
+        var final = '<h1>' + term + '</h1>' + pronunciation + subheadings.join('');
         allEntries.push(final);
     }
     document.getElementById('tab-space').innerHTML = bothLanguage;
