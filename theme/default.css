@@ -24,8 +24,10 @@ body {
 }
 
 #logo-title {
-    display: flex;
-    flex-grow: 1;
+    display: block;
+    float: left;
+    flex-basis: auto;
+        max-width: 70%;
 }
 
 .logo {
@@ -44,7 +46,7 @@ body {
     font-size: 30px;
     padding: 20px 20px 5px 20px;
     font-weight: bolder;
-    max-width: 70%;
+   /* max-width: 70%;*/
 }
 
 .powered {
