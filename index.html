@@ -3,7 +3,10 @@
 <meta charset="UTF-8">
 <link href="/theme/default.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
-	<script src="https://cdn.jsdelivr.net/npm/showdown@1.9.0/dist/showdown.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/showdown@1.9.0/dist/showdown.min.js"></script>
+<link rel="icon" 
+      type="svg" 
+      href="/theme/logo.svg">
 <body>
     <article>
         <div class="header">
@@ -160,7 +163,6 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
             if (getGrammarFile.readyState == 4 && getGrammarFile.status == 200) {
 		let grammarBlob = getGrammarFile.responseText;
 		document.getElementById('entry').innerHTML = converter.makeHtml(grammarBlob);
-		
             }
 	}
 	return;
@@ -172,7 +174,6 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
 	return;
     } else if (associatedInfoA && associatedInfoB) {
         if (tryLang == 'A') {
-		console.log('it was a')
             bothLanguage = `<div class="tab-holder"><a class="pointer" onclick="javascript:sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `'], 'B');">`
                 + settings.languageB + ' to ' + settings.languageA + '</a> '
                 + '<span class="tab">' + settings.languageA + ' to ' + settings.languageB + '</span></div>';
@@ -180,13 +181,12 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
             var chosenLangEntries = AentriesOnly;
 		document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
         } else {
-		console.log('it was b')
             bothLanguage = '<div class="tab-holder"><span class="tab">' + settings.languageB + ' to ' + settings.languageA + '</span> '
                 + `<a class="pointer" onclick="javascript:sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `'], 'A');">`
                 + settings.languageA + ' to ' + settings.languageB + '</a></div>';
             var chosenLang = associatedInfoB;
             var chosenLangEntries = BentriesOnly;
-		document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
+            document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
         }
     } else if (associatedInfoA) {
         var chosenLang = associatedInfoA;
