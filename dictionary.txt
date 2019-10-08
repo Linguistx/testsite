@@ -28,13 +28,14 @@ v = verb
 @ strul /stryl/
 v:
 1. say, tell
-* I say he's an idiot - chu strul qu ik gak
-* he says things - ik strul wa
+"" I say he's an idiot - chu strul qu ik gak
+"" he says things - ik strul wa
 2. notify, inform
 n:
 1. speech
-* I corrected his speech - chu colik iks strul
-Etymology:
+"" I corrected his speech - chu colik iks strul
+
+#Etymology
 
 **Optional**
 
