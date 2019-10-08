@@ -142,7 +142,7 @@ getTextFile.onreadystatechange = function() {
     }
 }
 
-function sendEntry(term, associatedInfoA, associatedInfoB) {
+function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
     if (term == 'grammar-doc') {
         document.getElementById('tab-space').innerHTML = '';
         document.getElementById('entry').innerHTML = '';
@@ -170,14 +170,16 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
 	return;
     } else if (associatedInfoA && associatedInfoB) {
         if (tryLang == 'A') {
-            bothLanguage = '<div class="tab-holder"><span>' + settings.languageB + ' to ' + settings.languageA + '</span> '
-		+ '<span class="tab">' + settings.languageA + ' to ' + settings.languageB + '</span></div>';
+            bothLanguage = '<div class="tab-holder"><span><a onclick="sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `']);">'
+                + settings.languageB + ' to ' + settings.languageA + '</a></span> '
+                + '<span class="tab">' + settings.languageA + ' to ' + settings.languageB + '</span></div>';
             var chosenLang = associatedInfoA;
             var chosenLangEntries = AentriesOnly;
 		document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
         } else {
             bothLanguage = '<div class="tab-holder"><span class="tab">' + settings.languageB + ' to ' + settings.languageA + '</span> '
-		+ '<span>' + settings.languageA + ' to ' + settings.languageB + '</span></div>';
+                + '<span><a onclick="sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `']);">'
+                + settings.languageA + ' to ' + settings.languageB + '</a></span></div>';
             var chosenLang = associatedInfoB;
             var chosenLangEntries = BentriesOnly;
 		document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
