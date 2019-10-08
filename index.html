@@ -144,6 +144,7 @@ getTextFile.onreadystatechange = function() {
 
 function sendEntry(term, associatedInfoA, associatedInfoB) {
     if (term == 'grammar-doc') {
+        document.getElementById('tab-space').innerHTML = '';
         document.getElementById('entry').innerHTML = '';
         var stateObj = { foo: 'bar' };
         history.pushState(stateObj, term, '?grammar-doc');
