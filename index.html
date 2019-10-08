@@ -170,16 +170,16 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
 	return;
     } else if (associatedInfoA && associatedInfoB) {
         if (tryLang == 'A') {
-            bothLanguage = `<div class="tab-holder"><span><a onclick="javascript:sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `']);">`
-                + settings.languageB + ' to ' + settings.languageA + '</a></span> '
+            bothLanguage = `<div class="tab-holder"><a onclick="javascript:sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `']);">`
+                + settings.languageB + ' to ' + settings.languageA + '</a> '
                 + '<span class="tab">' + settings.languageA + ' toz ' + settings.languageB + '</span></div>';
             var chosenLang = associatedInfoA;
             var chosenLangEntries = AentriesOnly;
 		document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
         } else {
             bothLanguage = '<div class="tab-holder"><span class="tab">' + settings.languageB + ' to ' + settings.languageA + '</span> '
-                + `<span><a onclick="javascript:sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `']);">`
-                + settings.languageA + ' toz ' + settings.languageB + '</a></span></div>';
+                + `<a onclick="javascript:sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `']);">`
+                + settings.languageA + ' toz ' + settings.languageB + '</a></div>';
             var chosenLang = associatedInfoB;
             var chosenLangEntries = BentriesOnly;
 		document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
