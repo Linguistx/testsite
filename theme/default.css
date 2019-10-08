@@ -24,7 +24,7 @@ body {
 }
 
 #logo-title {
-    display: flex;
+    display: inline-block;
     float: left;
     flex-basis: auto;
         max-width: 75%;
