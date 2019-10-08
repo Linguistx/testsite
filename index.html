@@ -159,7 +159,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB) {
 	}
     }
     let bothLanguage = '';
-    if (!associatedInfoA && !associatedInfoB) {
+    if (!associatedInfoA && !associatedInfoB && term != 'grammar-doc') {
         document.getElementById('entry').innerHTML = 'No entry found';
 	return;
     } else if (associatedInfoA && associatedInfoB) {
