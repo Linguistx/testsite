@@ -27,12 +27,12 @@ body {
     display: flex;
     float: left;
     flex-basis: auto;
-        max-width: 70%;
+        max-width: 75%;
 }
 
 .logo {
     margin: 5px;
-    /*display: flex;*/
+    height: 100%;
     align-items: center;
     justify-content: center;
     background-color: white;
