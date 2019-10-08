@@ -224,7 +224,7 @@ article {
     padding: 3px 3px 0px 0px;
 }
 
-#magnifying-glass:hover {
+.pointer:hover {
     cursor: pointer;
 }
 
