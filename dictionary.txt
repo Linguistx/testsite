@@ -23,9 +23,9 @@ v = verb
 
 --- A TO B DICTIONARY
 
-# man /man/ n: bird
-# stal /stal/ n: man
-# strul /stryl/
+@ man /man/ n: bird
+@ stal /stal/ n: man
+@ strul /stryl/
 v:
 1. say, tell
 * I say he's an idiot - chu strul qu ik gak
@@ -54,14 +54,14 @@ Btah
 
 ###something
 
-# stuh /stux/ n: something
+@ stuh /stux/ n: something
 
 
 --- B TO A DICTIONARY
 
-# bird n: man
-# man n: stal
-# say v: strul
-# something n: stuh
-# tell v: strul
-# woman n: lik
+@ bird n: man
+@ man n: stal
+@ say v: strul
+@ something n: stuh
+@ tell v: strul
+@ woman n: lik
