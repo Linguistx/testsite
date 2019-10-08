@@ -170,7 +170,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
 	return;
     } else if (associatedInfoA && associatedInfoB) {
         if (tryLang == 'A') {
-            bothLanguage = '<div class="tab-holder"><span><a onclick="sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `']);">'
+            bothLanguage = `<div class="tab-holder"><span><a onclick="sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `']);">`
                 + settings.languageB + ' to ' + settings.languageA + '</a></span> '
                 + '<span class="tab">' + settings.languageA + ' to ' + settings.languageB + '</span></div>';
             var chosenLang = associatedInfoA;
@@ -178,7 +178,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
 		document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
         } else {
             bothLanguage = '<div class="tab-holder"><span class="tab">' + settings.languageB + ' to ' + settings.languageA + '</span> '
-                + '<span><a onclick="sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `']);">'
+                + `<span><a onclick="sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `']);">`
                 + settings.languageA + ' to ' + settings.languageB + '</a></span></div>';
             var chosenLang = associatedInfoB;
             var chosenLangEntries = BentriesOnly;
