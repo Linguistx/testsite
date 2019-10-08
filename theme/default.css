@@ -29,17 +29,17 @@ body {
     flex-basis: auto;
     /*    max-width: 75%;*/
     min-width: auto;
+    white-space: nowrap;
 }
 
 .logo {
-    display: inline;
     margin: 5px;
     align-items: center;
     justify-content: center;
 }
 
 #title-box {
-    display: inline; 
+    display: inline-block; 
    /*  float: left;*/
    /*  flex-basis: auto;*/
     font-family: Ubuntu, sans-serif;
