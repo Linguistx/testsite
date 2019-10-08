@@ -250,6 +250,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
         var final = '<h1>' + term + '</h1>' + '<p>' + pronunciation + '</p>' + subheadings.join('');
         allEntries.push(final);
     }
+	console.log(bothLanguage)
     document.getElementById('tab-space').innerHTML = bothLanguage;
     document.getElementById('entry').innerHTML = allEntries.join('');
 
