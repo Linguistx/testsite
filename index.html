@@ -236,7 +236,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
                 var translation = '';
                 for (let j = offset; j < body.length; j++) {
                     let sense = body[j];
-                    sense = sense.split('*');
+                    sense = sense.split('""');
                     var translation = '<li>' + sense[0].trim() + '</li>';
                     let quotes = '';
                     for (let k = 1; k < sense.length; k++) {
