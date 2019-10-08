@@ -34,7 +34,15 @@ v:
 n:
 1. speech
 * I corrected his speech - chu colik iks strul
-Etymology: Optional 
+Etymology:
+
+**Optional**
+
+Btah
+
+* okj 
+* okok
+
 Derived_terms: Optional
 
 # stuh /stux/ n: something
