@@ -39,7 +39,7 @@ body {
 }
 
 #title-box {
-    display: block; 
+    display: inline-block; 
    /*  float: left;*/
    /*  flex-basis: auto;*/
     font-family: Ubuntu, sans-serif;
