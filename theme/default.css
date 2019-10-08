@@ -131,7 +131,7 @@ body {
 
 .tab-holder {
     border-bottom: 1px solid #999999;
-    padding: 14px 0px 7px 0px;
+    padding: 15px 0px 7px 5px;
     background-color: #fbfbfb;
     height: auto;
 }
@@ -142,7 +142,7 @@ body {
     border-right: 1px solid #999999;
     border-radius: 4px 4px 0px 0px;
     padding: 8px;
-    margin: 4px;
+    margin: 0px;
     background-color: white;
 }
 
