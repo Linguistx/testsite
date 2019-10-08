@@ -26,6 +26,7 @@ body {
 #logo-title {
     display: inline;
     float: left;
+    background-color: red;
    /*  flex-basis: auto;*/
     /*    max-width: 75%;*/
     /* white-space: nowrap;*/
