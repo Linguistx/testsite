@@ -59,6 +59,8 @@ let AentriesOnly = [];
 let BentriesOnly = [];
 let headingPattern = /(\w+ *:)/g;
 tryLang = 'A';
+        var converter = new showdown.Converter();
+        converter.setOption('tables', true);
 
 let getTextFile = new XMLHttpRequest();
 getTextFile.open('GET', textFileLocation, true);
@@ -66,15 +68,12 @@ getTextFile.send();
     
 getTextFile.onreadystatechange = function() {
     if (getTextFile.readyState == 4 && getTextFile.status == 200) {
-        
         let dictionaryBlob = getTextFile.responseText;
         dictionaryBlob = dictionaryBlob.split(/--- *(SETTINGS|PARTS OF SPEECH|A TO B DICTIONARY|B TO A DICTIONARY)/g);
-
         let settingsText = dictionaryBlob[dictionaryBlob.indexOf('SETTINGS') + 1];
         let partsOfSpeechText = dictionaryBlob[dictionaryBlob.indexOf('PARTS OF SPEECH') + 1];
         let dictionaryAtext = dictionaryBlob[dictionaryBlob.indexOf('A TO B DICTIONARY') + 1];
         let dictionaryBtext = dictionaryBlob[dictionaryBlob.indexOf('B TO A DICTIONARY') + 1];
-        
         settingsText = settingsText.split(/\n/g)
         for (let setting of settingsText) {
             setting = setting.trim();
@@ -93,7 +92,6 @@ getTextFile.onreadystatechange = function() {
         document.getElementById('title-box').innerHTML = '<a class="title-home-link" href="./">' + settings.title.toUpperCase() + '</a>'
 	+ '<p class="powered"><a class="title-home-link" href="https://www.vulgarlang.com">Powered by Vulgarlang.com</a></p>';
         document.title = settings.title;
-        
         partsOfSpeechText = partsOfSpeechText.split('\n')
         for (let line of partsOfSpeechText) {
             line = line.trim()
@@ -152,12 +150,10 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
         document.getElementById('entry').innerHTML = '';
         var stateObj = { foo: 'bar' };
         history.pushState(stateObj, term, '?grammar-doc');
-        var converter = new showdown.Converter();
         let grammarFileLocation = document.location.origin + '/grammar.txt';
         let getGrammarFile = new XMLHttpRequest();
         getGrammarFile.open('GET', grammarFileLocation, true);
         getGrammarFile.send();
-        converter.setOption('tables', true);
 
         getGrammarFile.onreadystatechange = function() {
             if (getGrammarFile.readyState == 4 && getGrammarFile.status == 200) {
@@ -170,7 +166,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
     let bothLanguage = '';
     if (!associatedInfoA && !associatedInfoB && term != 'grammar-doc') {
         document.getElementById('entry').innerHTML = 'No entry found';
-	    document.getElementById('tab-space').style.padding = '0px 0px 0px 0px;';
+        document.getElementById('tab-space').style.padding = '0px 0px 0px 0px;';
 	return;
     } else if (associatedInfoA && associatedInfoB) {
         if (tryLang == 'A') {
@@ -179,7 +175,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
                 + '<span class="tab">' + settings.languageA + ' to ' + settings.languageB + '</span></div>';
             var chosenLang = associatedInfoA;
             var chosenLangEntries = AentriesOnly;
-		document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
+            document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
         } else {
             bothLanguage = '<div class="tab-holder"><span class="tab">' + settings.languageB + ' to ' + settings.languageA + '</span> '
                 + `<a class="pointer" onclick="javascript:sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `'], 'A');">`
@@ -197,7 +193,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
         var chosenLang = associatedInfoB;
         var chosenLangEntries = BentriesOnly;
         tryLang = 'B';
-	    document.getElementById('tab-space').style.padding = '0px 0px 0px 0px;';
+        document.getElementById('tab-space').style.padding = '0px 0px 0px 0px;';
     }
 	
     let allEntries = [];
@@ -246,7 +242,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
                     section =  head + translation;
 		} else {
                     head = '<h2>' + head.replace(/_/g, ' ') + '</h2>' ;    
-                    section = head + body;
+                    section = head + converter.makeHtml(body);
 		}
             subheadings.push(section);
         }    
@@ -254,7 +250,6 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
         var final = '<h1>' + term + '</h1>' + '<p>' + pronunciation + '</p>' + subheadings.join('');
         allEntries.push(final);
     }
-	console.log(bothLanguage)
     document.getElementById('tab-space').innerHTML = bothLanguage;
     document.getElementById('entry').innerHTML = allEntries.join('');
 
