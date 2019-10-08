@@ -143,9 +143,7 @@ getTextFile.onreadystatechange = function() {
 }
 
 function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
-	console.log(1, forceAB)
     if (forceAB) tryLang = forceAB;
-	console.log(2, tryLang)
     if (term == 'grammar-doc') {
         document.getElementById('tab-space').innerHTML = '';
         document.getElementById('entry').innerHTML = '';
@@ -162,9 +160,10 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
             if (getGrammarFile.readyState == 4 && getGrammarFile.status == 200) {
 		let grammarBlob = getGrammarFile.responseText;
 		document.getElementById('entry').innerHTML = converter.makeHtml(grammarBlob);
-		return;
+		
             }
 	}
+	return;
     }
     let bothLanguage = '';
     if (!associatedInfoA && !associatedInfoB && term != 'grammar-doc') {
