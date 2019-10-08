@@ -33,6 +33,7 @@ body {
 }
 
 .logo {
+    display: inline-block;
     margin: 5px;
     align-items: center;
     justify-content: center;
