@@ -24,7 +24,7 @@ body {
 }
 
 #logo-title {
-    display: block;
+    display: flex;
     float: left;
     flex-basis: auto;
         max-width: 70%;
@@ -39,7 +39,7 @@ body {
 }
 
 #title-box {
-    display: block;
+   /*  display: block; */
    /*  float: left;*/
    /*  flex-basis: auto;*/
     font-family: Ubuntu, sans-serif;
