@@ -129,6 +129,23 @@ body {
     height: auto;
 }
 
+.tab-holder {
+    border-bottom: 1px solid #999999;
+    padding: 0px 0px 7px 0px;
+    background-color: #fbfbfb;
+    height: auto;
+}
+
+.tab {
+   border-left: 1px solid #999999;
+    border-top: 1px solid #999999;
+    border-right: 1px solid #999999;
+    border-radius: 4px 4px 0px 0px;
+    padding: 8px;
+    margin: 4px;
+    background-color: white;
+}
+
 #entry {
     margin: 20px;
 }
@@ -241,19 +258,4 @@ td, th {
 padding: 6px 12px 6px 12px;    
 }
 
-.tab {
-   border-left: 1px solid #999999;
-    border-top: 1px solid #999999;
-    border-right: 1px solid #999999;
-    border-radius: 4px 4px 0px 0px;
-    padding: 8px;
-    margin: 4px;
-    background-color: white;
-}
 
-.tab-holder {
-    border-bottom: 1px solid #999999;
-    padding: 0px 0px 7px 0px;
-    background-color: #fbfbfb;
-    height: auto;
-}
