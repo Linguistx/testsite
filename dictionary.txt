@@ -23,8 +23,12 @@ v = verb
 
 --- A TO B DICTIONARY
 
-@ man /man/ n: bird
-@ stal /stal/ n: man
+@ man /man/
+###noun
+1. bird
+@ stal /stal/
+###noun
+1. man
 @ strul /stryl/
 v:
 1. say, tell
@@ -44,7 +48,9 @@ Etm:
 * liberty
 
 
-@ stuh /stux/ n: something
+@ stuh /stux/
+###noun
+1. something
 
 
 --- B TO A DICTIONARY
