@@ -254,10 +254,10 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
                     }
                 
                     if (translation != []) translation = '<ol>' + translations.join("") + '</ol>';
-                    section =  head + translation;
+                    section =  head + translation.replace(/\{\{/g, '<span class="special-one">').replace(/\}\}/g, '</span>');
 		} else {
                     head = '<h2>' + head.replace(/_/g, ' ') + '</h2>' ; 
-			let bod = converter.makeHtml(body).replace(/\{\{/g, '<span class="special-one">').replace(/\}\}/g, '</span>')
+			let bod = converter.makeHtml(body).replace(/\{\{/g, '<span class="special-one">').replace(/\}\}/g, '</span>');
                     section = head + bod;
 		}
             subheadings.push(section);
