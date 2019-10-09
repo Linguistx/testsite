@@ -41,6 +41,7 @@ Etm:
 * love
 * life
 2. Yes
+* liberty
 
 
 @ stuh /stux/ n: something
