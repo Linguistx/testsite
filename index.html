@@ -256,7 +256,8 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
                     if (translation != []) translation = '<ol>' + translations.join("") + '</ol>';
                     section =  head + translation;
 		} else {
-                    head = '<h2>' + head.replace(/_/g, ' ') + '</h2>' ;    
+                    head = '<h2>' + head.replace(/_/g, ' ') + '</h2>' ; 
+			console.log(converter.makeHtml(body))
                     section = head + converter.makeHtml(body);
 		}
             subheadings.push(section);
