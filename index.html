@@ -70,7 +70,7 @@ let headingPattern = /(\w+ *:)/g;
 tryLang = 'A';
 var converter = new showdown.Converter();
 converter.setOption('tables', true);
-//converter.setOption('disableForced4SpacesIndentedSublists', true);
+converter.setOption('disableForced4SpacesIndentedSublists', true);
 
 let getTextFile = new XMLHttpRequest();
 getTextFile.open('GET', textFileLocation, true);
