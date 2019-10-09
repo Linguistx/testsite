@@ -31,7 +31,7 @@ n:
 1. man
 @ strul /stryl/
 v:
-1. say, tell
+1. {{(1st class)}} say, tell
 "" I say he's an idiot - chu strul qu ik gak
 "" he says things - ik strul wa
 2. notify, inform
