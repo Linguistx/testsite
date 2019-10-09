@@ -38,8 +38,8 @@ n:
 Etm:
 
 1. hello
-    * love
-    * life
+* love
+* life
 2. Yes
 
 
