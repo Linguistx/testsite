@@ -24,10 +24,10 @@ v = verb
 --- A TO B DICTIONARY
 
 @ man /man/
-###noun
+n:
 1. bird
 @ stal /stal/
-###noun
+n:
 1. man
 @ strul /stryl/
 v:
@@ -47,7 +47,7 @@ Etm:
 
 
 @ stuh /stux/
-###noun
+n:
 1. something
 
 
