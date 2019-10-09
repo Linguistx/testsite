@@ -257,8 +257,8 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
                     section =  head + translation;
 		} else {
                     head = '<h2>' + head.replace(/_/g, ' ') + '</h2>' ; 
-			console.log(converter.makeHtml(body))
-                    section = head + converter.makeHtml(body);
+			let bod = converter.makeHtml(body).replace(/\{\{/g, '<span class="special-one">').replace(/\}\}/g, '</span>')
+                    section = head + bod;
 		}
             subheadings.push(section);
         }    
