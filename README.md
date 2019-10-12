@@ -30,11 +30,13 @@ dictionaryA.md is the Language A to Language B file.
 # My word
 /pronunciation of word/
 ### noun
+
 1. definition one
-2. definition two
+1. definition two
 
-
-    sdfdsf
-    sdfsdf
-    
+    # My word
+    /pronunciation of word/
+    ### noun
+    1. definition one
+    2. definition two
     
