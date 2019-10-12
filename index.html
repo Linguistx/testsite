@@ -188,7 +188,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
 	
     let allEntries = [];
     for (let entry of chosenLang) {
-
+console.log(entry)
         allEntries.push('<h1>' + term + '</h1>' + converter.makeHtml(entry));
     }
     document.getElementById('tab-space').innerHTML = bothLanguage;
