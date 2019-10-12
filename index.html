@@ -188,63 +188,8 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
 	
     let allEntries = [];
     for (let entry of chosenLang) {
-        let subheadings = [];
-        let locationsOfNewHeading = [];
-	let pronunciation = entry.trim().match(/\/.*?\//);
-        if (pronunciation) {
-            pronunciation = '<p>' + pronunciation + '</p>';
-        } else {
-            pronunciation = '';
-        }
-        let match;
-        while (match = headingPattern.exec(entry)) {
-            locationsOfNewHeading.push(match.index)
-        }	    
-        for (let i = 0; i < locationsOfNewHeading.length; i++) {
-            var translations = [];
-            let end = locationsOfNewHeading[i + 1];
-            if (!end) {
-                end = entry.length;
-            }
-            let section = entry.slice(locationsOfNewHeading[i], end);
-            let del = section.search(/:/);
-            let head = section.slice(0, del);
-            let body = section.slice(del + 1, section.length).trim();
-            if (partsOfSpeech[head]) {
-                head = '<h3>' + partsOfSpeech[head] + '</h3>';
-                let offset = body.search(/\d+\./) > -1 ? 1 : 0; 
-                body = body.split(/\d+\./);
-                var translation = '';
-                for (let j = offset; j < body.length; j++) {
-                    let sense = body[j];
-                    sense = sense.split('""');
-                    var translation = '<li>' + sense[0].trim() + '</li>';
-                    let quotes = '';
-                    for (let k = 1; k < sense.length; k++) {
-                        let quote = '<li>' + sense[k].trim() + '</li>';
-                        if (quote.includes(' - ')) {
-                            quote = quote.replace(' - ', ' — <span class="trans-quote">');
-                            quote = quote.replace('</li>', '</span></li>');
-                        }
-                        quotes += quote;
-                    }
-                    if (quotes != "") quotes = '<ul class="quotes">' + quotes + '</ul>'
-                        translation += quotes;
-                        translations.push(translation);
-                    }
-                
-                    if (translation != []) translation = '<ol>' + translations.join("") + '</ol>';
-                    section =  head + translation.replace(/\{\{/g, '<span class="special-one">').replace(/\}\}/g, '</span>');
-		} else {
-                    head = '<h2>' + head.replace(/_/g, ' ') + '</h2>' ; 
-			let bod = converter.makeHtml(body).replace(/\{\{/g, '<span class="special-one">').replace(/\}\}/g, '</span>');
-                    section = head + bod;
-		}
-            subheadings.push(section);
-        }    
 
-        var final = '<h1>' + term + '</h1>' + pronunciation + subheadings.join('');
-        allEntries.push(final);
+        allEntries.push('<h1>' + term + '</h1>' + converter.makeHtml(entry));
     }
     document.getElementById('tab-space').innerHTML = bothLanguage;
     document.getElementById('entry').innerHTML = allEntries.join('');
