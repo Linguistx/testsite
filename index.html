@@ -134,6 +134,7 @@ getConlang.onreadystatechange = function() {
 }
 
 function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
+	console.log('fffuck')
     if (forceAB) tryLang = forceAB;
     if (term == 'grammar-doc') {
         document.getElementById('tab-space').innerHTML = '';
@@ -187,6 +188,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
     }
 	
     let allEntries = [];
+	console.log(chosenLang)
     for (let entry of chosenLang) {
 console.log(entry)
         allEntries.push('<h1>' + term + '</h1>' + converter.makeHtml(entry));
