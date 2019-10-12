@@ -31,7 +31,9 @@ A word entry begins with a single # symbol, and is followed by standard Markdown
     1. definition one
     1. definition two
     
-This makes the 
+### Indented quotations
+
+Quotations are indented by exactly 4 spaces. Sepearte translations with a dash symbol to trigger special qutation formatting:
 
     # mujer
     /muxer/
