@@ -1,9 +1,9 @@
 # testsite
 
-#dictionary.txt file
+# dictionary.txt file
 
 Edit this
 
-#grammar.txt file
+# dictionary.txt file
 
 Edit this
