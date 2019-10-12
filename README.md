@@ -19,11 +19,11 @@ Vulgar Dictionaries allows you to create searchable online conlang dictionaries 
 
 This your home page message. Edit me!
 
-## Dictionary files
+## Editing the Dictionary
 
 There are two dicitonry files: ```conlang-dictionary.md``` contains the Conlang to English translations, and ```English-dictionary.md``` contains the English to Conalng translations.
 
-A word entry in the  # eg:
+A word entry begins with a single # symbol eg:
 
     # My word
     /pronunciation of word/
