@@ -104,7 +104,7 @@ let getConlang = new XMLHttpRequest();
 getConlang.open('GET', document.location.origin + '/conlang-dictionary.md', true);
 getConlang.send();
     
-getTextFile.onreadystatechange = function() {
+getConlang.onreadystatechange = function() {
     if (getConlang.readyState == 4 && getConlang.status == 200) {
         let dictionaryBlob = getConlang.responseText;
         
