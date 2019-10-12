@@ -41,7 +41,10 @@ n:
 
 Etm:
 
-1. hello
+# Word
+/word/
+### noun
+1. palabra
     * love
     * life
 1. hi
