@@ -160,7 +160,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
         document.getElementById('entry').innerHTML = '';
         var stateObj = { foo: 'bar' };
         history.pushState(stateObj, term, '?grammar-doc');
-        let grammarFileLocation = document.location.origin + '/grammar.txt';
+        let grammarFileLocation = document.location.origin + '/grammar.md';
         let getGrammarFile = new XMLHttpRequest();
         getGrammarFile.open('GET', grammarFileLocation, true);
         getGrammarFile.send();
