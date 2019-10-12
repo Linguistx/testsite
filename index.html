@@ -72,6 +72,20 @@ var converter = new showdown.Converter();
 converter.setOption('tables', true);
 converter.setOption('disableForced4SpacesIndentedSublists', true);
 
+
+let getSettings = new XMLHttpRequest();
+getSettings.open('GET', document.location.origin + '/README.md', true);
+getSettings.send();
+
+
+getSettings.onreadystatechange = function() {
+    if (getSettings.readyState == 4 && getSettings.status == 200) {
+        let dictionaryBlob = getSettings.responseText;
+		console.log(dictionaryBlob)
+		
+	}	
+}
+
 let getTextFile = new XMLHttpRequest();
 getTextFile.open('GET', textFileLocation, true);
 getTextFile.send();
