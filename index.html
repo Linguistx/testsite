@@ -86,7 +86,7 @@ getSettings.onreadystatechange = function() {
             if (i.includes(':')) {
                 i = i.trim().split(/ *: */);
 		let keySide = i[0];
-		let valueSide = i[0];
+		let valueSide = i[1];
                 switch (keySide) {
                      case 'Website title': settings.title = valueSide; break;
                      case 'Language A': settings.languageA = valueSide; break;
