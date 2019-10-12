@@ -2,11 +2,11 @@
 
 ## Settings
 
-Website title: Sfoda - English Dictionary
-Language A: Sfoda
-Language B: English
-Exonym A: Sfodan
-Exonym B: English
+    Website title: Sfoda - English Dictionary
+    Language A: Sfoda
+    Language B: English
+    Exonym A: Sfodan
+    Exonym B: English
 
 ## dictionary.txt file
 
