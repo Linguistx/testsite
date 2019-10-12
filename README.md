@@ -23,9 +23,13 @@ This your home page message. Edit me!
 
 There are two dicitonry files: ```conlang-dictionary.md``` contains the Conlang to English translations, and ```English-dictionary.md``` contains the English to Conalng translations.
 
-A word entry begins with a single # symbol eg:
+A word entry begins with a single # symbol, eg: 
 
-    # My word
+    # word
+    
+This makes "word" searchable in your website. After that standard Markdown syntax can be used to make sub-headings and lists:
+
+    # word
     /pronunciation of word/
     ### noun
     1. definition one
