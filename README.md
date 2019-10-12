@@ -4,10 +4,10 @@ Vulgar Dictionaries allows you to create searchable online conlang dictionaries 
 
 ## How to set up your site
 
-1. Sign up to GitHub and clone this repository
-1. Sign into Netlify.com with your GitHub account (help, how do I do this?)
+1. Sign up to GitHub and clone this repository. (Help, how do I do this?)
+1. Sign into Netlify.com with your GitHub account. You do not need to create a Netlify account. (Help, how do I do this?)
 1. Edit this README.md file to change the Website Settings (title of website and language names) and the home page message
-1. Edit dictionary files to create entires for words
+1. Edit dictionary files to create entires for words (see formatting instructions below)
 
 ## Website Settings
 
