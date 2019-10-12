@@ -17,15 +17,19 @@ Vulgar Dictionaries allows you to create custom bilinguial dictionaries for conl
 
 This your home page message. Edit me!
 
-## dictionaryA.md file
+## Dictionary files
 
-dictionaryA.md is the 
+dictionaryA.md is the Language A to Language B file. 
 
-Edit this
+    # My word
+    /pronunciation of word/
+    ### noun
+    1. definition one
+    2. definition two
 
-1. test
-    * this is a quote - another
-    * second quote
-1. some other word
-    * this is a quote - another
-    * second quote
+# My word
+/pronunciation of word/
+### noun
+1. definition one
+2. definition two
+
