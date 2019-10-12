@@ -19,24 +19,22 @@ This your home page message. Edit me!
 
 ## Dictionary files
 
-dictionaryA.md is the Language A to Language B file. 
+There are two dicitonry files: ```dictionary.md``` is the Conlang to English dictionary, and ```English.md``` is the English to Conalng dicitonary.
+
+A word entry in the  # eg:
 
     # My word
     /pronunciation of word/
     ### noun
     1. definition one
-    2. definition two
-
-# My word
-/pronunciation of word/
-### noun
-
-1. definition one
-1. definition two
-
-    # My word
-    /pronunciation of word/
-    ### noun
-    1. definition one
-    2. definition two
+    1. definition two
     
+This creates 
+
+    # mujer
+    /muxer/
+    ### feminine noun
+    1. woman
+        * la mujer canta - the woman is signing
+    1. wife
+        * e mi mujer - she is my wife
