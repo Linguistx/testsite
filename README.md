@@ -19,7 +19,7 @@ Vulgar Dictionaries allows you to create searchable online conlang dictionaries 
 
 This your home page message. Edit me!
 
-## Editing the Dictionary
+## Creating dictionary entries
 
 There are two dicitonry files: ```conlang-dictionary.md``` contains the Conlang to English translations, and ```English-dictionary.md``` contains the English to Conalng translations.
 
