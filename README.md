@@ -13,6 +13,10 @@ The website title and the names of the languages are defined below. Edit this RE
     Website title: Sfoda - English Dictionary
     Language A: Sfoda
     Language B: English
+    
+## Home page message
+
+This your home page message. Edit me!
 
 ## dictionaryA.md file
 
