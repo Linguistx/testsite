@@ -1,8 +1,12 @@
 # testsite
 
-## dictionary.txt file
+## Settings
 
-Edit this
+Website title: Sfoda - English Dictionary
+Language A: Sfoda
+Language B: English
+Exonym A: Sfodan
+Exonym B: English
 
 ## dictionary.txt file
 
