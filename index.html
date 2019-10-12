@@ -80,10 +80,26 @@ getSettings.send();
 
 getSettings.onreadystatechange = function() {
     if (getSettings.readyState == 4 && getSettings.status == 200) {
-        let dictionaryBlob = getSettings.responseText;
-		console.log(dictionaryBlob)
-		
-	}	
+        let settings = getSettings.responseText;
+        settings = settings.match(/## Website Settings.*##/)[0].split('\n');
+        for (let i of settings) {
+            if (i.includes(':')) {
+                i = i.trim().split(/ *: */);
+		let keySide = i[0];
+		let valueSide = i[0];
+                switch (keySide) {
+                     case 'Website title': settings.title = valueSide; break;
+                     case 'Language A': settings.languageA = valueSide; break;
+                     case 'Language B': settings.languageB = valueSide; break;
+                     case 'Exonym A': settings.exonymA = valueSide; break;
+                     case 'Exonym B': settings.exonymB = valueSide; break;
+                }
+            }
+	}
+	document.getElementById('title-box').innerHTML = '<a class="title-home-link" href="./">' + settings.title.toUpperCase() + '</a>'
+	+ '<p class="powered"><a class="title-home-link" href="https://www.vulgarlang.com">Powered by Vulgarlang.com</a></p>';
+        document.title = settings.title;
+    }	
 }
 
 let getTextFile = new XMLHttpRequest();
@@ -98,24 +114,7 @@ getTextFile.onreadystatechange = function() {
         let partsOfSpeechText = dictionaryBlob[dictionaryBlob.indexOf('PARTS OF SPEECH') + 1];
         let dictionaryAtext = dictionaryBlob[dictionaryBlob.indexOf('A TO B DICTIONARY') + 1];
         let dictionaryBtext = dictionaryBlob[dictionaryBlob.indexOf('B TO A DICTIONARY') + 1];
-        settingsText = settingsText.split(/\n/g)
-        for (let setting of settingsText) {
-            setting = setting.trim();
-            if (setting == '') continue;
-            setting = setting.split('=');
-            let keySide = setting[0].trim();
-            let valueSide = setting[1].trim();
-            switch (keySide) {
-                case 'Website title': settings.title = valueSide; break;
-                case 'Language A': settings.languageA = valueSide; break;
-                case 'Language B': settings.languageB = valueSide; break;
-                case 'Exonym A': settings.exonymA = valueSide; break;
-                case 'Exonym B': settings.exonymB = valueSide; break;
-            }            
-        }
-        document.getElementById('title-box').innerHTML = '<a class="title-home-link" href="./">' + settings.title.toUpperCase() + '</a>'
-	+ '<p class="powered"><a class="title-home-link" href="https://www.vulgarlang.com">Powered by Vulgarlang.com</a></p>';
-        document.title = settings.title;
+
         partsOfSpeechText = partsOfSpeechText.split('\n')
         for (let line of partsOfSpeechText) {
             line = line.trim()
