@@ -1,8 +1,8 @@
 # testsite
 
-Settings for the website title and the names of the languages as defined below. Edit this .md file to change the settings.
+The website title and the names of the languages are defined below. Edit this .md file to change the settings.
 
-## Settings
+## Website Settings
 
     Website title: Sfoda - English Dictionary
     Language A: Sfoda
