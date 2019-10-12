@@ -1,6 +1,8 @@
 # Vulgar Dictionaries
 
-Vulgar Dictionaries allows you to create custom conlang dictionaries using Makrdown (.md) files.
+Vulgar Dictionaries allows you to create custom conlang dictionaries using Markdown formatting.
+
+## How to set up your site (with a free custom URL)
 
 1. Sign up to GitHub and clone this repository
 1. Sign into Netlify.com with your GitHub account (help, how do I do this?)
