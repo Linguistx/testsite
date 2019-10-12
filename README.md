@@ -1,12 +1,12 @@
 # testsite
 
+Settings for the website title and the names of the languages as defined below. Edit this .md file to change the settings.
+
 ## Settings
 
     Website title: Sfoda - English Dictionary
     Language A: Sfoda
     Language B: English
-    Exonym A: Sfodan
-    Exonym B: English
 
 ## dictionary.txt file
 
