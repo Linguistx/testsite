@@ -21,7 +21,7 @@ This your home page message. Edit me!
 
 ## Dictionary files
 
-There are two dicitonry files: ```dictionary.md``` is the Conlang to English dictionary, and ```English.md``` is the English to Conalng dicitonary.
+There are two dicitonry files: ```conlang-dictionary.md``` contains the Conlang to English translations, and ```English-dictionary.md``` contains the English to Conalng translations.
 
 A word entry in the  # eg:
 
