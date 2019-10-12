@@ -1,6 +1,6 @@
 # Vulgar Dictionaries
 
-Vulgar Dictionaries allows you to create custom bilinguial dictionaries for conlangs using Makrdown (.md) files.
+Vulgar Dictionaries allows you to create custom conlang dictionaries using Makrdown (.md) files.
 
 1. Sign up to GitHub and clone this repository
 1. Sign into Netlify.com with your GitHub account (help, how do I do this?)
@@ -9,8 +9,8 @@ Vulgar Dictionaries allows you to create custom bilinguial dictionaries for conl
 
 ## Website Settings
 
-    Website title: Sfoda - English Dictionary
-    Language A: Sfoda
+    Website title: My Conlang - English Dictionary
+    Language A: My Conlang
     Language B: English
     
 ## Home page message
