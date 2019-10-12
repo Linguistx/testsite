@@ -23,11 +23,7 @@ This your home page message. Edit me!
 
 There are two dicitonry files: ```conlang-dictionary.md``` contains the Conlang to English translations, and ```English-dictionary.md``` contains the English to Conalng translations.
 
-A word entry begins with a single # symbol, eg: 
-
-    # word
-    
-This makes "word" searchable in your website. After that standard Markdown syntax can be used to make sub-headings and lists:
+A word entry begins with a single # symbol, and is followed by standard Markdown syntax to make sub-headings and lists:
 
     # word
     /pronunciation of word/
@@ -35,7 +31,7 @@ This makes "word" searchable in your website. After that standard Markdown synta
     1. definition one
     1. definition two
     
-This creates 
+This makes the 
 
     # mujer
     /muxer/
