@@ -2,9 +2,13 @@
 
 Vulgar Online Dictionary allows you to create custom bilinguial dictionaries using Makrdown (.md) files.
 
-The website title and the names of the languages are defined below. Edit this README.md file to change the settings.
+1. Sign up to GitHub and clone this repository
+1. Sign into Netlify.com with your GitHub account
+1. Follow the below steps 
 
 ## Website Settings
+
+The website title and the names of the languages are defined below. Edit this README.md file to change the settings.
 
     Website title: Sfoda - English Dictionary
     Language A: Sfoda
