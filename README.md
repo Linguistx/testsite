@@ -1,6 +1,8 @@
-# testsite
+# Vulgar Online Dictionary
 
-The website title and the names of the languages are defined below. Edit this .md file to change the settings.
+Vulgar Online Dictionary allows you to create custom bilinguial dictionaries using Makrdown (.md) files.
+
+The website title and the names of the languages are defined below. Edit this README.md file to change the settings.
 
 ## Website Settings
 
@@ -8,7 +10,9 @@ The website title and the names of the languages are defined below. Edit this .m
     Language A: Sfoda
     Language B: English
 
-## dictionary.txt file
+## dictionaryA.md file
+
+dictionaryA.md is the 
 
 Edit this
 
