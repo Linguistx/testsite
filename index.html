@@ -51,7 +51,6 @@
 
 <script>
 let url = document.location.href;
-let textFileLocation = document.location.origin + '/dictionary.txt';
 
 let settings = {
     title : 'A Vulgar Online Dictionry',
@@ -77,7 +76,6 @@ let getSettings = new XMLHttpRequest();
 getSettings.open('GET', document.location.origin + '/README.md', true);
 getSettings.send();
 
-
 getSettings.onreadystatechange = function() {
     if (getSettings.readyState == 4 && getSettings.status == 200) {
         let settings = getSettings.responseText;
@@ -102,33 +100,18 @@ getSettings.onreadystatechange = function() {
     }	
 }
 
-let getTextFile = new XMLHttpRequest();
-getTextFile.open('GET', textFileLocation, true);
-getTextFile.send();
+let getConlang = new XMLHttpRequest();
+getConlang.open('GET', document.location.origin + '/conlang-dictionary.md', true);
+getConlang.send();
     
 getTextFile.onreadystatechange = function() {
-    if (getTextFile.readyState == 4 && getTextFile.status == 200) {
-        let dictionaryBlob = getTextFile.responseText;
-        dictionaryBlob = dictionaryBlob.split(/--- *(SETTINGS|PARTS OF SPEECH|A TO B DICTIONARY|B TO A DICTIONARY)/g);
-        let settingsText = dictionaryBlob[dictionaryBlob.indexOf('SETTINGS') + 1];
-        let partsOfSpeechText = dictionaryBlob[dictionaryBlob.indexOf('PARTS OF SPEECH') + 1];
-        let dictionaryAtext = dictionaryBlob[dictionaryBlob.indexOf('A TO B DICTIONARY') + 1];
-        let dictionaryBtext = dictionaryBlob[dictionaryBlob.indexOf('B TO A DICTIONARY') + 1];
-
-        partsOfSpeechText = partsOfSpeechText.split('\n')
-        for (let line of partsOfSpeechText) {
-            line = line.trim()
-            if (line == '' || !line.includes('=')) continue;
-            line = line.split('=');
-            let keySide = line[0].trim();
-            let valueSide = line[1].trim();
-            partsOfSpeech[keySide] = valueSide;
-        }   
+    if (getConlang.readyState == 4 && getConlang.status == 200) {
+        let dictionaryBlob = getConlang.responseText;
         
-        dictionaryAtext = dictionaryAtext.split('@');
-        for (let entry of dictionaryAtext) {
-            let forwardSlash = entry.indexOf('/');
-            let colon = entry.search(/\w+ *:/);
+        dictionaryBlob = dictionaryBlob.split(/^# |\n# /);
+        for (let entry of dictionaryBlob) {
+            let forwardSlash = entry.indexOf('\n');
+            let colon = entry.search(/$/);
             let delineator = Math.min(forwardSlash, colon);
             delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon);
             let word = entry.slice(0, delineator).trim();
@@ -140,23 +123,7 @@ getTextFile.onreadystatechange = function() {
                 dictionaryA[word].push(wordData);
             }
         }
-		
-        dictionaryBtext = dictionaryBtext.split('@');
-        for (let entry of dictionaryBtext) {
-            let forwardSlash = entry.indexOf('/');
-            let colon = entry.search(/\w+ *:/);
-            let delineator = Math.min(forwardSlash, colon);
-            delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon);
-            let word = entry.slice(0, delineator).trim();
-            let wordData = entry.slice(delineator).trim();
-            if (!dictionaryB[word]) {
-                dictionaryB[word] = [wordData];
-                BentriesOnly.push(word);
-            } else {
-                dictionaryB[word].push(wordData);
-            }
-        }
-        
+
         if (url.endsWith('/?grammar-doc')) {
             sendEntry('grammar-doc');
         } else if (url.includes('?')) {
