@@ -202,9 +202,9 @@ body {
         display: none;
     }
     
-   #searchPart {
-    max-height: auto;
-  }
+    #search-box-input {
+        font-size:80px;
+    }
 }
 
 h1, h2, h3 {
