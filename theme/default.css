@@ -201,6 +201,10 @@ body {
     .side {
         display: none;
     }
+    
+   #searchPart {
+    max-height: auto;
+  }
 }
 
 h1, h2, h3 {
