@@ -201,9 +201,19 @@ body {
     .side {
         display: none;
     }
+    #searchPart {
+    max-height: 45px;
+    display: flex;
+    white-space: nowrap;
+    margin: 0px;
+    background: white;
+    padding: 0px;
+    border-radius: 4px;
+    justify-content: center;
+   }
     
     #search-box-input {
-margin: 20px;
+   margin: 20px;
     }
 }
 
