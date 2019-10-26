@@ -135,6 +135,7 @@ getConlang.onreadystatechange = function() {
             var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1));
             sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
         } else {
+		console.log('hiooo', settings.homeMessage)
             document.getElementById('entry').innerHTML = converter.makeHtml(settings.homeMessage);
 	}
     }
