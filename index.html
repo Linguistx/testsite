@@ -81,7 +81,7 @@ getSettings.send();
 getSettings.onreadystatechange = function() {
     if (getSettings.readyState == 4 && getSettings.status == 200) {
         let getSettingsResponseText = getSettings.responseText;
-        let settings = getSettingsResponseText.match(/## Website Settings[\s\S]*##/)[0].split('\n');
+        let settings = getSettingsResponseText.match(/# Website Settings[\s\S]*#/)[0].split('\n');
         for (let i of settings) {
             if (i.includes(':')) {
                 i = i.trim().split(/ *: */);
