@@ -101,7 +101,10 @@ getSettings.onreadystatechange = function() {
         document.title = settings.title;
 	let homePageMessage = getSettingsResponseText.match(/## Home page message[\s\S]*##/)[0];
 	homePageMessage = homePageMessage.replace('## Home page message', '').trim();
-        settings.homeMessage = homePageMessage;
+	    
+        if (!url.endsWith('/?grammar-doc') && url.includes('?')) {
+            document.getElementById('entry').innerHTML = converter.makeHtml(homePageMessage);
+	}
     }	
 }
 
@@ -134,10 +137,7 @@ getConlang.onreadystatechange = function() {
         } else if (url.includes('?')) {
             var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1));
             sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
-        } else {
-		console.log('hiooo', settings.homeMessage)
-            document.getElementById('entry').innerHTML = converter.makeHtml(settings.homeMessage);
-	}
+        }
     }
 }
 
