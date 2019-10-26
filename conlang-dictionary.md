@@ -1,4 +1,4 @@
-# example word
+# example entry
 
 New word entries start with a single pound sign #. Sub-headings are created with ## and sub-sub-headings with ###.
 
