@@ -19,10 +19,11 @@ There is no "correct" way to structure your dictionary entries, but one option t
     * zi na fol ak ama - he threw it in the fire
 2. soul
     * fri kran ama ciol - she has a beautiful soul
-
 ### verb
 1. to burn
 2. to be hot
-
 ## Etymology
-Possibly borrowed from Wood Elven.
+From Wood Elven *ana* "hot".
+## Derived words
+* amak
+* ama glak
