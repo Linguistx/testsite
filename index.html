@@ -100,8 +100,9 @@ getSettings.onreadystatechange = function() {
 	+ '<p class="powered"><a class="title-home-link" href="https://www.vulgarlang.com">Powered by Vulgarlang.com</a></p>';
         document.title = settings.title;
 	let homePageMessage = getSettingsResponseText.match(/## Home page message[\s\S]*##/)[0];
+	    console.log(1, homePageMessage)
 	homePageMessage = homePageMessage.replace('## Home page message', '').trim();
-	    
+	    console.log(2, homePageMessage)
         if (!url.endsWith('/?grammar-doc') && url.includes('?')) {
             document.getElementById('entry').innerHTML = converter.makeHtml(homePageMessage);
 	}
