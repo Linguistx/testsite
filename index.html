@@ -101,9 +101,9 @@ getSettings.onreadystatechange = function() {
         document.title = settings.title;
 	let homePageMessage = getSettingsResponseText.match(/## Home page message[\s\S]*##/)[0];
 	    console.log(1, homePageMessage)
-	homePageMessage = homePageMessage.replace('## Home page message', '').trim();
+	homePageMessage = homePageMessage.replace('## Home page message', '').replace(/##$/, '').trim();
 	    console.log(2, homePageMessage)
-        if (!url.endsWith('/?grammar-doc') && url.includes('?')) {
+        if (!url.endsWith('/?grammar-doc') && !url.includes('?')) {
             document.getElementById('entry').innerHTML = converter.makeHtml(homePageMessage);
 	}
     }	
