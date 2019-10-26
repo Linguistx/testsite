@@ -58,7 +58,8 @@ let settings = {
     languageA : '',
     languageB : '',
     exonymA : '',
-    exonymb : ''
+    exonymb : '',
+    homeMessage : ''
 }
 
 let partsOfSpeech = {};
@@ -79,8 +80,8 @@ getSettings.send();
 
 getSettings.onreadystatechange = function() {
     if (getSettings.readyState == 4 && getSettings.status == 200) {
-        let settings = getSettings.responseText;
-        settings = settings.match(/## Website Settings[\s\S]*##/)[0].split('\n');
+        let getSettingsResponseText = getSettings.responseText;
+        let settings = getSettingsResponseText.match(/## Website Settings[\s\S]*##/)[0].split('\n');
         for (let i of settings) {
             if (i.includes(':')) {
                 i = i.trim().split(/ *: */);
@@ -98,6 +99,9 @@ getSettings.onreadystatechange = function() {
 	document.getElementById('title-box').innerHTML = '<a class="title-home-link" href="./">' + settings.title.toUpperCase() + '</a>'
 	+ '<p class="powered"><a class="title-home-link" href="https://www.vulgarlang.com">Powered by Vulgarlang.com</a></p>';
         document.title = settings.title;
+	let homePageMessage = getSettingsResponseText.match(/## Home page message[\s\S]*##/)[0];
+	homePageMessage = homePageMessage.replace('## Home page message', '').trim();
+        settings.homeMessage = homePageMessage;
     }	
 }
 
@@ -130,12 +134,13 @@ getConlang.onreadystatechange = function() {
         } else if (url.includes('?')) {
             var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1));
             sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
-        }
+        } else {
+            document.getElementById('entry').innerHTML = converter.makeHtml(settings.homeMessage);
+	}
     }
 }
 
 function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
-	console.log('fffuck')
     if (forceAB) tryLang = forceAB;
     if (term == 'grammar-doc') {
         document.getElementById('tab-space').innerHTML = '';
@@ -191,7 +196,6 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
     let allEntries = [];
 	console.log(chosenLang)
     for (let entry of chosenLang) {
-console.log(entry)
         allEntries.push('<h1>' + term + '</h1>' + converter.makeHtml(entry));
     }
     document.getElementById('tab-space').innerHTML = bothLanguage;
