@@ -80,9 +80,9 @@ getSettings.send();
 getSettings.onreadystatechange = function() {
     if (getSettings.readyState == 4 && getSettings.status == 200) {
         let getSettingsResponseText = getSettings.responseText;
-        let settings = getSettingsResponseText.match(/# Website Settings[\s\S]*\n# /)[0].split('\n');
+        let settingsBlob = getSettingsResponseText.match(/# Website Settings[\s\S]*\n# /)[0].split('\n');
 	    console.log('set', settings)
-        for (let i of settings) {
+        for (let i of settingsBlob) {
             if (i.includes(':')) {
                 i = i.trim().split(/ *: */);
 		let keySide = i[0];
