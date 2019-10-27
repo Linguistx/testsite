@@ -190,6 +190,10 @@ body {
         flex-direction: column;
     }
     
+    .navbar a {
+    padding: 7px 10px;
+}
+    
    #title-box {
     font-size: 20px;
     padding: 10px 10px 5px 10px;
