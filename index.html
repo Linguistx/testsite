@@ -105,7 +105,8 @@ getSettings.onreadystatechange = function() {
         if (!url.endsWith('/?grammar-doc') && !url.includes('?')) {
             document.getElementById('entry').innerHTML = converter.makeHtml(homePageMessage);
 	}
-    }	
+    }
+	console.log(settings.languageA, settings.languageB)
 }
 
 let getConlang = new XMLHttpRequest();
