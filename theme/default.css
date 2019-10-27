@@ -190,17 +190,19 @@ body {
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media only screen and (max-width: 850px) {
+    
+    article {
+        display:grid;
+    }
     .footer {
-    flex: 1;
+  grid-row-start: 2;
+  grid-row-end: 3;
      }
+    
     .header, .row, .navbar {   
         flex-direction: column;
     }
     
-    .footer {
-    align-content: flex-end;
-
-   }
     
     .navbar a {
     padding: 11px 10px;
