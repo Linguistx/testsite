@@ -118,8 +118,9 @@ getEnglish.open('GET', document.location.origin + '/english-dictionary.md', true
 getEnglish.send();
     
 getConlang.onreadystatechange = function() {
-    getEnglish.onreadystatechange = function() {
-        if (getConlang.readyState == 4 && getConlang.status == 200 && getEnglish.readyState == 4 && getEnglish.status == 200) {
+    if (getConlang.readyState == 4 && getConlang.status == 200) {
+     getEnglish.onreadystatechange = function() {
+	if (getEnglish.readyState == 4 && getEnglish.status == 200) {
             let dictionaryBlob = getConlang.responseText;
             let englishBLob = getEnglish.responseText;
 
@@ -163,6 +164,7 @@ getConlang.onreadystatechange = function() {
             }
         }
     }
+}
 }
 
 function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
