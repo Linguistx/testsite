@@ -111,14 +111,13 @@ getSettings.onreadystatechange = function() {
 let getConlang = new XMLHttpRequest();
 getConlang.open('GET', document.location.origin + '/conlang-dictionary.md', true);
 getConlang.send();
-	
-let getEnglish = new XMLHttpRequest();
-getEnglish.open('GET', document.location.origin + '/english-dictionary.md', true);
-getEnglish.send();
     
 getConlang.onreadystatechange = function() {
 	console.log(11, getConlang.readyState, getConlang.status)
     if (getConlang.readyState == 4 && getConlang.status == 200) {
+    let getEnglish = new XMLHttpRequest();
+    getEnglish.open('GET', document.location.origin + '/english-dictionary.md', true);
+    getEnglish.send();
      getEnglish.onreadystatechange = function() {
 	     console.log(22, getEnglish.readyState, getEnglish.status)
 	if (getEnglish.readyState == 4 && getEnglish.status == 200) {
