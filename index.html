@@ -5,61 +5,65 @@
 <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.0/dist/showdown.min.js"></script>
 <link rel="icon" 
-      type="svg" 
-      href="/theme/logo.png">
+  type="svg" 
+  href="/theme/logo.png">
 	
 <body>
-    <article>
-        <div class="header">
-            <span id="#logo-title">
-		<a class="title-home-link" href="./"><img src="/theme/logo.png" class="logo" height="70"></img></a>
-                <span id="title-box"></span>
-            </span>
-            <span class="searchbar">
-                <span id="searchPart">
-                    <input id="search-box-input"
-                        autocorrect="off"
-                        autocapitalize="off"
-                        spellcheck="false"
-                        onfocus="border('on')"
-                        onblur="border('off')"></input>
-                    <img onclick="javascript:searchWord()"
-                        id="magnifying-glass"
-                        class="pointer"
-                        src="/theme/magnifying-glass.svg"
-                        height="25px"></img>
-                </span>
-            </span>
-        </div>
-        <div class="navbar">
-            <a href="./">HOME</a>
-            <a class="pointer" onclick="sendEntry('grammar-doc')">GRAMMAR</a>
-        </div>
-        <div class="row">
-            <div class="side" id="sidebar"></div>
-            <div class="main">
-		    <div id="tab-space"></div>
-                <div id="entry"></div>
-            </div>
-        </div>
-        <div class="footer">
-            <a class="title-home-link" href="https://www.vulgarlang.com">Powered by Vulgarlang.com</a> | 
-            Icons made by <a class="title-home-link" href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> 
-            from <a class="title-home-link" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-        </div>
-    </article>
+  <article>
+    <div class="header">
+      <span id="#logo-title">
+        <a class="title-home-link" href="./"><img src="/theme/logo.png" class="logo" height="70"></img></a>
+        <span id="title-box"></span>
+      </span>
+      <span class="searchbar">
+        <span id="searchPart">
+          <input id="search-box-input"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            onfocus="border('on')"
+            onblur="border('off')">
+          </input>
+          <img onclick="javascript:searchWord()"
+            id="magnifying-glass"
+            class="pointer"
+            src="/theme/magnifying-glass.svg"
+            height="25px">
+          </img>
+        </span>
+      </span>
+    </div>
+    <div class="navbar">
+      <a href="./">HOME</a>
+      <a class="pointer" onclick="sendEntry('grammar-doc')">GRAMMAR</a>
+    </div>
+    <div class="row">
+      <div class="side" id="sidebar"></div>
+      <div class="main">
+      <div id="tab-space"></div>
+      <div id="entry"></div>
+    </div>
+    </div>
+    <div class="footer">
+      <a class="title-home-link" href="https://www.vulgarlang.com">
+        Powered by Vulgarlang.com</a> | 
+        Icons made by <a class="title-home-link" href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> 
+       from <a class="title-home-link" href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com
+      </a>
+    </div>
+  </article>
 </body>
 
 <script>
 let url = document.location.href;
 
 let settings = {
-    title : 'A Vulgar Online Dictionry',
-    languageA : '',
-    languageB : '',
-    exonymA : '',
-    exonymb : '',
-    homeMessage : ''
+  title : 'A Vulgar Online Dictionry',
+  languageA : '',
+  languageB : '',
+  exonymA : '',
+  exonymb : '',
+  homeMessage : ''
 }
 
 let partsOfSpeech = {};
@@ -68,7 +72,7 @@ let dictionaryB = {};
 let AentriesOnly = [];
 let BentriesOnly = [];
 let headingPattern = /(\w+ *:)/g;
-tryLang = 'A';
+let tryLang = 'A';
 var converter = new showdown.Converter();
 converter.setOption('tables', true);
 converter.setOption('disableForced4SpacesIndentedSublists', true);
@@ -78,188 +82,187 @@ getSettings.open('GET', document.location.origin + '/README.md', true);
 getSettings.send();
 
 getSettings.onreadystatechange = function() {
-    if (getSettings.readyState == 4 && getSettings.status == 200) {
-        let getSettingsResponseText = getSettings.responseText;
-        let settingsBlob = getSettingsResponseText.match(/# Website Settings[\s\S]*\n# /)[0].split('\n');
-	    console.log('set', settings)
-        for (let i of settingsBlob) {
-            if (i.includes(':')) {
-                i = i.trim().split(/ *: */);
-		let keySide = i[0];
-		let valueSide = i[1];
-                switch (keySide) {
-                     case 'Website title': settings.title = valueSide; console.log('yess1', settings.title); break;
-                     case 'Language A': settings.languageA = valueSide; console.log('yess', settings.languageA); break;
-                     case 'Language B': settings.languageB = valueSide; break;
-                     case 'Exonym A': settings.exonymA = valueSide; break;
-                     case 'Exonym B': settings.exonymB = valueSide; break;
-                }
-            }
-	}
-	document.getElementById('title-box').innerHTML = '<a class="title-home-link" href="./">' + settings.title.toUpperCase() + '</a>'
-	+ '<p class="powered"><a class="title-home-link" href="https://www.vulgarlang.com">Powered by Vulgarlang.com</a></p>';
-        document.title = settings.title;
-	let homePageMessage = getSettingsResponseText.match(/# Home page message[\s\S]*?\n# /)[0];
-	homePageMessage = homePageMessage.replace('# Home page message', '').replace(/# $/, '').trim();
-        if (!url.endsWith('/?grammar-doc') && !url.includes('?')) {
-            document.getElementById('entry').innerHTML = converter.makeHtml(homePageMessage);
-	}
-	//////    
+  if (getSettings.readyState == 4 && getSettings.status == 200) {
+    let getSettingsResponseText = getSettings.responseText;
+    let settingsBlob = getSettingsResponseText.match(/# Website Settings[\s\S]*\n# /)[0].split('\n');
+    for (let i of settingsBlob) {
+      if (i.includes(':')) {
+        i = i.trim().split(/ *: */);
+        let keySide = i[0];
+        let valueSide = i[1];
+          switch (keySide) {
+            case 'Website title': settings.title = valueSide; break;
+            case 'Language A': settings.languageA = valueSide; break;
+            case 'Language B': settings.languageB = valueSide; break;
+          }
+       }
+    }
+    document.getElementById('title-box').innerHTML =
+      '<a class="title-home-link" href="./">' + settings.title.toUpperCase() + '</a>'
+      + '<p class="powered"><a class="title-home-link" href="https://www.vulgarlang.com">Powered by Vulgarlang.com</a></p>';
+
+    document.title = settings.title;
+    let homePageMessage = getSettingsResponseText.match(/# Home page message[\s\S]*?\n# /)[0];
+    homePageMessage = homePageMessage.replace('# Home page message', '').replace(/# $/, '').trim();
+    if (!url.endsWith('/?grammar-doc') && !url.includes('?')) {
+      document.getElementById('entry').innerHTML = converter.makeHtml(homePageMessage);
+    } 
 
     let getConlang = new XMLHttpRequest();
     getConlang.open('GET', document.location.origin + '/conlang-dictionary.md', true);
     getConlang.send();
     
     getConlang.onreadystatechange = function() {
-        if (getConlang.readyState == 4 && getConlang.status == 200) {
-            let getEnglish = new XMLHttpRequest();
-            getEnglish.open('GET', document.location.origin + '/english-dictionary.md', true);
-            getEnglish.send();
-            getEnglish.onreadystatechange = function() {
+      if (getConlang.readyState == 4 && getConlang.status == 200) {
+        let getEnglish = new XMLHttpRequest();
+        getEnglish.open('GET', document.location.origin + '/english-dictionary.md', true);
+        getEnglish.send();
+        getEnglish.onreadystatechange = function() {
 
-	        if (getEnglish.readyState == 4 && getEnglish.status == 200) {
-                    let dictionaryBlob = getConlang.responseText;
-                    let englishBLob = getEnglish.responseText;
+        if (getEnglish.readyState == 4 && getEnglish.status == 200) {
+          let dictionaryBlob = getConlang.responseText;
+          let englishBLob = getEnglish.responseText;
 
-                    dictionaryBlob = dictionaryBlob.split(/^# |\n# /);
-                   for (let entry of dictionaryBlob) {
-                        let forwardSlash = entry.indexOf('\n');
-                        let colon = entry.search(/$/);
-                        let delineator = Math.min(forwardSlash, colon);
-                        delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon);
-                        let word = entry.slice(0, delineator).trim();
-                        let wordData = entry.slice(delineator).trim();
-                        if (!dictionaryA[word]) {
-                            dictionaryA[word] = [wordData];
-                            AentriesOnly.push(word);
-                        } else {
-                            dictionaryA[word].push(wordData);
-                        }
-                    }
-		
-                    englishBLob = englishBLob.split(/^# |\n# /);
-                    for (let entry of englishBLob) {
-                        let forwardSlash = entry.indexOf('\n');
-                        let colon = entry.search(/$/);
-                        let delineator = Math.min(forwardSlash, colon);
-                        delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon);
-                        let word = entry.slice(0, delineator).trim();
-                        let wordData = entry.slice(delineator).trim();
-                        if (!dictionaryB[word]) {
-                            dictionaryB[word] = [wordData];
-                            BentriesOnly.push(word);
-                        } else {
-                            dictionaryB[word].push(wordData);
-                        }
-                    }
-
-                    if (url.endsWith('/?grammar-doc')) {
-                        sendEntry('grammar-doc');
-                    } else if (url.includes('?')) {
-                        var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1));
-                        sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
-                    }
-                }
+          dictionaryBlob = dictionaryBlob.split(/^# |\n# /);
+          for (let entry of dictionaryBlob) {
+            let forwardSlash = entry.indexOf('\n');
+            let colon = entry.search(/$/);
+            let delineator = Math.min(forwardSlash, colon);
+            delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon);
+            let word = entry.slice(0, delineator).trim();
+            let wordData = entry.slice(delineator).trim();
+              if (!dictionaryA[word]) {
+                dictionaryA[word] = [wordData];
+                AentriesOnly.push(word);
+              } else {
+                dictionaryA[word].push(wordData);
+              }
             }
+
+            englishBLob = englishBLob.split(/^# |\n# /);
+            for (let entry of englishBLob) {
+              let forwardSlash = entry.indexOf('\n');
+              let colon = entry.search(/$/);
+              let delineator = Math.min(forwardSlash, colon);
+              delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon);
+              let word = entry.slice(0, delineator).trim();
+              let wordData = entry.slice(delineator).trim();
+              if (!dictionaryB[word]) {
+                dictionaryB[word] = [wordData];
+                BentriesOnly.push(word);
+              } else {
+                dictionaryB[word].push(wordData);
+              }
+            }
+
+            if (url.endsWith('/?grammar-doc')) {
+              sendEntry('grammar-doc');
+            } else if (url.includes('?')) {
+              var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1));
+              sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
+            }
+          }
         }
+      }
     }	    
-	   ////// 
-	    
-    }
+  }
 }
 
 function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
-    if (forceAB) tryLang = forceAB;
-    if (term == 'grammar-doc') {
-        document.getElementById('tab-space').innerHTML = '';
-        document.getElementById('entry').innerHTML = '';
-        var stateObj = { foo: 'bar' };
-        history.pushState(stateObj, term, '?grammar-doc');
-        let grammarFileLocation = document.location.origin + '/grammar.md';
-        let getGrammarFile = new XMLHttpRequest();
-        getGrammarFile.open('GET', grammarFileLocation, true);
-        getGrammarFile.send();
-
-        getGrammarFile.onreadystatechange = function() {
-            if (getGrammarFile.readyState == 4 && getGrammarFile.status == 200) {
-		let grammarBlob = getGrammarFile.responseText;
-		document.getElementById('entry').innerHTML = converter.makeHtml(grammarBlob);
-            }
-	}
-	return;
-    }
-    let bothLanguage = '';
-    if (!associatedInfoA && !associatedInfoB && term != 'grammar-doc') {
-        document.getElementById('entry').innerHTML = 'No entry found';
-        document.getElementById('tab-space').style.padding = '0px 0px 0px 0px;';
-	return;
-    } else if (associatedInfoA && associatedInfoB) {
-        if (tryLang == 'A') {
-            bothLanguage = `<div class="tab-holder"><a class="pointer" onclick="javascript:sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `'], 'B');">`
-                + settings.languageB + ' to ' + settings.languageA + '</a> '
-                + '<span class="tab">' + settings.languageA + ' to ' + settings.languageB + '</span></div>';
-            var chosenLang = associatedInfoA;
-            var chosenLangEntries = AentriesOnly;
-            document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
-        } else {
-            bothLanguage = '<div class="tab-holder"><span class="tab">' + settings.languageB + ' to ' + settings.languageA + '</span> '
-                + `<a class="pointer" onclick="javascript:sendEntry('` + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `'], 'A');">`
-                + settings.languageA + ' to ' + settings.languageB + '</a></div>';
-            var chosenLang = associatedInfoB;
-            var chosenLangEntries = BentriesOnly;
-            document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
-        }
-    } else if (associatedInfoA) {
-        var chosenLang = associatedInfoA;
-        var chosenLangEntries = AentriesOnly
-        tryLang = 'A';
-	    document.getElementById('tab-space').style.padding = '0px 0px 0px 0px;';
-    } else if (associatedInfoB) {
-        var chosenLang = associatedInfoB;
-        var chosenLangEntries = BentriesOnly;
-        tryLang = 'B';
-        document.getElementById('tab-space').style.padding = '0px 0px 0px 0px;';
-    }
-	
-    let allEntries = [];
-	console.log(chosenLang)
-    for (let entry of chosenLang) {
-        allEntries.push('<h1>' + term + '</h1>' + converter.makeHtml(entry));
-    }
-    document.getElementById('tab-space').innerHTML = bothLanguage;
-    document.getElementById('entry').innerHTML = allEntries.join('');
-
-    let startIndex = chosenLangEntries.indexOf(term);
-    if (startIndex < 10) startIndex = 10;
-    var sidebar = chosenLangEntries.slice(startIndex - 10 , startIndex + 11);
-    sidebar = sidebar.map(i => `<li><a onclick="javascript:sendEntry('` + i + `', dictionaryA['` + i + `'], dictionaryB['` + i + `']);">` + i + '</a></li>');
-    document.getElementById('sidebar').innerHTML = '<h3>More ...</h3><ul>' + sidebar.join('') + '</ul>';
+  if (forceAB) tryLang = forceAB;
+  if (term == 'grammar-doc') {
+    document.getElementById('tab-space').innerHTML = '';
+    document.getElementById('entry').innerHTML = '';
     var stateObj = { foo: 'bar' };
-    history.pushState(stateObj, term, '?' + term);
+    history.pushState(stateObj, term, '?grammar-doc');
+    let grammarFileLocation = document.location.origin + '/grammar.md';
+    let getGrammarFile = new XMLHttpRequest();
+    getGrammarFile.open('GET', grammarFileLocation, true);
+    getGrammarFile.send();
+
+    getGrammarFile.onreadystatechange = function() {
+      if (getGrammarFile.readyState == 4 && getGrammarFile.status == 200) {
+        let grammarBlob = getGrammarFile.responseText;
+        document.getElementById('entry').innerHTML = converter.makeHtml(grammarBlob);
+      }
+    }
+    return;
+  }
+  let bothLanguage = '';
+  if (!associatedInfoA && !associatedInfoB && term != 'grammar-doc') {
+    document.getElementById('entry').innerHTML = 'No entry found';
+    document.getElementById('tab-space').style.padding = '0px 0px 0px 0px;';
+    return;
+  } else if (associatedInfoA && associatedInfoB) {
+    if (tryLang == 'A') {
+      bothLanguage =
+	`<div class="tab-holder"><a class="pointer" onclick="javascript:sendEntry('`
+        + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `'], 'B');">`
+        + settings.languageB + ' to ' + settings.languageA + '</a> '
+        + '<span class="tab">' + settings.languageA + ' to ' + settings.languageB + '</span></div>';
+      var chosenLang = associatedInfoA;
+      var chosenLangEntries = AentriesOnly;
+      document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
+    } else {
+      bothLanguage =
+	'<div class="tab-holder"><span class="tab">' + settings.languageB + ' to ' + settings.languageA + '</span> '
+        + `<a class="pointer" onclick="javascript:sendEntry('`
+        + term + `', dictionaryA['` + term + `'], dictionaryB['` + term + `'], 'A');">`
+        + settings.languageA + ' to ' + settings.languageB + '</a></div>';
+      var chosenLang = associatedInfoB;
+      var chosenLangEntries = BentriesOnly;
+      document.getElementById('tab-space').style.padding = '12px 0px 0px 0px;';
+    }
+  } else if (associatedInfoA) {
+    var chosenLang = associatedInfoA;
+    var chosenLangEntries = AentriesOnly
+    tryLang = 'A';
+    document.getElementById('tab-space').style.padding = '0px 0px 0px 0px;';
+  } else if (associatedInfoB) {
+    var chosenLang = associatedInfoB;
+    var chosenLangEntries = BentriesOnly;
+    tryLang = 'B';
+    document.getElementById('tab-space').style.padding = '0px 0px 0px 0px;';
+  }
+	
+  let allEntries = [];
+  for (let entry of chosenLang) {
+    allEntries.push('<h1>' + term + '</h1>' + converter.makeHtml(entry));
+  }
+  document.getElementById('tab-space').innerHTML = bothLanguage;
+  document.getElementById('entry').innerHTML = allEntries.join('');
+
+  let startIndex = chosenLangEntries.indexOf(term);
+  if (startIndex < 10) startIndex = 10;
+  var sidebar = chosenLangEntries.slice(startIndex - 10 , startIndex + 11);
+  sidebar = sidebar.map(i => `<li><a onclick="javascript:sendEntry('` + i + `', dictionaryA['` + i + `'], dictionaryB['` + i + `']);">` + i + '</a></li>');
+  document.getElementById('sidebar').innerHTML = '<h3>More ...</h3><ul>' + sidebar.join('') + '</ul>';
+  var stateObj = { foo: 'bar' };
+  history.pushState(stateObj, term, '?' + term);
 }
 
 function searchWord() {
-    let queryTerm = document.getElementById('search-box-input').value.trim();
-    sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
-    var stateObj = { foo: 'bar' };
-    history.pushState(stateObj, queryTerm, '?' + queryTerm);
+  let queryTerm = document.getElementById('search-box-input').value.trim();
+  sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
+  var stateObj = { foo: 'bar' };
+  history.pushState(stateObj, queryTerm, '?' + queryTerm);
 }
 
-let input = document.getElementById('search-box-input')
+let input = document.getElementById('search-box-input');
+	
 input.addEventListener('keyup', function(event) {
-    if (event.keyCode === 13) {
-        event.preventDefault();
-        document.getElementById('magnifying-glass').click();
-    }
-})
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementById('magnifying-glass').click();
+  }
+});
 	
 function border(x) {	
-	
-    if (x == 'on') {
-        document.getElementById("searchPart").style.cssText = "border: 2px solid #1c3448; padding: 6px 6px 6px 9px;";
-    } else {
-	 document.getElementById("searchPart").style.cssText = "border: none; padding: 8px 8px 8px 11px;";   
-    }
+  if (x == 'on') {
+    document.getElementById("searchPart").style.cssText = "border: 2px solid #1c3448; padding: 6px 6px 6px 9px;";
+  } else {
+    document.getElementById("searchPart").style.cssText = "border: none; padding: 8px 8px 8px 11px;";   
+  }
 }
    
 </script>
