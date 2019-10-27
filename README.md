@@ -13,7 +13,7 @@ Vulgar Dictionaries allows you to create searchable online conlang dictionaries 
 # Website Settings
 
     Website title: My Conlang - English Dictionary
-    Language A: My Conlang
+    Language A: Sfoda
     Language B: English
     
 # Home page message
