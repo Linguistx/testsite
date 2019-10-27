@@ -80,7 +80,7 @@ getSettings.send();
 getSettings.onreadystatechange = function() {
     if (getSettings.readyState == 4 && getSettings.status == 200) {
         let getSettingsResponseText = getSettings.responseText;
-        let settings = getSettingsResponseText.match(/# Website Settings[\s\S]*#/)[0].split('\n');
+        let settings = getSettingsResponseText.match(/# Website Settings[\s\S]*\n# /)[0].split('\n');
         for (let i of settings) {
             if (i.includes(':')) {
                 i = i.trim().split(/ *: */);
@@ -99,9 +99,7 @@ getSettings.onreadystatechange = function() {
 	+ '<p class="powered"><a class="title-home-link" href="https://www.vulgarlang.com">Powered by Vulgarlang.com</a></p>';
         document.title = settings.title;
 	let homePageMessage = getSettingsResponseText.match(/# Home page message[\s\S]*?\n# /)[0];
-	    console.log(1, homePageMessage)
 	homePageMessage = homePageMessage.replace('# Home page message', '').replace(/# $/, '').trim();
-	    console.log(444, homePageMessage)
         if (!url.endsWith('/?grammar-doc') && !url.includes('?')) {
             document.getElementById('entry').innerHTML = converter.makeHtml(homePageMessage);
 	}
