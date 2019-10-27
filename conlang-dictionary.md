@@ -27,3 +27,7 @@ From Wood Elven *ana* "hot".
 ## Derived words
 * amak
 * ama glak
+
+# man
+
+hey manzzzz
