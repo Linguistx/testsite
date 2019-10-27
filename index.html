@@ -104,67 +104,68 @@ getSettings.onreadystatechange = function() {
         if (!url.endsWith('/?grammar-doc') && !url.includes('?')) {
             document.getElementById('entry').innerHTML = converter.makeHtml(homePageMessage);
 	}
-    }
-	console.log(settings.languageA, settings.languageB)
-}
+	//////    
 
-let getConlang = new XMLHttpRequest();
-getConlang.open('GET', document.location.origin + '/conlang-dictionary.md', true);
-getConlang.send();
+    let getConlang = new XMLHttpRequest();
+    getConlang.open('GET', document.location.origin + '/conlang-dictionary.md', true);
+    getConlang.send();
     
-getConlang.onreadystatechange = function() {
-	console.log(11, getConlang.readyState, getConlang.status)
-    if (getConlang.readyState == 4 && getConlang.status == 200) {
-    let getEnglish = new XMLHttpRequest();
-    getEnglish.open('GET', document.location.origin + '/english-dictionary.md', true);
-    getEnglish.send();
-     getEnglish.onreadystatechange = function() {
-	     console.log(22, getEnglish.readyState, getEnglish.status)
-	if (getEnglish.readyState == 4 && getEnglish.status == 200) {
-            let dictionaryBlob = getConlang.responseText;
-            let englishBLob = getEnglish.responseText;
+    getConlang.onreadystatechange = function() {
+        if (getConlang.readyState == 4 && getConlang.status == 200) {
+            let getEnglish = new XMLHttpRequest();
+            getEnglish.open('GET', document.location.origin + '/english-dictionary.md', true);
+            getEnglish.send();
+            getEnglish.onreadystatechange = function() {
 
-            dictionaryBlob = dictionaryBlob.split(/^# |\n# /);
-            for (let entry of dictionaryBlob) {
-                let forwardSlash = entry.indexOf('\n');
-                let colon = entry.search(/$/);
-                let delineator = Math.min(forwardSlash, colon);
-                delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon);
-                let word = entry.slice(0, delineator).trim();
-                let wordData = entry.slice(delineator).trim();
-                if (!dictionaryA[word]) {
-                    dictionaryA[word] = [wordData];
-                    AentriesOnly.push(word);
-                } else {
-                    dictionaryA[word].push(wordData);
-                }
-            }
+	        if (getEnglish.readyState == 4 && getEnglish.status == 200) {
+                    let dictionaryBlob = getConlang.responseText;
+                    let englishBLob = getEnglish.responseText;
+
+                    dictionaryBlob = dictionaryBlob.split(/^# |\n# /);
+                   for (let entry of dictionaryBlob) {
+                        let forwardSlash = entry.indexOf('\n');
+                        let colon = entry.search(/$/);
+                        let delineator = Math.min(forwardSlash, colon);
+                        delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon);
+                        let word = entry.slice(0, delineator).trim();
+                        let wordData = entry.slice(delineator).trim();
+                        if (!dictionaryA[word]) {
+                            dictionaryA[word] = [wordData];
+                            AentriesOnly.push(word);
+                        } else {
+                            dictionaryA[word].push(wordData);
+                        }
+                    }
 		
-            englishBLob = englishBLob.split(/^# |\n# /);
-            for (let entry of englishBLob) {
-                let forwardSlash = entry.indexOf('\n');
-                let colon = entry.search(/$/);
-                let delineator = Math.min(forwardSlash, colon);
-                delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon);
-                let word = entry.slice(0, delineator).trim();
-                let wordData = entry.slice(delineator).trim();
-                if (!dictionaryB[word]) {
-                    dictionaryB[word] = [wordData];
-                    BentriesOnly.push(word);
-                } else {
-                    dictionaryB[word].push(wordData);
-                }
-            }
+                    englishBLob = englishBLob.split(/^# |\n# /);
+                    for (let entry of englishBLob) {
+                        let forwardSlash = entry.indexOf('\n');
+                        let colon = entry.search(/$/);
+                        let delineator = Math.min(forwardSlash, colon);
+                        delineator = (delineator > 0) ? delineator : Math.max(forwardSlash, colon);
+                        let word = entry.slice(0, delineator).trim();
+                        let wordData = entry.slice(delineator).trim();
+                        if (!dictionaryB[word]) {
+                            dictionaryB[word] = [wordData];
+                            BentriesOnly.push(word);
+                        } else {
+                            dictionaryB[word].push(wordData);
+                        }
+                    }
 
-            if (url.endsWith('/?grammar-doc')) {
-                sendEntry('grammar-doc');
-            } else if (url.includes('?')) {
-                var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1));
-                sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
+                    if (url.endsWith('/?grammar-doc')) {
+                        sendEntry('grammar-doc');
+                    } else if (url.includes('?')) {
+                        var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1));
+                        sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
+                    }
+                }
             }
         }
+    }	    
+	   ////// 
+	    
     }
-}
 }
 
 function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
