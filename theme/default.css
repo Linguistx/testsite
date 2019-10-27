@@ -197,7 +197,7 @@ body {
         flex-direction: column;
     }
     
-    article {
+    .footer {
      display: block;   
     }
     
