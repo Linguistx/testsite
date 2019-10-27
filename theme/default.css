@@ -189,6 +189,13 @@ body {
     .header, .row, .navbar {   
         flex-direction: column;
     }
+    
+   #title-box {
+    font-size: 20px;
+    padding: 10px 10px 5px 10px;
+    font-weight: bolder;
+   /* max-width: 70%;*/
+   }
   
     .searchbar {
         display: flex;
