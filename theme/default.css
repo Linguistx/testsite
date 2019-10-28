@@ -211,7 +211,7 @@ article {
     
         .footer-mob {
             display: flex;
-    flex-shrink: 0;
+
 }
     #entry {
     min-height: 100%;
