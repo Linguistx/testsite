@@ -12,8 +12,8 @@ Vulgar Dictionaries allows you to create searchable online conlang dictionaries 
 
 # Website Settings
 
-    Website title: Sfoda Sfoda a l - English Dictionary
-    Language A: Sfoda
+    Website title: My Conlang - English Dictionary
+    Language A: Conlang
     Language B: English
     
 # Home page message
