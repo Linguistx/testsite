@@ -203,10 +203,10 @@ flex: 1 0 auto;
 
     .footer {
   flex-shrink: 0;
+        position: absolute;
+ bottom: 0;
 }
-      .footer {
-    position: relative;
-  }
+
     
     .navbar a {
     padding: 11px 10px;
