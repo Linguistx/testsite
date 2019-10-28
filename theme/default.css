@@ -199,13 +199,13 @@ body {
     }
     .row { 
 flex: 1 0 auto;
-        height: calc( 100% - 100px );
+
     }
 
     .footer {
   flex-shrink: 0;
  position: relative;
-        bottom:  -500px;
+        bottom: calc( 100% - 100px );
 }
 
     
