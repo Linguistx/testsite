@@ -208,6 +208,10 @@ article {
     .footer {
     display: none;
 }
+    
+        .footer-mob {
+    display: relative;
+}
     .row {
             flex-grow: 1;
     }
