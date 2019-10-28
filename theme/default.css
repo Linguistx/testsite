@@ -198,8 +198,10 @@ body {
     }
     
     .footer {
-     display: block;   
+
         bottom: 0px;
+          position: relative;
+  bottom: 0px;
     }
     
     
