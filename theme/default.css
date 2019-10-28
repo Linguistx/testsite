@@ -199,6 +199,7 @@ body {
     
     .footer {
      display: block;   
+        bottom: 0px;
     }
     
     
