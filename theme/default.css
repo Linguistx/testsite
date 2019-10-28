@@ -194,13 +194,16 @@ body {
 
     
     .header, .row, .navbar, .footer {   
-        display: block;
+        display: flex;
+  flex-direction: column;
     }
     .row { 
-    min-height: calc(100vh - 70px);
+flex: 1 0 auto;
     }
 
-    
+    .footer {
+  flex-shrink: 0;
+}
     
     .navbar a {
     padding: 11px 10px;
