@@ -162,8 +162,8 @@ getSettings.onreadystatechange = function() {
               }
             }
 
-            if (url.endsWith('/?grammar-doc')) {
-              sendEntry('grammar-doc');
+            if (url.endsWith('/?grammar-page')) {
+              sendEntry('grammar-page');
             } else if (url.includes('?')) {
               var queryTerm = decodeURI(url.slice(url.indexOf('?') + 1));
               sendEntry(queryTerm, dictionaryA[queryTerm], dictionaryB[queryTerm]);
@@ -181,7 +181,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
     document.getElementById('tab-space').innerHTML = '';
     document.getElementById('entry').innerHTML = '';
     var stateObj = { foo: 'bar' };
-    history.pushState(stateObj, term, '?grammar-doc');
+    history.pushState(stateObj, term, '?grammar-page');
     let grammarFileLocation = document.location.origin + '/grammar.md';
     let getGrammarFile = new XMLHttpRequest();
     getGrammarFile.open('GET', grammarFileLocation, true);
@@ -196,7 +196,7 @@ function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
     return;
   }
   let bothLanguage = '';
-  if (!associatedInfoA && !associatedInfoB && term != 'grammar-doc') {
+  if (!associatedInfoA && !associatedInfoB && term != 'grammar-page') {
     document.getElementById('entry').innerHTML = 'No entry found';
     document.getElementById('tab-space').style.padding = '0px 0px 0px 0px;';
     return;
