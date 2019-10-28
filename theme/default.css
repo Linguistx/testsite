@@ -196,7 +196,9 @@ body {
     .header, .row, .navbar {   
         flex-direction: column;
     }
-    
+    .navbar { 
+    min-height: calc(100vh - 70px);
+    }
     .footer {
      display: block;   
     }
