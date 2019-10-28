@@ -198,10 +198,12 @@ article {
 
     }
     
-    .header, .row, .navbar {   
+    .header, .row, .navbar, .footer-mob {   
         flex-direction: column;
     }
-    
+    .footer {
+    flex-shrink: 0;
+}
     .row {
             flex-grow: 1;
     }
