@@ -35,7 +35,7 @@
     </div>
     <div class="navbar">
       <a href="./">HOME</a>
-      <a class="pointer" onclick="sendEntry('grammar-doc')">GRAMMAR</a>
+      <a class="pointer" onclick="sendEntry('grammar-page')">GRAMMAR</a>
     </div>
     <div class="row">
       <div class="side" id="sidebar"></div>
@@ -111,7 +111,7 @@ getSettings.onreadystatechange = function() {
     document.title = settings.title;
     let homePageMessage = getSettingsResponseText.match(/# Home page message[\s\S]*?\n# /)[0];
     homePageMessage = homePageMessage.replace('# Home page message', '').replace(/# $/, '').trim();
-    if (!url.endsWith('/?grammar-doc') && !url.includes('?')) {
+    if (!url.endsWith('/?grammar-page') && !url.includes('?')) {
       document.getElementById('entry').innerHTML = converter.makeHtml(homePageMessage);
     } 
 
@@ -177,7 +177,7 @@ getSettings.onreadystatechange = function() {
 
 function sendEntry(term, associatedInfoA, associatedInfoB, forceAB) {
   if (forceAB) tryLang = forceAB;
-  if (term == 'grammar-doc') {
+  if (term == 'grammar-page') {
     document.getElementById('tab-space').innerHTML = '';
     document.getElementById('entry').innerHTML = '';
     var stateObj = { foo: 'bar' };
