@@ -210,7 +210,7 @@ article {
 }
     
         .footer-mob {
-    display: relative;
+    display: block;
 }
     .row {
             flex-grow: 1;
