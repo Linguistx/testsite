@@ -213,7 +213,7 @@ article {
             display: flex;
     flex-shrink: 0;
 }
-    .row {
+    #entry {
     min-height: 100%;
 
   /* Equal to height of footer */
