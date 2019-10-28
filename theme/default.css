@@ -193,15 +193,13 @@ body {
     
 
     
-    .header, .row, .navbar {   
-        flex-direction: column;
+    .header, .row, .navbar, .footer {   
+        display: block;
     }
     .row { 
     min-height: calc(100vh - 70px);
     }
-    .footer {
-     display: block;   
-    }
+
     
     
     .navbar a {
