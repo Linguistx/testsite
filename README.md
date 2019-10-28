@@ -12,7 +12,7 @@ Vulgar Dictionaries allows you to create searchable online conlang dictionaries 
 
 # Website Settings
 
-    Website title: Sfoda - English Dictionary
+    Website title: Sfoda Sfoda a l - English Dictionary
     Language A: Sfoda
     Language B: English
     
