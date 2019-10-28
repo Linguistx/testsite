@@ -203,8 +203,8 @@ flex: 1 0 auto;
 
     .footer {
   flex-shrink: 0;
-        position: relative;
- bottom: 0;
+ position: relative;
+        bottom:  -500px;
 }
 
     
