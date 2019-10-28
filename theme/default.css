@@ -199,12 +199,15 @@ article {
     }
     
     .header, .row, .navbar {   
-        display: block;
+        flex-direction: column;
     }
     
-
+    .row {
+            flex-grow: 1;
+    }
+    
     .footer {
-display: block;
+display: none;
 
 
     }
