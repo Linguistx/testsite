@@ -193,16 +193,21 @@ body {
     
 article {
     min-height: 100%;
-            display: grid;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    flex-direction: column;
+
     }
     
     .header, .row, .navbar {   
         flex-direction: column;
     }
     
+    .row {
+            flex-grow: 1;
+    }
+    
     .footer {
-display: grid;
+flex-shrink: 0;
 
 
     }
