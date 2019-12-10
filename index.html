@@ -62,6 +62,69 @@
 </body>
 
 <script>
+	
+	
+	
+	
+function createHTMLfile(forBB) {
+	
+	let getConlang = new XMLHttpRequest();
+    getConlang.open('GET', document.location.origin + '/style/fontdata.txt', true);
+    getConlang.send();
+    
+    getConlang.onreadystatechange = function() {
+      if (getConlang.readyState == 4 && getConlang.status == 200) {
+
+          var dictionaryBlob = getConlang.responseText;  
+		  console.log(dictionaryBlob);
+	  }
+	
+	
+	var compileAll = [];
+	var repo = '';
+
+	try {
+		var newhtml = finalHTML;
+		newhtml = newhtml.replace(/<div id="togTrans"[\s\S]*?<\/div>/, '');
+		newhtml = newhtml.replace(/<div id="lang-seed">.*?<\/div>/, '');
+		newhtml = newhtml.replace(/Show frequency stats<\/a><div .*?<\/div>/g, '');
+		newhtml = newhtml.replace(/<p><a class="gt" href="https:\/\/www.vulgarlang.com\/phonological-rules" target="_blank">How to read phonological rules<\/a>/, '');
+		newhtml = newhtml.replace(/<p><font style="color: #D80036;">Click IPA symbols for audio<\/font> <img src="https:\/\/www.vulgarlang.com\/images\/playb.svg" height="20px">/, '');
+		newhtml = newhtml.replace(/ <\/r>/g, '</r>');
+		newhtml = newhtml.replace(/ <\/f>/g, '</f> ');
+		newhtml = newhtml.replace(/<\/li>/g, ' </li>\n'); 
+		newhtml = newhtml.replace(/<td>/g, '\n\t<td>');
+		newhtml = newhtml.replace(/  +/g, ' ');
+		var replacer = evolvepart.replace(/\\/g, '');
+		newhtml = newhtml.replace('</div></div>' + evolvepart, repo);
+		newhtml = newhtml.replace(/<\/?a.*?>/g, '');
+		newhtml = newhtml.replace('</div></div><ul><h2>', '<h2 class="head-lexi">');
+		newhtml = newhtml.replace('</h2></e></li>', '</h2></e><ul>');
+		newhtml = newhtml.replace(/<div/g, '\n\n<div');
+		newhtml = newhtml.replace(/<\/div>/g, '\n</div>');
+		newhtml = newhtml.replace('<center><no>Show Translator</no></<center>', '');
+		newhtml = newhtml.replace(/<qi>\?<\/qi>/g, '');
+		newhtml = newhtml.replace(/<\/tr><tr>/g, '</tr>\n<tr>');
+		newhtml = newhtml.replace(/><p>/g, '>\n<p>');
+		console.log(dictionaryBlob);
+		return '<!DOCTYPE html>\n<html><link href="https://www.vulgarlang.com/style/vulgar-style27.css" rel="stylesheet">\n<link href="https://www.vulgarlang.com/pretty2.css" rel="stylesheet">\n\n<meta charset="utf-8"><title>' + document.getElementById('pdfTitle').value + '</title>\n<head>\n<style>\nr {font-weight: bold;}\n</style>\n</head>\n<body>\n' + newhtml + '\n</div></body>\n</html>';
+	} catch (error) {
+		//document.getElementById('latex').value = 'You haven\'t generated a language yet...'
+	}
+	
+	
+	}
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 let url = document.location.href;
 
 let settings = {
