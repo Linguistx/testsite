@@ -83,7 +83,7 @@ function createHTMLfile(forBB) {
 	var compileAll = [];
 	var repo = '';
 
-	try {
+	//try {
 		var newhtml = finalHTML;
 		newhtml = newhtml.replace(/<div id="togTrans"[\s\S]*?<\/div>/, '');
 		newhtml = newhtml.replace(/<div id="lang-seed">.*?<\/div>/, '');
@@ -108,9 +108,9 @@ function createHTMLfile(forBB) {
 		newhtml = newhtml.replace(/><p>/g, '>\n<p>');
 		console.log(dictionaryBlob);
 		return '<!DOCTYPE html>\n<html><link href="https://www.vulgarlang.com/style/vulgar-style27.css" rel="stylesheet">\n<link href="https://www.vulgarlang.com/pretty2.css" rel="stylesheet">\n\n<meta charset="utf-8"><title>' + document.getElementById('pdfTitle').value + '</title>\n<head>\n<style>\nr {font-weight: bold;}\n</style>\n</head>\n<body>\n' + newhtml + '\n</div></body>\n</html>';
-	} catch (error) {
+	//} catch (error) {
 		//document.getElementById('latex').value = 'You haven\'t generated a language yet...'
-	}
+	//}
 	
 	
 	}
